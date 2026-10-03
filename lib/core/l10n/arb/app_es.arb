@@ -1,0 +1,82 @@
+{
+  "@@locale": "es",
+
+  "easyMode_home_title": "Modo Fácil",
+  "easyMode_home_checkBalance": "Ver mi saldo",
+  "easyMode_home_payBill": "Pagar recibo",
+  "easyMode_home_sendMoney": "Enviar dinero",
+  "easyMode_home_getHelp": "Pedir ayuda",
+
+  "easyMode_balance_title": "Tu saldo",
+  "easyMode_balance_accountLabel": "Cuenta",
+  "easyMode_balance_availableBalance": "Saldo disponible",
+
+  "easyMode_payBill_title": "Pagar recibo",
+  "easyMode_payBill_noPending": "No tienes recibos pendientes",
+  "easyMode_payBill_dueDate": "Vence el {date}",
+  "@easyMode_payBill_dueDate": {
+    "placeholders": {
+      "date": { "type": "String" }
+    }
+  },
+  "easyMode_payBill_confirmTitle": "Confirmar pago",
+  "easyMode_payBill_service": "Servicio",
+  "easyMode_payBill_amount": "Monto a pagar",
+
+  "easyMode_sendMoney_title": "Enviar dinero",
+  "easyMode_sendMoney_noContacts": "No tienes contactos guardados. Pide ayuda para agregar uno.",
+  "easyMode_sendMoney_enterAmount": "Escribe el monto",
+  "easyMode_sendMoney_confirmTitle": "Confirmar envío",
+  "easyMode_sendMoney_recipient": "Para",
+  "easyMode_sendMoney_amountLabel": "Monto a enviar",
+  "easyMode_sendMoney_remainingBalance": "Tu saldo después del envío",
+  "easyMode_sendMoney_insufficientFunds": "No tienes suficiente dinero. Tu saldo es S/ {balance}",
+  "@easyMode_sendMoney_insufficientFunds": {
+    "placeholders": {
+      "balance": { "type": "String" }
+    }
+  },
+
+  "easyMode_help_title": "Pedir ayuda",
+  "easyMode_help_callAdvisor": "Llamar a un asesor",
+  "easyMode_help_chatAdvisor": "Escribir a un asesor",
+  "easyMode_help_connecting": "Te estamos conectando con alguien que te va a ayudar",
+
+  "easyMode_confirm_button": "Confirmar",
+  "easyMode_back_button": "Volver",
+  "easyMode_success_paymentDone": "Pago realizado",
+  "easyMode_success_transferDone": "Dinero enviado",
+  "easyMode_success_goHome": "Volver al inicio",
+
+  "easyMode_error_generic": "Algo salió mal. Tu dinero no se movió.",
+  "easyMode_error_tryAgainOrHelp": "Puedes intentar de nuevo o pedir ayuda",
+  "easyMode_error_amountZero": "El monto debe ser mayor a cero",
+
+  "easyMode_currency": "S/ {amount}",
+  "@easyMode_currency": {
+    "placeholders": {
+      "amount": { "type": "String" }
+    }
+  },
+
+  "fraudShield_alert_title": "Un momento",
+  "fraudShield_alert_unusualAmount": "Este pago es mucho más alto de lo que sueles pagar.",
+  "fraudShield_alert_newRecipient": "Nunca le has enviado dinero a esta persona.",
+  "fraudShield_alert_highFrequency": "Has hecho varios pagos seguidos.",
+  "fraudShield_alert_unusualTime": "Estás haciendo un pago a una hora poco habitual.",
+  "fraudShield_alert_closing": "Solo queremos asegurarnos. ¿Qué quieres hacer?",
+  "fraudShield_action_cancel": "Cancelar",
+  "fraudShield_action_continue": "Continuar de todos modos",
+  "fraudShield_action_consultTrusted": "Consultar a {name}",
+  "@fraudShield_action_consultTrusted": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "fraudShield_notification_sent": "Le avisamos a {name}. Puedes esperarle o continuar.",
+  "@fraudShield_notification_sent": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  }
+}
