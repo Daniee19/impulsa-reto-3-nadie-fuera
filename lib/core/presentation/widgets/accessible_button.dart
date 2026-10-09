@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:impulsa_reto_3_nadie_fuera/core/a11y/a11y_helpers.dart';
 
 /// Large accessible button with icon, ≥48dp tap target, semantics label.
@@ -30,7 +31,12 @@ class AccessibleButton extends StatelessWidget {
         child: Tooltip(
           message: text,
           child: ElevatedButton.icon(
-            onPressed: onPressed,
+            onPressed: onPressed == null
+                ? null
+                : () {
+                    SystemSound.play(SystemSoundType.click);
+                    onPressed!();
+                  },
             icon: Icon(icon, size: 24),
             label: Text(text),
             style: ElevatedButton.styleFrom(

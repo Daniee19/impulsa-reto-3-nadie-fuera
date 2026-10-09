@@ -19,7 +19,8 @@ class ConfirmationScreen extends StatefulWidget {
   final String title;
 
   /// Label→value pairs to display.
-  final List<({String label, String value})> items;
+  /// Optional `semanticsValue` overrides the visual value for screen readers.
+  final List<({String label, String value, String? semanticsValue})> items;
 
   /// Called when user taps confirm.
   final VoidCallback onConfirm;
@@ -42,10 +43,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      A11yHelpers.announceForAccessibility(
-        View.of(context),
-        widget.title,
-      );
+      A11yHelpers.announceForAccessibility(View.of(context), widget.title);
     });
   }
 
@@ -64,11 +62,11 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
                 Text(item.label, style: theme.textTheme.bodyLarge),
                 const SizedBox(height: 4),
                 Semantics(
-                  label: '${item.label}: ${item.value}',
-                  child: Text(
-                    item.value,
-                    style: theme.textTheme.displayMedium,
-                  ),
+                  label:
+                      '${item.label}: '
+                      '${item.semanticsValue ?? item.value}',
+                  excludeSemantics: item.semanticsValue != null,
+                  child: Text(item.value, style: theme.textTheme.displayMedium),
                 ),
                 const SizedBox(height: 24),
               ],

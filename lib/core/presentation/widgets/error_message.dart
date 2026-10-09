@@ -29,10 +29,7 @@ class _ErrorMessageState extends State<ErrorMessage> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      A11yHelpers.announceForAccessibility(
-        View.of(context),
-        widget.message,
-      );
+      A11yHelpers.announceForAccessibility(View.of(context), widget.message);
     });
   }
 
@@ -45,11 +42,7 @@ class _ErrorMessageState extends State<ErrorMessage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(
-              Icons.error_outline,
-              size: 64,
-              color: theme.colorScheme.error,
-            ),
+            Icon(Icons.error_outline, size: 64, color: theme.colorScheme.error),
             const SizedBox(height: 24),
             Semantics(
               liveRegion: true,

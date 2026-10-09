@@ -15,10 +15,11 @@ abstract final class A11yHelpers {
     FlutterView view,
     String message,
   ) {
-    return SemanticsService.sendAnnouncement(
-      view,
-      message,
-      TextDirection.ltr,
-    );
+    return SemanticsService.sendAnnouncement(view, message, TextDirection.ltr);
+  }
+
+  /// Convenience wrapper — same as [announceForAccessibility].
+  static Future<void> screenAnnounce(FlutterView view, String message) {
+    return SemanticsService.sendAnnouncement(view, message, TextDirection.ltr);
   }
 }
