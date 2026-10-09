@@ -18,6 +18,8 @@ import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/scree
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/screens/send_money_confirm_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/screens/send_money_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/presentation/screens/fraud_alert_screen.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/friction_detection/presentation/providers/friction_provider.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/friction_detection/presentation/widgets/friction_offer_overlay.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/screens/feature_management_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/screens/mobile_recharge_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/screens/qr_payment_screen.dart';
@@ -47,16 +49,24 @@ final appRouterProvider = Provider<GoRouter>((ref) {
       ShellRoute(
         builder: (context, state, child) {
           final isHelpScreen = state.uri.path.contains('/help/');
-          return Stack(
-            children: [
-              child,
-              if (!isHelpScreen)
-                Positioned(
-                  right: 16,
-                  bottom: MediaQuery.of(context).padding.bottom + 16,
-                  child: const HelpFab(),
-                ),
-            ],
+          return Listener(
+            onPointerDown: (_) {
+              ProviderScope.containerOf(context)
+                  .read(frictionNotifierProvider.notifier)
+                  .onUserInteraction();
+            },
+            child: Stack(
+              children: [
+                child,
+                const FrictionOfferOverlay(),
+                if (!isHelpScreen)
+                  Positioned(
+                    right: 16,
+                    bottom: MediaQuery.of(context).padding.bottom + 16,
+                    child: const HelpFab(),
+                  ),
+              ],
+            ),
           );
         },
         routes: [

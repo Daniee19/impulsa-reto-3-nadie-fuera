@@ -1035,6 +1035,84 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Sugerencia. {message}'**
   String announceUnlockProposal(String message);
+
+  /// No description provided for @friction_offerMessage.
+  ///
+  /// In es, this message translates to:
+  /// **'Parece que necesitas ayuda con este paso'**
+  String get friction_offerMessage;
+
+  /// No description provided for @friction_offerMessageField.
+  ///
+  /// In es, this message translates to:
+  /// **'Parece que hay un problema con este campo. ¿Te ayudo?'**
+  String get friction_offerMessageField;
+
+  /// No description provided for @friction_offerMessageInactivity.
+  ///
+  /// In es, this message translates to:
+  /// **'¿Necesitas ayuda con este paso?'**
+  String get friction_offerMessageInactivity;
+
+  /// No description provided for @friction_optionExplain.
+  ///
+  /// In es, this message translates to:
+  /// **'Sí, explícame'**
+  String get friction_optionExplain;
+
+  /// No description provided for @friction_optionHuman.
+  ///
+  /// In es, this message translates to:
+  /// **'Hablar con alguien'**
+  String get friction_optionHuman;
+
+  /// No description provided for @friction_optionDismiss.
+  ///
+  /// In es, this message translates to:
+  /// **'No, estoy bien'**
+  String get friction_optionDismiss;
+
+  /// No description provided for @friction_explain_payBillConfirm.
+  ///
+  /// In es, this message translates to:
+  /// **'El botón confirmar envía el pago. Tu dinero está seguro'**
+  String get friction_explain_payBillConfirm;
+
+  /// No description provided for @friction_explain_sendMoneyAmount.
+  ///
+  /// In es, this message translates to:
+  /// **'Escribe cuánto dinero quieres enviar. Por ejemplo, 50'**
+  String get friction_explain_sendMoneyAmount;
+
+  /// No description provided for @friction_explain_sendMoneyConfirm.
+  ///
+  /// In es, this message translates to:
+  /// **'Confirma que los datos son correctos y envía el dinero'**
+  String get friction_explain_sendMoneyConfirm;
+
+  /// No description provided for @friction_explain_payBillSelect.
+  ///
+  /// In es, this message translates to:
+  /// **'Elige el recibo que quieres pagar de la lista'**
+  String get friction_explain_payBillSelect;
+
+  /// No description provided for @friction_contextBack.
+  ///
+  /// In es, this message translates to:
+  /// **'Retrocedió {n} veces en {stepName}'**
+  String friction_contextBack(int n, String stepName);
+
+  /// No description provided for @friction_contextInactivity.
+  ///
+  /// In es, this message translates to:
+  /// **'Estuvo sin interactuar en {stepName}'**
+  String friction_contextInactivity(String stepName);
+
+  /// No description provided for @friction_contextError.
+  ///
+  /// In es, this message translates to:
+  /// **'Cometió el mismo error {n} veces en {stepName}'**
+  String friction_contextError(int n, String stepName);
 }
 
 class _AppLocalizationsDelegate

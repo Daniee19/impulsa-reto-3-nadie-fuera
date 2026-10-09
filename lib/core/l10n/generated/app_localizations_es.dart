@@ -565,4 +565,56 @@ class AppLocalizationsEs extends AppLocalizations {
   String announceUnlockProposal(String message) {
     return 'Sugerencia. $message';
   }
+
+  @override
+  String get friction_offerMessage =>
+      'Parece que necesitas ayuda con este paso';
+
+  @override
+  String get friction_offerMessageField =>
+      'Parece que hay un problema con este campo. ¿Te ayudo?';
+
+  @override
+  String get friction_offerMessageInactivity =>
+      '¿Necesitas ayuda con este paso?';
+
+  @override
+  String get friction_optionExplain => 'Sí, explícame';
+
+  @override
+  String get friction_optionHuman => 'Hablar con alguien';
+
+  @override
+  String get friction_optionDismiss => 'No, estoy bien';
+
+  @override
+  String get friction_explain_payBillConfirm =>
+      'El botón confirmar envía el pago. Tu dinero está seguro';
+
+  @override
+  String get friction_explain_sendMoneyAmount =>
+      'Escribe cuánto dinero quieres enviar. Por ejemplo, 50';
+
+  @override
+  String get friction_explain_sendMoneyConfirm =>
+      'Confirma que los datos son correctos y envía el dinero';
+
+  @override
+  String get friction_explain_payBillSelect =>
+      'Elige el recibo que quieres pagar de la lista';
+
+  @override
+  String friction_contextBack(int n, String stepName) {
+    return 'Retrocedió $n veces en $stepName';
+  }
+
+  @override
+  String friction_contextInactivity(String stepName) {
+    return 'Estuvo sin interactuar en $stepName';
+  }
+
+  @override
+  String friction_contextError(int n, String stepName) {
+    return 'Cometió el mismo error $n veces en $stepName';
+  }
 }

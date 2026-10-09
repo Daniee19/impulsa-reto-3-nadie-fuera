@@ -322,5 +322,35 @@
     "placeholders": {
       "message": { "type": "String" }
     }
+  },
+  "friction_offerMessage": "Parece que necesitas ayuda con este paso",
+  "friction_offerMessageField": "Parece que hay un problema con este campo. ¿Te ayudo?",
+  "friction_offerMessageInactivity": "¿Necesitas ayuda con este paso?",
+  "friction_optionExplain": "Sí, explícame",
+  "friction_optionHuman": "Hablar con alguien",
+  "friction_optionDismiss": "No, estoy bien",
+  "friction_explain_payBillConfirm": "El botón confirmar envía el pago. Tu dinero está seguro",
+  "friction_explain_sendMoneyAmount": "Escribe cuánto dinero quieres enviar. Por ejemplo, 50",
+  "friction_explain_sendMoneyConfirm": "Confirma que los datos son correctos y envía el dinero",
+  "friction_explain_payBillSelect": "Elige el recibo que quieres pagar de la lista",
+  "friction_contextBack": "Retrocedió {n} veces en {stepName}",
+  "@friction_contextBack": {
+    "placeholders": {
+      "n": { "type": "int" },
+      "stepName": { "type": "String" }
+    }
+  },
+  "friction_contextInactivity": "Estuvo sin interactuar en {stepName}",
+  "@friction_contextInactivity": {
+    "placeholders": {
+      "stepName": { "type": "String" }
+    }
+  },
+  "friction_contextError": "Cometió el mismo error {n} veces en {stepName}",
+  "@friction_contextError": {
+    "placeholders": {
+      "n": { "type": "int" },
+      "stepName": { "type": "String" }
+    }
   }
 }
