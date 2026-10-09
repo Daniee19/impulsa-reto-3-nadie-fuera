@@ -18,11 +18,16 @@ import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/scree
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/screens/send_money_confirm_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/screens/send_money_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/presentation/screens/fraud_alert_screen.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/scam_lessons/presentation/screens/lesson_list_screen.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/scam_lessons/presentation/screens/lesson_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/friction_detection/presentation/providers/friction_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/friction_detection/presentation/widgets/friction_offer_overlay.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/screens/feature_management_screen.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/payment_reminders/presentation/screens/reminder_config_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/practice_mode/presentation/providers/practice_guide_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/practice_mode/presentation/providers/practice_session_provider.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/audio_contracts/presentation/screens/contract_summary_screen.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/audio_contracts/presentation/screens/full_contract_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/practice_mode/presentation/screens/practice_entry_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/practice_mode/presentation/widgets/practice_shell.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/screens/mobile_recharge_screen.dart';
@@ -171,6 +176,11 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                 builder: (context, state) => const FeatureManagementScreen(),
               ),
               GoRoute(
+                path: 'settings/reminders',
+                builder: (context, state) =>
+                    const ReminderConfigScreen(),
+              ),
+              GoRoute(
                 path: 'assistant',
                 builder: (context, state) => const VoiceAssistantScreen(),
                 routes: [
@@ -192,6 +202,38 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: 'practice',
                 builder: (context, state) => const PracticeEntryScreen(),
+              ),
+              GoRoute(
+                path: 'contract/:contractId',
+                builder: (context, state) {
+                  final id = state.pathParameters['contractId']!;
+                  return ContractSummaryScreen(contractId: id);
+                },
+                routes: [
+                  GoRoute(
+                    path: 'full',
+                    builder: (context, state) {
+                      final id =
+                          state.pathParameters['contractId']!;
+                      return FullContractScreen(contractId: id);
+                    },
+                  ),
+                ],
+              ),
+              GoRoute(
+                path: 'lessons',
+                builder: (context, state) =>
+                    const LessonListScreen(),
+                routes: [
+                  GoRoute(
+                    path: ':lessonId',
+                    builder: (context, state) {
+                      final id =
+                          state.pathParameters['lessonId']!;
+                      return LessonScreen(lessonId: id);
+                    },
+                  ),
+                ],
               ),
               GoRoute(
                 path: 'help/contact-picker',

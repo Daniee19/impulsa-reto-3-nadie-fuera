@@ -699,4 +699,148 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get practice_guide_fraudAlert =>
       'Esta es una alerta de seguridad. En la vida real, te protege.';
+
+  @override
+  String get contract_summary_title => 'Resumen del contrato';
+
+  @override
+  String get contract_section_whatYouAccept => 'Qué aceptas';
+
+  @override
+  String get contract_section_cost => 'Cuánto cuesta';
+
+  @override
+  String get contract_section_risks => 'Qué puede salir mal';
+
+  @override
+  String get contract_section_howToCancel => 'Cómo cancelar';
+
+  @override
+  String get contract_accept => 'Aceptar';
+
+  @override
+  String get contract_acceptDisabled => 'Primero escucha o lee el resumen';
+
+  @override
+  String get contract_viewFull => 'Ver contrato completo';
+
+  @override
+  String get contract_disclaimer =>
+      'Este resumen te ayuda a entender. El documento completo está disponible abajo.';
+
+  @override
+  String get contract_pause => 'Pausar lectura';
+
+  @override
+  String get contract_resume => 'Continuar lectura';
+
+  @override
+  String get contract_repeatSection => 'Repetir esta sección';
+
+  @override
+  String get contract_slower => 'Más lento';
+
+  @override
+  String get contract_normalSpeed => 'Velocidad normal';
+
+  @override
+  String get contract_speedMin => 'Ya estás en la velocidad más lenta';
+
+  @override
+  String get contract_askAssistant => 'Preguntar al asistente';
+
+  @override
+  String get contract_backToSummary => 'Volver al resumen';
+
+  @override
+  String get contract_readThis => 'Leer esto';
+
+  @override
+  String get contract_volumeLow =>
+      'Tu volumen está bajo. Puedes subir el volumen o leer el resumen.';
+
+  @override
+  String contract_sectionOf(int current, int total) {
+    return 'Sección $current de $total';
+  }
+
+  @override
+  String get contract_accepted => 'Contrato aceptado';
+
+  @override
+  String get contract_savingsAccount => 'Cuenta de ahorro básica';
+
+  @override
+  String get contract_personalLoan => 'Préstamo personal';
+
+  @override
+  String get lesson_suggestion_prefix => '¿Sabías que';
+
+  @override
+  String get lesson_viewLesson => 'Ver lección';
+
+  @override
+  String get lesson_notNow => 'Ahora no';
+
+  @override
+  String get lesson_back => 'Volver';
+
+  @override
+  String get lesson_listTitle => 'Aprender sobre estafas';
+
+  @override
+  String get lesson_completed => 'Completada';
+
+  @override
+  String get lesson_notSeen => 'No vista';
+
+  @override
+  String get lesson_pause => 'Pausar';
+
+  @override
+  String get reminder_title => 'Recordatorios';
+
+  @override
+  String get reminder_payNow => 'Pagar ahora';
+
+  @override
+  String get reminder_dismiss => 'Ya lo sé, gracias';
+
+  @override
+  String get reminder_configTitle => 'Mis recordatorios';
+
+  @override
+  String get reminder_anticipation => '¿Cuántos días antes te avisamos?';
+
+  @override
+  String get reminder_anticipation_1 => '1 día antes';
+
+  @override
+  String get reminder_anticipation_3 => '3 días antes';
+
+  @override
+  String get reminder_anticipation_5 => '5 días antes';
+
+  @override
+  String get reminder_shareWithTrusted =>
+      'Avisar también a mi persona de confianza';
+
+  @override
+  String reminder_shareConsent(String name) {
+    return 'Vamos a enviar a $name un aviso con el nombre del recibo y la fecha. No incluye tu saldo ni datos de tu cuenta. ¿Estás de acuerdo?';
+  }
+
+  @override
+  String reminder_sharedNotification(String name) {
+    return 'También se avisó a $name';
+  }
+
+  @override
+  String get reminder_consentTitle => 'Consentimiento';
+
+  @override
+  String get reminder_consentAccept => 'Sí, de acuerdo';
+
+  @override
+  String get reminder_consentReject => 'No';
 }

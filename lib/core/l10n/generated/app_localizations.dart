@@ -1257,6 +1257,276 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Esta es una alerta de seguridad. En la vida real, te protege.'**
   String get practice_guide_fraudAlert;
+
+  /// No description provided for @contract_summary_title.
+  ///
+  /// In es, this message translates to:
+  /// **'Resumen del contrato'**
+  String get contract_summary_title;
+
+  /// No description provided for @contract_section_whatYouAccept.
+  ///
+  /// In es, this message translates to:
+  /// **'Qué aceptas'**
+  String get contract_section_whatYouAccept;
+
+  /// No description provided for @contract_section_cost.
+  ///
+  /// In es, this message translates to:
+  /// **'Cuánto cuesta'**
+  String get contract_section_cost;
+
+  /// No description provided for @contract_section_risks.
+  ///
+  /// In es, this message translates to:
+  /// **'Qué puede salir mal'**
+  String get contract_section_risks;
+
+  /// No description provided for @contract_section_howToCancel.
+  ///
+  /// In es, this message translates to:
+  /// **'Cómo cancelar'**
+  String get contract_section_howToCancel;
+
+  /// No description provided for @contract_accept.
+  ///
+  /// In es, this message translates to:
+  /// **'Aceptar'**
+  String get contract_accept;
+
+  /// No description provided for @contract_acceptDisabled.
+  ///
+  /// In es, this message translates to:
+  /// **'Primero escucha o lee el resumen'**
+  String get contract_acceptDisabled;
+
+  /// No description provided for @contract_viewFull.
+  ///
+  /// In es, this message translates to:
+  /// **'Ver contrato completo'**
+  String get contract_viewFull;
+
+  /// No description provided for @contract_disclaimer.
+  ///
+  /// In es, this message translates to:
+  /// **'Este resumen te ayuda a entender. El documento completo está disponible abajo.'**
+  String get contract_disclaimer;
+
+  /// No description provided for @contract_pause.
+  ///
+  /// In es, this message translates to:
+  /// **'Pausar lectura'**
+  String get contract_pause;
+
+  /// No description provided for @contract_resume.
+  ///
+  /// In es, this message translates to:
+  /// **'Continuar lectura'**
+  String get contract_resume;
+
+  /// No description provided for @contract_repeatSection.
+  ///
+  /// In es, this message translates to:
+  /// **'Repetir esta sección'**
+  String get contract_repeatSection;
+
+  /// No description provided for @contract_slower.
+  ///
+  /// In es, this message translates to:
+  /// **'Más lento'**
+  String get contract_slower;
+
+  /// No description provided for @contract_normalSpeed.
+  ///
+  /// In es, this message translates to:
+  /// **'Velocidad normal'**
+  String get contract_normalSpeed;
+
+  /// No description provided for @contract_speedMin.
+  ///
+  /// In es, this message translates to:
+  /// **'Ya estás en la velocidad más lenta'**
+  String get contract_speedMin;
+
+  /// No description provided for @contract_askAssistant.
+  ///
+  /// In es, this message translates to:
+  /// **'Preguntar al asistente'**
+  String get contract_askAssistant;
+
+  /// No description provided for @contract_backToSummary.
+  ///
+  /// In es, this message translates to:
+  /// **'Volver al resumen'**
+  String get contract_backToSummary;
+
+  /// No description provided for @contract_readThis.
+  ///
+  /// In es, this message translates to:
+  /// **'Leer esto'**
+  String get contract_readThis;
+
+  /// No description provided for @contract_volumeLow.
+  ///
+  /// In es, this message translates to:
+  /// **'Tu volumen está bajo. Puedes subir el volumen o leer el resumen.'**
+  String get contract_volumeLow;
+
+  /// No description provided for @contract_sectionOf.
+  ///
+  /// In es, this message translates to:
+  /// **'Sección {current} de {total}'**
+  String contract_sectionOf(int current, int total);
+
+  /// No description provided for @contract_accepted.
+  ///
+  /// In es, this message translates to:
+  /// **'Contrato aceptado'**
+  String get contract_accepted;
+
+  /// No description provided for @contract_savingsAccount.
+  ///
+  /// In es, this message translates to:
+  /// **'Cuenta de ahorro básica'**
+  String get contract_savingsAccount;
+
+  /// No description provided for @contract_personalLoan.
+  ///
+  /// In es, this message translates to:
+  /// **'Préstamo personal'**
+  String get contract_personalLoan;
+
+  /// No description provided for @lesson_suggestion_prefix.
+  ///
+  /// In es, this message translates to:
+  /// **'¿Sabías que'**
+  String get lesson_suggestion_prefix;
+
+  /// No description provided for @lesson_viewLesson.
+  ///
+  /// In es, this message translates to:
+  /// **'Ver lección'**
+  String get lesson_viewLesson;
+
+  /// No description provided for @lesson_notNow.
+  ///
+  /// In es, this message translates to:
+  /// **'Ahora no'**
+  String get lesson_notNow;
+
+  /// No description provided for @lesson_back.
+  ///
+  /// In es, this message translates to:
+  /// **'Volver'**
+  String get lesson_back;
+
+  /// No description provided for @lesson_listTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Aprender sobre estafas'**
+  String get lesson_listTitle;
+
+  /// No description provided for @lesson_completed.
+  ///
+  /// In es, this message translates to:
+  /// **'Completada'**
+  String get lesson_completed;
+
+  /// No description provided for @lesson_notSeen.
+  ///
+  /// In es, this message translates to:
+  /// **'No vista'**
+  String get lesson_notSeen;
+
+  /// No description provided for @lesson_pause.
+  ///
+  /// In es, this message translates to:
+  /// **'Pausar'**
+  String get lesson_pause;
+
+  /// No description provided for @reminder_title.
+  ///
+  /// In es, this message translates to:
+  /// **'Recordatorios'**
+  String get reminder_title;
+
+  /// No description provided for @reminder_payNow.
+  ///
+  /// In es, this message translates to:
+  /// **'Pagar ahora'**
+  String get reminder_payNow;
+
+  /// No description provided for @reminder_dismiss.
+  ///
+  /// In es, this message translates to:
+  /// **'Ya lo sé, gracias'**
+  String get reminder_dismiss;
+
+  /// No description provided for @reminder_configTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Mis recordatorios'**
+  String get reminder_configTitle;
+
+  /// No description provided for @reminder_anticipation.
+  ///
+  /// In es, this message translates to:
+  /// **'¿Cuántos días antes te avisamos?'**
+  String get reminder_anticipation;
+
+  /// No description provided for @reminder_anticipation_1.
+  ///
+  /// In es, this message translates to:
+  /// **'1 día antes'**
+  String get reminder_anticipation_1;
+
+  /// No description provided for @reminder_anticipation_3.
+  ///
+  /// In es, this message translates to:
+  /// **'3 días antes'**
+  String get reminder_anticipation_3;
+
+  /// No description provided for @reminder_anticipation_5.
+  ///
+  /// In es, this message translates to:
+  /// **'5 días antes'**
+  String get reminder_anticipation_5;
+
+  /// No description provided for @reminder_shareWithTrusted.
+  ///
+  /// In es, this message translates to:
+  /// **'Avisar también a mi persona de confianza'**
+  String get reminder_shareWithTrusted;
+
+  /// No description provided for @reminder_shareConsent.
+  ///
+  /// In es, this message translates to:
+  /// **'Vamos a enviar a {name} un aviso con el nombre del recibo y la fecha. No incluye tu saldo ni datos de tu cuenta. ¿Estás de acuerdo?'**
+  String reminder_shareConsent(String name);
+
+  /// No description provided for @reminder_sharedNotification.
+  ///
+  /// In es, this message translates to:
+  /// **'También se avisó a {name}'**
+  String reminder_sharedNotification(String name);
+
+  /// No description provided for @reminder_consentTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Consentimiento'**
+  String get reminder_consentTitle;
+
+  /// No description provided for @reminder_consentAccept.
+  ///
+  /// In es, this message translates to:
+  /// **'Sí, de acuerdo'**
+  String get reminder_consentAccept;
+
+  /// No description provided for @reminder_consentReject.
+  ///
+  /// In es, this message translates to:
+  /// **'No'**
+  String get reminder_consentReject;
 }
 
 class _AppLocalizationsDelegate

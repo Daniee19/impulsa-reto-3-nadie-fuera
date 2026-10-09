@@ -384,5 +384,69 @@
   "practice_guide_enterAmount": "Escribe el monto que quieres enviar",
   "practice_guide_confirmSend": "Revisa los datos y toca 'Confirmar'",
   "practice_guide_done": "¡Muy bien! Has completado la práctica",
-  "practice_guide_fraudAlert": "Esta es una alerta de seguridad. En la vida real, te protege."
+  "practice_guide_fraudAlert": "Esta es una alerta de seguridad. En la vida real, te protege.",
+
+  "contract_summary_title": "Resumen del contrato",
+  "contract_section_whatYouAccept": "Qué aceptas",
+  "contract_section_cost": "Cuánto cuesta",
+  "contract_section_risks": "Qué puede salir mal",
+  "contract_section_howToCancel": "Cómo cancelar",
+  "contract_accept": "Aceptar",
+  "contract_acceptDisabled": "Primero escucha o lee el resumen",
+  "contract_viewFull": "Ver contrato completo",
+  "contract_disclaimer": "Este resumen te ayuda a entender. El documento completo está disponible abajo.",
+  "contract_pause": "Pausar lectura",
+  "contract_resume": "Continuar lectura",
+  "contract_repeatSection": "Repetir esta sección",
+  "contract_slower": "Más lento",
+  "contract_normalSpeed": "Velocidad normal",
+  "contract_speedMin": "Ya estás en la velocidad más lenta",
+  "contract_askAssistant": "Preguntar al asistente",
+  "contract_backToSummary": "Volver al resumen",
+  "contract_readThis": "Leer esto",
+  "contract_volumeLow": "Tu volumen está bajo. Puedes subir el volumen o leer el resumen.",
+  "contract_sectionOf": "Sección {current} de {total}",
+  "@contract_sectionOf": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "contract_accepted": "Contrato aceptado",
+  "contract_savingsAccount": "Cuenta de ahorro básica",
+  "contract_personalLoan": "Préstamo personal",
+
+  "lesson_suggestion_prefix": "¿Sabías que",
+  "lesson_viewLesson": "Ver lección",
+  "lesson_notNow": "Ahora no",
+  "lesson_back": "Volver",
+  "lesson_listTitle": "Aprender sobre estafas",
+  "lesson_completed": "Completada",
+  "lesson_notSeen": "No vista",
+  "lesson_pause": "Pausar",
+
+  "reminder_title": "Recordatorios",
+  "reminder_payNow": "Pagar ahora",
+  "reminder_dismiss": "Ya lo sé, gracias",
+  "reminder_configTitle": "Mis recordatorios",
+  "reminder_anticipation": "¿Cuántos días antes te avisamos?",
+  "reminder_anticipation_1": "1 día antes",
+  "reminder_anticipation_3": "3 días antes",
+  "reminder_anticipation_5": "5 días antes",
+  "reminder_shareWithTrusted": "Avisar también a mi persona de confianza",
+  "reminder_shareConsent": "Vamos a enviar a {name} un aviso con el nombre del recibo y la fecha. No incluye tu saldo ni datos de tu cuenta. ¿Estás de acuerdo?",
+  "@reminder_shareConsent": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "reminder_sharedNotification": "También se avisó a {name}",
+  "@reminder_sharedNotification": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "reminder_consentTitle": "Consentimiento",
+  "reminder_consentAccept": "Sí, de acuerdo",
+  "reminder_consentReject": "No"
 }

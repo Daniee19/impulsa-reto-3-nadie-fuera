@@ -7,6 +7,7 @@ import 'package:impulsa_reto_3_nadie_fuera/core/presentation/widgets/accessible_
 import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/domain/entities/risk_rule.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/presentation/providers/fraud_alert_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/presentation/widgets/risk_message_card.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/scam_lessons/presentation/providers/lesson_suggestion_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/trusted_person/domain/entities/trusted_permission.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/trusted_person/presentation/providers/trusted_person_provider.dart';
 
@@ -87,12 +88,24 @@ class _FraudAlertScreenState extends ConsumerState<FraudAlertScreen> {
               AccessibleButton(
                 text: l10n.fraudShield_action_cancel,
                 icon: Icons.close,
-                onPressed: () => context.pop(),
+                onPressed: () {
+                  ref
+                      .read(lessonSuggestionProvider.notifier)
+                      .triggerFromAlert(
+                        alertState.alert.triggeredRules,
+                      );
+                  context.pop();
+                },
               ),
               AccessibleButton(
                 text: l10n.fraudShield_action_continue,
                 icon: Icons.arrow_forward,
                 onPressed: () {
+                  ref
+                      .read(lessonSuggestionProvider.notifier)
+                      .triggerFromAlert(
+                        alertState.alert.triggeredRules,
+                      );
                   final route = alertState.continueRoute;
                   final extra = alertState.continueExtra;
                   ref.read(fraudAlertProvider.notifier).clear();

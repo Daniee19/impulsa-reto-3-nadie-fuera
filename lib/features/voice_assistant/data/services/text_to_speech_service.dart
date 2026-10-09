@@ -17,4 +17,12 @@ class TextToSpeechService {
 
   /// Stops any ongoing speech.
   Future<void> stop() => _tts.stop();
+
+  /// Sets speech rate (absolute value, not a multiplier).
+  Future<void> setSpeechRate(double rate) => _tts.setSpeechRate(rate);
+
+  /// Registers a handler called when speech finishes.
+  void setCompletionHandler(void Function() handler) {
+    _tts.setCompletionHandler(handler);
+  }
 }

@@ -16,6 +16,8 @@ import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/scree
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/screens/operation_success_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/screens/pay_bill_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/screens/send_money_screen.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/payment_reminders/domain/entities/reminder.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/payment_reminders/presentation/providers/reminder_provider.dart';
 
 Widget _wrap(Widget child) {
   return ProviderScope(
@@ -24,6 +26,8 @@ Widget _wrap(Widget child) {
       billRepositoryProvider.overrideWithValue(MockBillRepository()),
       contactRepositoryProvider.overrideWithValue(MockContactRepository()),
       operationRepositoryProvider.overrideWithValue(MockOperationRepository()),
+      activeRemindersProvider
+          .overrideWith((ref) => Future.value(<Reminder>[])),
     ],
     child: MaterialApp(
       localizationsDelegates: AppLocalizations.localizationsDelegates,

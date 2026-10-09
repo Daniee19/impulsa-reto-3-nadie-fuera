@@ -9,6 +9,10 @@ import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/
 import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/providers/unlock_proposal_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/widgets/extra_features_section.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/widgets/unlock_proposal_card.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/payment_reminders/presentation/providers/reminder_provider.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/payment_reminders/presentation/widgets/reminder_card.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/scam_lessons/presentation/providers/lesson_suggestion_provider.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/scam_lessons/presentation/widgets/lesson_suggestion_card.dart';
 
 /// Main screen with 4 large action buttons for easy mode.
 class EasyModeHomeScreen extends ConsumerStatefulWidget {
@@ -35,6 +39,8 @@ class _EasyModeHomeScreenState extends ConsumerState<EasyModeHomeScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final proposal = ref.watch(unlockProposalProvider);
+    final lessonSuggestion = ref.watch(lessonSuggestionProvider);
+    final remindersAsync = ref.watch(activeRemindersProvider);
     final extras = ref.watch(activeExtraFeaturesProvider);
     final statesAsync = ref.watch(featureStatesProvider);
     final hasUnlockedFeatures = statesAsync.maybeWhen(
@@ -66,6 +72,17 @@ class _EasyModeHomeScreenState extends ConsumerState<EasyModeHomeScreen> {
           padding: const EdgeInsets.all(16),
           child: Column(
             children: [
+              ...remindersAsync.maybeWhen(
+                data: (reminders) => reminders
+                    .take(3)
+                    .map((r) => ReminderCard(reminder: r))
+                    .toList(),
+                orElse: () => <Widget>[],
+              ),
+              if (lessonSuggestion != null)
+                LessonSuggestionCard(
+                  suggestion: lessonSuggestion,
+                ),
               if (proposal != null)
                 UnlockProposalCard(
                   config: ExtraFeatureConfig.forFeature(proposal.feature),
@@ -109,6 +126,11 @@ class _EasyModeHomeScreenState extends ConsumerState<EasyModeHomeScreen> {
                 label: l10n.practice_title,
                 icon: Icons.school,
                 onTap: () => context.push('/easy-mode/practice'),
+              ),
+              ActionCard(
+                label: l10n.lesson_listTitle,
+                icon: Icons.shield,
+                onTap: () => context.push('/easy-mode/lessons'),
               ),
               ExtraFeaturesSection(
                 features: extras,
