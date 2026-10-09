@@ -66,13 +66,6 @@ class Operation {
           description == other.description;
 
   @override
-  int get hashCode => Object.hash(
-        id,
-        type,
-        recipientName,
-        amount,
-        date,
-        status,
-        description,
-      );
+  int get hashCode =>
+      Object.hash(id, type, recipientName, amount, date, status, description);
 }

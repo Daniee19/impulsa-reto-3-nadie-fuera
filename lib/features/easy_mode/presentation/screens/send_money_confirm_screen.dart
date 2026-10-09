@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:impulsa_reto_3_nadie_fuera/core/a11y/amount_to_words.dart';
 import 'package:impulsa_reto_3_nadie_fuera/core/l10n/l10n.dart';
 import 'package:impulsa_reto_3_nadie_fuera/core/presentation/widgets/confirmation_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/domain/entities/operation.dart';
@@ -67,7 +68,10 @@ class _SendMoneyConfirmScreenState
       if (mounted) {
         final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(l10n.easyMode_error_generic)),
+          SnackBar(
+            content: Text(l10n.easyMode_error_generic),
+            duration: const Duration(seconds: 5),
+          ),
         );
       }
     }
@@ -87,15 +91,18 @@ class _SendMoneyConfirmScreenState
         (
           label: l10n.easyMode_sendMoney_recipient,
           value: widget.extra.contact.name,
+          semanticsValue: null,
         ),
         (
           label: l10n.easyMode_sendMoney_amountLabel,
           value: 'S/ ${widget.extra.amount.toStringAsFixed(2)}',
+          semanticsValue: AmountToWords.convert(widget.extra.amount),
         ),
         if (remainingBalance != null)
           (
             label: l10n.easyMode_sendMoney_remainingBalance,
             value: 'S/ ${remainingBalance.toStringAsFixed(2)}',
+            semanticsValue: AmountToWords.convert(remainingBalance),
           ),
       ],
       confirmLabel: _processing ? '...' : l10n.easyMode_confirm_button,

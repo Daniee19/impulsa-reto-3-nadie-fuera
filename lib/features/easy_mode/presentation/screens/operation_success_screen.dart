@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:impulsa_reto_3_nadie_fuera/core/a11y/a11y_helpers.dart';
+import 'package:impulsa_reto_3_nadie_fuera/core/a11y/amount_to_words.dart';
 import 'package:impulsa_reto_3_nadie_fuera/core/l10n/l10n.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/domain/entities/operation.dart';
 
@@ -21,11 +22,19 @@ class _OperationSuccessScreenState extends State<OperationSuccessScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
       final l10n = AppLocalizations.of(context)!;
+      final amountWords = AmountToWords.convert(widget.operation.amount);
       final message = widget.operation.type == OperationType.payment
-          ? l10n.easyMode_success_paymentDone
-          : l10n.easyMode_success_transferDone;
-      A11yHelpers.announceForAccessibility(View.of(context), message);
+          ? l10n.announcePaymentSuccess(
+              amountWords,
+              widget.operation.recipientName,
+            )
+          : l10n.announceTransferSuccess(
+              amountWords,
+              widget.operation.recipientName,
+            );
+      A11yHelpers.screenAnnounce(View.of(context), message);
     });
   }
 
@@ -47,10 +56,13 @@ class _OperationSuccessScreenState extends State<OperationSuccessScreen> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(
-                  Icons.check_circle,
-                  size: 80,
-                  color: theme.colorScheme.secondary,
+                Semantics(
+                  label: l10n.a11y_operationSuccess,
+                  child: Icon(
+                    Icons.check_circle,
+                    size: 80,
+                    color: theme.colorScheme.secondary,
+                  ),
                 ),
                 const SizedBox(height: 24),
                 Semantics(
@@ -68,10 +80,14 @@ class _OperationSuccessScreenState extends State<OperationSuccessScreen> {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 8),
-                Text(
-                  'S/ ${widget.operation.amount.toStringAsFixed(2)}',
-                  style: theme.textTheme.displayMedium,
-                  textAlign: TextAlign.center,
+                Semantics(
+                  label: AmountToWords.convert(widget.operation.amount),
+                  excludeSemantics: true,
+                  child: Text(
+                    'S/ ${widget.operation.amount.toStringAsFixed(2)}',
+                    style: theme.textTheme.displayMedium,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
                 const SizedBox(height: 32),
                 ElevatedButton.icon(

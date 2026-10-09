@@ -55,11 +55,6 @@ class Account {
           currency == other.currency;
 
   @override
-  int get hashCode => Object.hash(
-        id,
-        holderName,
-        maskedNumber,
-        availableBalance,
-        currency,
-      );
+  int get hashCode =>
+      Object.hash(id, holderName, maskedNumber, availableBalance, currency);
 }

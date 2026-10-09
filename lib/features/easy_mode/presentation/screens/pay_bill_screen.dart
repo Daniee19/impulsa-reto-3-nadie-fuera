@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:impulsa_reto_3_nadie_fuera/core/a11y/a11y_helpers.dart';
+import 'package:impulsa_reto_3_nadie_fuera/core/a11y/amount_to_words.dart';
 import 'package:impulsa_reto_3_nadie_fuera/core/l10n/l10n.dart';
 import 'package:impulsa_reto_3_nadie_fuera/core/presentation/widgets/error_message.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/contextual_help/domain/entities/operation_in_progress.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/contextual_help/presentation/providers/operation_in_progress_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/domain/entities/bill.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/domain/entities/operation.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/providers/bill_provider.dart';
@@ -22,6 +25,17 @@ class PayBillScreen extends ConsumerWidget {
     WidgetRef ref,
     Bill bill,
   ) async {
+    ref
+        .read(operationInProgressProvider.notifier)
+        .set(
+          OperationInProgress(
+            type: OperationType.payment,
+            amount: bill.amount,
+            recipientName: '${bill.serviceName} - ${bill.providerName}',
+            recipientId: bill.id,
+          ),
+        );
+
     final operationRepo = ref.read(operationRepositoryProvider);
     final history = await operationRepo.getOperations();
     final opContext = OperationContext(
@@ -100,41 +114,46 @@ class PayBillScreen extends ConsumerWidget {
                   padding: const EdgeInsets.symmetric(
                     vertical: A11yHelpers.minSeparation / 2,
                   ),
-                  child: Semantics(
-                    button: true,
-                    label:
-                        '${bill.serviceName}, '
-                        'S/ ${bill.amount.toStringAsFixed(2)}',
-                    child: Card(
-                      child: InkWell(
-                        onTap: () async =>
-                            _navigateWithRiskCheck(context, ref, bill),
-                        borderRadius: BorderRadius.circular(12),
-                        child: Padding(
-                          padding: const EdgeInsets.all(20),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      bill.serviceName,
-                                      style: theme.textTheme.titleLarge,
-                                    ),
-                                    const SizedBox(height: 4),
-                                    Text(
-                                      bill.providerName,
-                                      style: theme.textTheme.bodyLarge,
-                                    ),
-                                  ],
+                  child: MergeSemantics(
+                    child: Semantics(
+                      button: true,
+                      label:
+                          '${bill.serviceName}, '
+                          '${AmountToWords.convert(bill.amount)}',
+                      child: Card(
+                        child: InkWell(
+                          onTap: () async =>
+                              _navigateWithRiskCheck(context, ref, bill),
+                          borderRadius: BorderRadius.circular(12),
+                          child: Padding(
+                            padding: const EdgeInsets.all(20),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        bill.serviceName,
+                                        style: theme.textTheme.titleLarge,
+                                      ),
+                                      const SizedBox(height: 4),
+                                      Text(
+                                        bill.providerName,
+                                        style: theme.textTheme.bodyLarge,
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Text(
-                                'S/ ${bill.amount.toStringAsFixed(2)}',
-                                style: theme.textTheme.displayMedium,
-                              ),
-                            ],
+                                ExcludeSemantics(
+                                  child: Text(
+                                    'S/ ${bill.amount.toStringAsFixed(2)}',
+                                    style: theme.textTheme.displayMedium,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),

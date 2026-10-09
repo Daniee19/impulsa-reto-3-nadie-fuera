@@ -5,6 +5,8 @@ import 'package:go_router/go_router.dart';
 import 'package:impulsa_reto_3_nadie_fuera/core/a11y/a11y_helpers.dart';
 import 'package:impulsa_reto_3_nadie_fuera/core/l10n/l10n.dart';
 import 'package:impulsa_reto_3_nadie_fuera/core/presentation/widgets/error_message.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/contextual_help/domain/entities/operation_in_progress.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/contextual_help/presentation/providers/operation_in_progress_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/domain/entities/operation.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/domain/entities/saved_contact.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/providers/account_provider.dart';
@@ -61,6 +63,17 @@ class _SendMoneyScreenState extends ConsumerState<SendMoneyScreen> {
       contact: _selectedContact!,
       amount: amount,
     );
+
+    ref
+        .read(operationInProgressProvider.notifier)
+        .set(
+          OperationInProgress(
+            type: OperationType.transfer,
+            amount: amount,
+            recipientName: _selectedContact!.name,
+            recipientId: _selectedContact!.id,
+          ),
+        );
 
     final operationRepo = ref.read(operationRepositoryProvider);
     final history = await operationRepo.getOperations();

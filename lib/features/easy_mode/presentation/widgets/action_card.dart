@@ -45,17 +45,10 @@ class ActionCard extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
               child: Row(
                 children: [
-                  Icon(
-                    icon,
-                    size: 36,
-                    color: theme.colorScheme.primary,
-                  ),
+                  Icon(icon, size: 36, color: theme.colorScheme.primary),
                   const SizedBox(width: 16),
                   Expanded(
-                    child: Text(
-                      label,
-                      style: theme.textTheme.titleLarge,
-                    ),
+                    child: Text(label, style: theme.textTheme.titleLarge),
                   ),
                   Icon(
                     Icons.chevron_right,
