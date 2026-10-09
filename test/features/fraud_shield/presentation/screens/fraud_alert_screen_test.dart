@@ -6,18 +6,31 @@ import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/domain/entities/op
 import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/domain/entities/operation_context.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/domain/entities/risk_alert.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/domain/entities/risk_rule.dart';
-import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/domain/entities/trusted_person.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/presentation/providers/fraud_alert_provider.dart';
-import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/presentation/providers/trusted_person_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/presentation/screens/fraud_alert_screen.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/trusted_person/domain/entities/trusted_permission.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/trusted_person/domain/entities/trusted_person.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/trusted_person/presentation/providers/trusted_person_provider.dart';
+
+TrustedPerson _testPerson() => TrustedPerson(
+  id: 'tp-1',
+  name: 'Valeria',
+  phone: '987654321',
+  relationship: 'Hija',
+  permissions: const {
+    TrustedPermission.securityAlerts,
+    TrustedPermission.helpRequests,
+  },
+  consentHistory: const [],
+  registeredAt: DateTime(2026, 10),
+);
 
 Widget buildTestWidget({
   required FraudAlertState alertState,
-  TrustedPerson? trustedPerson = const TrustedPerson(
-    name: 'Valeria',
-    relationship: 'Hija',
-  ),
+  TrustedPerson? trustedPerson,
+  bool usePerson = true,
 }) {
+  final person = usePerson ? (trustedPerson ?? _testPerson()) : null;
   return ProviderScope(
     overrides: [
       fraudAlertProvider.overrideWith((ref) {
@@ -27,7 +40,9 @@ Widget buildTestWidget({
           alertState.continueExtra,
         );
       }),
-      trustedPersonProvider.overrideWithValue(trustedPerson),
+      trustedPersonProvider.overrideWith(
+        (ref) => Stream.value(person),
+      ),
     ],
     child: const MaterialApp(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
@@ -67,7 +82,7 @@ void main() {
 
     testWidgets('shows 2 options without trusted person', (tester) async {
       await tester.pumpWidget(
-        buildTestWidget(alertState: testAlertState, trustedPerson: null),
+        buildTestWidget(alertState: testAlertState, usePerson: false),
       );
       await tester.pumpAndSettle();
 

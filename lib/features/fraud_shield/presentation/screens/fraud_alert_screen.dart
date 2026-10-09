@@ -4,10 +4,11 @@ import 'package:go_router/go_router.dart';
 import 'package:impulsa_reto_3_nadie_fuera/core/a11y/a11y_helpers.dart';
 import 'package:impulsa_reto_3_nadie_fuera/core/l10n/l10n.dart';
 import 'package:impulsa_reto_3_nadie_fuera/core/presentation/widgets/accessible_button.dart';
-import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/domain/entities/trusted_person.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/domain/entities/risk_rule.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/presentation/providers/fraud_alert_provider.dart';
-import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/presentation/providers/trusted_person_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/presentation/widgets/risk_message_card.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/trusted_person/domain/entities/trusted_permission.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/trusted_person/presentation/providers/trusted_person_provider.dart';
 
 /// Pause screen shown when the risk engine detects a suspicious operation.
 class FraudAlertScreen extends ConsumerStatefulWidget {
@@ -25,12 +26,34 @@ class _FraudAlertScreenState extends ConsumerState<FraudAlertScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
       final l10n = AppLocalizations.of(context)!;
-      A11yHelpers.announceForAccessibility(
+      final alertState = ref.read(fraudAlertProvider);
+      final riskMessage = alertState != null
+          ? _riskSummary(alertState.alert.triggeredRules, l10n)
+          : l10n.fraudShield_alert_title;
+      A11yHelpers.screenAnnounce(
         View.of(context),
-        l10n.fraudShield_alert_title,
+        l10n.announceFraudAlert(riskMessage),
       );
     });
+  }
+
+  String _riskSummary(Set<RiskRule> rules, AppLocalizations l10n) {
+    final parts = <String>[];
+    for (final rule in rules) {
+      switch (rule) {
+        case RiskRule.unusualAmount:
+          parts.add(l10n.fraudShield_alert_unusualAmount);
+        case RiskRule.newRecipient:
+          parts.add(l10n.fraudShield_alert_newRecipient);
+        case RiskRule.highFrequency:
+          parts.add(l10n.fraudShield_alert_highFrequency);
+        case RiskRule.unusualTime:
+          parts.add(l10n.fraudShield_alert_unusualTime);
+      }
+    }
+    return parts.join(' ');
   }
 
   @override
@@ -45,7 +68,7 @@ class _FraudAlertScreenState extends ConsumerState<FraudAlertScreen> {
       );
     }
 
-    final trustedPerson = ref.watch(trustedPersonProvider);
+    final trustedPerson = ref.watch(trustedPersonProvider).valueOrNull;
     final showConsultOption =
         !_consultSent &&
         trustedPerson != null &&
