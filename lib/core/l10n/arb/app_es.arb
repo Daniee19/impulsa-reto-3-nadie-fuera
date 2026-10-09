@@ -352,5 +352,37 @@
       "n": { "type": "int" },
       "stepName": { "type": "String" }
     }
-  }
+  },
+
+  "practice_title": "Modo práctica",
+  "practice_entry_heading": "Vas a practicar",
+  "practice_entry_body": "Todo lo que hagas aquí es de mentira. Tu dinero real no se mueve.",
+  "practice_entry_withGuide": "Practicar con guía",
+  "practice_entry_withoutGuide": "Practicar sin guía",
+  "practice_banner": "MODO PRÁCTICA — tu dinero real no se mueve",
+  "practice_confirm_button": "Confirmar práctica",
+  "practice_exit_button": "Salir de práctica",
+  "practice_exit_title": "¿Salir de práctica?",
+  "practice_exit_body": "Vas a volver a tu cuenta real",
+  "practice_exit_confirm": "Sí, salir",
+  "practice_exit_cancel": "Seguir practicando",
+  "practice_tryAgain": "Practicar otra vez",
+  "practice_guide_step": "Paso {current} de {total}: {instruction}",
+  "@practice_guide_step": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" },
+      "instruction": { "type": "String" }
+    }
+  },
+  "practice_guide_balance": "Toca 'Ver mi saldo' para ver cuánto tienes",
+  "practice_guide_payBill": "Toca 'Pagar recibo' para ver tus recibos pendientes",
+  "practice_guide_selectBill": "Elige un recibo de la lista",
+  "practice_guide_confirmPay": "Revisa los datos y toca 'Confirmar'",
+  "practice_guide_sendMoney": "Toca 'Enviar dinero' para ver tus contactos",
+  "practice_guide_selectContact": "Elige a quién quieres enviar",
+  "practice_guide_enterAmount": "Escribe el monto que quieres enviar",
+  "practice_guide_confirmSend": "Revisa los datos y toca 'Confirmar'",
+  "practice_guide_done": "¡Muy bien! Has completado la práctica",
+  "practice_guide_fraudAlert": "Esta es una alerta de seguridad. En la vida real, te protege."
 }

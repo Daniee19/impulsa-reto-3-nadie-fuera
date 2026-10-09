@@ -21,6 +21,10 @@ import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/presentation/sc
 import 'package:impulsa_reto_3_nadie_fuera/features/friction_detection/presentation/providers/friction_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/friction_detection/presentation/widgets/friction_offer_overlay.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/screens/feature_management_screen.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/practice_mode/presentation/providers/practice_guide_provider.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/practice_mode/presentation/providers/practice_session_provider.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/practice_mode/presentation/screens/practice_entry_screen.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/practice_mode/presentation/widgets/practice_shell.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/screens/mobile_recharge_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/screens/qr_payment_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/screens/transaction_history_screen.dart';
@@ -43,12 +47,17 @@ final appRouterProvider = Provider<GoRouter>((ref) {
     observers: [
       NavigationObserver((route) {
         ref.read(navigationContextProvider.notifier).updateFromRoute(route);
+        ref.read(practiceGuideProvider.notifier).onRouteChanged(route);
       }),
     ],
     routes: [
       ShellRoute(
         builder: (context, state, child) {
           final isHelpScreen = state.uri.path.contains('/help/');
+          final isPractice = ProviderScope.containerOf(context)
+              .read(practiceSessionProvider)
+              .active;
+          final wrappedChild = isPractice ? PracticeShell(child: child) : child;
           return Listener(
             onPointerDown: (_) {
               ProviderScope.containerOf(context)
@@ -57,7 +66,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             },
             child: Stack(
               children: [
-                child,
+                wrappedChild,
                 const FrictionOfferOverlay(),
                 if (!isHelpScreen)
                   Positioned(
@@ -179,6 +188,10 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: 'fraud-alert',
                 builder: (context, state) => const FraudAlertScreen(),
+              ),
+              GoRoute(
+                path: 'practice',
+                builder: (context, state) => const PracticeEntryScreen(),
               ),
               GoRoute(
                 path: 'help/contact-picker',

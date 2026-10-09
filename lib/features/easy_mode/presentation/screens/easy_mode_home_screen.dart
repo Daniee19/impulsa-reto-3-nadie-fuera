@@ -105,6 +105,11 @@ class _EasyModeHomeScreenState extends ConsumerState<EasyModeHomeScreen> {
                 icon: Icons.record_voice_over,
                 onTap: () => context.push('/easy-mode/assistant'),
               ),
+              ActionCard(
+                label: l10n.practice_title,
+                icon: Icons.school,
+                onTap: () => context.push('/easy-mode/practice'),
+              ),
               ExtraFeaturesSection(
                 features: extras,
                 onFeatureTap: (route) => context.go(route),

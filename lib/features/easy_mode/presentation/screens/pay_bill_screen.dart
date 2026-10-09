@@ -12,8 +12,8 @@ import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/domain/entities/op
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/providers/bill_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/providers/operation_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/domain/entities/operation_context.dart';
-import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/domain/services/risk_engine.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/presentation/providers/fraud_alert_provider.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/presentation/providers/risk_engine_provider.dart';
 
 /// Lists pending bills for the user to select and pay.
 class PayBillScreen extends ConsumerWidget {
@@ -45,7 +45,9 @@ class PayBillScreen extends ConsumerWidget {
       recipientName: '${bill.serviceName} - ${bill.providerName}',
       timestamp: DateTime.now(),
     );
-    final alert = RiskEngine().evaluate(operation: opContext, history: history);
+    final alert = ref
+        .read(riskEngineProvider)
+        .evaluate(operation: opContext, history: history);
 
     if (!context.mounted) return;
 

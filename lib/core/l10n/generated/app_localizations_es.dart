@@ -617,4 +617,86 @@ class AppLocalizationsEs extends AppLocalizations {
   String friction_contextError(int n, String stepName) {
     return 'Cometió el mismo error $n veces en $stepName';
   }
+
+  @override
+  String get practice_title => 'Modo práctica';
+
+  @override
+  String get practice_entry_heading => 'Vas a practicar';
+
+  @override
+  String get practice_entry_body =>
+      'Todo lo que hagas aquí es de mentira. Tu dinero real no se mueve.';
+
+  @override
+  String get practice_entry_withGuide => 'Practicar con guía';
+
+  @override
+  String get practice_entry_withoutGuide => 'Practicar sin guía';
+
+  @override
+  String get practice_banner => 'MODO PRÁCTICA — tu dinero real no se mueve';
+
+  @override
+  String get practice_confirm_button => 'Confirmar práctica';
+
+  @override
+  String get practice_exit_button => 'Salir de práctica';
+
+  @override
+  String get practice_exit_title => '¿Salir de práctica?';
+
+  @override
+  String get practice_exit_body => 'Vas a volver a tu cuenta real';
+
+  @override
+  String get practice_exit_confirm => 'Sí, salir';
+
+  @override
+  String get practice_exit_cancel => 'Seguir practicando';
+
+  @override
+  String get practice_tryAgain => 'Practicar otra vez';
+
+  @override
+  String practice_guide_step(int current, int total, String instruction) {
+    return 'Paso $current de $total: $instruction';
+  }
+
+  @override
+  String get practice_guide_balance =>
+      'Toca \'Ver mi saldo\' para ver cuánto tienes';
+
+  @override
+  String get practice_guide_payBill =>
+      'Toca \'Pagar recibo\' para ver tus recibos pendientes';
+
+  @override
+  String get practice_guide_selectBill => 'Elige un recibo de la lista';
+
+  @override
+  String get practice_guide_confirmPay =>
+      'Revisa los datos y toca \'Confirmar\'';
+
+  @override
+  String get practice_guide_sendMoney =>
+      'Toca \'Enviar dinero\' para ver tus contactos';
+
+  @override
+  String get practice_guide_selectContact => 'Elige a quién quieres enviar';
+
+  @override
+  String get practice_guide_enterAmount =>
+      'Escribe el monto que quieres enviar';
+
+  @override
+  String get practice_guide_confirmSend =>
+      'Revisa los datos y toca \'Confirmar\'';
+
+  @override
+  String get practice_guide_done => '¡Muy bien! Has completado la práctica';
+
+  @override
+  String get practice_guide_fraudAlert =>
+      'Esta es una alerta de seguridad. En la vida real, te protege.';
 }

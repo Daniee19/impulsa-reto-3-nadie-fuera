@@ -14,8 +14,8 @@ import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/provi
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/providers/operation_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/screens/send_money_confirm_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/domain/entities/operation_context.dart';
-import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/domain/services/risk_engine.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/presentation/providers/fraud_alert_provider.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/presentation/providers/risk_engine_provider.dart';
 
 /// Screen to select a contact and enter an amount to send.
 class SendMoneyScreen extends ConsumerStatefulWidget {
@@ -84,7 +84,9 @@ class _SendMoneyScreenState extends ConsumerState<SendMoneyScreen> {
       recipientName: _selectedContact!.name,
       timestamp: DateTime.now(),
     );
-    final alert = RiskEngine().evaluate(operation: opContext, history: history);
+    final alert = ref
+        .read(riskEngineProvider)
+        .evaluate(operation: opContext, history: history);
 
     if (!mounted) return;
 

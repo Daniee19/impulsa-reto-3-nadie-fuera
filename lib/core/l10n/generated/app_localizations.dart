@@ -1113,6 +1113,150 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Cometió el mismo error {n} veces en {stepName}'**
   String friction_contextError(int n, String stepName);
+
+  /// No description provided for @practice_title.
+  ///
+  /// In es, this message translates to:
+  /// **'Modo práctica'**
+  String get practice_title;
+
+  /// No description provided for @practice_entry_heading.
+  ///
+  /// In es, this message translates to:
+  /// **'Vas a practicar'**
+  String get practice_entry_heading;
+
+  /// No description provided for @practice_entry_body.
+  ///
+  /// In es, this message translates to:
+  /// **'Todo lo que hagas aquí es de mentira. Tu dinero real no se mueve.'**
+  String get practice_entry_body;
+
+  /// No description provided for @practice_entry_withGuide.
+  ///
+  /// In es, this message translates to:
+  /// **'Practicar con guía'**
+  String get practice_entry_withGuide;
+
+  /// No description provided for @practice_entry_withoutGuide.
+  ///
+  /// In es, this message translates to:
+  /// **'Practicar sin guía'**
+  String get practice_entry_withoutGuide;
+
+  /// No description provided for @practice_banner.
+  ///
+  /// In es, this message translates to:
+  /// **'MODO PRÁCTICA — tu dinero real no se mueve'**
+  String get practice_banner;
+
+  /// No description provided for @practice_confirm_button.
+  ///
+  /// In es, this message translates to:
+  /// **'Confirmar práctica'**
+  String get practice_confirm_button;
+
+  /// No description provided for @practice_exit_button.
+  ///
+  /// In es, this message translates to:
+  /// **'Salir de práctica'**
+  String get practice_exit_button;
+
+  /// No description provided for @practice_exit_title.
+  ///
+  /// In es, this message translates to:
+  /// **'¿Salir de práctica?'**
+  String get practice_exit_title;
+
+  /// No description provided for @practice_exit_body.
+  ///
+  /// In es, this message translates to:
+  /// **'Vas a volver a tu cuenta real'**
+  String get practice_exit_body;
+
+  /// No description provided for @practice_exit_confirm.
+  ///
+  /// In es, this message translates to:
+  /// **'Sí, salir'**
+  String get practice_exit_confirm;
+
+  /// No description provided for @practice_exit_cancel.
+  ///
+  /// In es, this message translates to:
+  /// **'Seguir practicando'**
+  String get practice_exit_cancel;
+
+  /// No description provided for @practice_tryAgain.
+  ///
+  /// In es, this message translates to:
+  /// **'Practicar otra vez'**
+  String get practice_tryAgain;
+
+  /// No description provided for @practice_guide_step.
+  ///
+  /// In es, this message translates to:
+  /// **'Paso {current} de {total}: {instruction}'**
+  String practice_guide_step(int current, int total, String instruction);
+
+  /// No description provided for @practice_guide_balance.
+  ///
+  /// In es, this message translates to:
+  /// **'Toca \'Ver mi saldo\' para ver cuánto tienes'**
+  String get practice_guide_balance;
+
+  /// No description provided for @practice_guide_payBill.
+  ///
+  /// In es, this message translates to:
+  /// **'Toca \'Pagar recibo\' para ver tus recibos pendientes'**
+  String get practice_guide_payBill;
+
+  /// No description provided for @practice_guide_selectBill.
+  ///
+  /// In es, this message translates to:
+  /// **'Elige un recibo de la lista'**
+  String get practice_guide_selectBill;
+
+  /// No description provided for @practice_guide_confirmPay.
+  ///
+  /// In es, this message translates to:
+  /// **'Revisa los datos y toca \'Confirmar\''**
+  String get practice_guide_confirmPay;
+
+  /// No description provided for @practice_guide_sendMoney.
+  ///
+  /// In es, this message translates to:
+  /// **'Toca \'Enviar dinero\' para ver tus contactos'**
+  String get practice_guide_sendMoney;
+
+  /// No description provided for @practice_guide_selectContact.
+  ///
+  /// In es, this message translates to:
+  /// **'Elige a quién quieres enviar'**
+  String get practice_guide_selectContact;
+
+  /// No description provided for @practice_guide_enterAmount.
+  ///
+  /// In es, this message translates to:
+  /// **'Escribe el monto que quieres enviar'**
+  String get practice_guide_enterAmount;
+
+  /// No description provided for @practice_guide_confirmSend.
+  ///
+  /// In es, this message translates to:
+  /// **'Revisa los datos y toca \'Confirmar\''**
+  String get practice_guide_confirmSend;
+
+  /// No description provided for @practice_guide_done.
+  ///
+  /// In es, this message translates to:
+  /// **'¡Muy bien! Has completado la práctica'**
+  String get practice_guide_done;
+
+  /// No description provided for @practice_guide_fraudAlert.
+  ///
+  /// In es, this message translates to:
+  /// **'Esta es una alerta de seguridad. En la vida real, te protege.'**
+  String get practice_guide_fraudAlert;
 }
 
 class _AppLocalizationsDelegate

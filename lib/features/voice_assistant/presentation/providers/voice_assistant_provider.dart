@@ -4,7 +4,7 @@ import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/provi
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/providers/contact_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/providers/operation_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/domain/entities/operation_context.dart';
-import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/domain/services/risk_engine.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/presentation/providers/risk_engine_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/voice_assistant/domain/entities/assistant_intent.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/voice_assistant/domain/entities/operation_summary.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/voice_assistant/domain/entities/prepare_result.dart';
@@ -219,17 +219,18 @@ class VoiceAssistantNotifier extends StateNotifier<VoiceSession?> {
     final history = await _ref
         .read(operationRepositoryProvider)
         .getOperations();
-    final riskEngine = RiskEngine();
-    final alert = riskEngine.evaluate(
-      operation: OperationContext(
-        type: summary.type,
-        amount: summary.amount,
-        recipientId: summary.recipientId,
-        recipientName: summary.recipientName,
-        timestamp: DateTime.now(),
-      ),
-      history: history,
-    );
+    final alert = _ref
+        .read(riskEngineProvider)
+        .evaluate(
+          operation: OperationContext(
+            type: summary.type,
+            amount: summary.amount,
+            recipientId: summary.recipientId,
+            recipientName: summary.recipientName,
+            timestamp: DateTime.now(),
+          ),
+          history: history,
+        );
 
     if (alert != null) {
       _navigate?.call('/easy-mode/fraud-alert', extra: alert);
