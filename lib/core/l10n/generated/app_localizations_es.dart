@@ -506,4 +506,63 @@ class AppLocalizationsEs extends AppLocalizations {
   String trustedPerson_activePermissions(int count) {
     return '$count permisos activos';
   }
+
+  @override
+  String get unlock_proposal_title => 'Tienes una sugerencia';
+
+  @override
+  String get unlock_accept => 'Sí, actívalo';
+
+  @override
+  String get unlock_practice => 'Primero quiero practicarlo';
+
+  @override
+  String get unlock_reject => 'No, por ahora no';
+
+  @override
+  String get unlock_feature_transactions => 'Ver movimientos';
+
+  @override
+  String get unlock_feature_recharge => 'Recargar celular';
+
+  @override
+  String get unlock_feature_qr => 'Pagar con QR';
+
+  @override
+  String get unlock_proposal_transactions =>
+      'Ya manejas bien tus pagos. ¿Quieres ver tus movimientos?';
+
+  @override
+  String get unlock_proposal_recharge =>
+      '¿Quieres recargar tu celular desde la app?';
+
+  @override
+  String get unlock_proposal_qr => '¿Quieres pagar con código QR?';
+
+  @override
+  String get unlock_moreFeatures => 'Más funciones';
+
+  @override
+  String get unlock_resetToBasic => 'Volver a solo 4 acciones';
+
+  @override
+  String get unlock_resetConfirm =>
+      'Vas a ocultar las funciones extra. Puedes volver a activarlas cuando quieras.';
+
+  @override
+  String get unlock_reactivate => 'Activar de nuevo';
+
+  @override
+  String get unlock_desc_transactions => 'Consulta tus últimos movimientos';
+
+  @override
+  String get unlock_desc_recharge => 'Recarga tu celular con un monto fijo';
+
+  @override
+  String get unlock_desc_qr => 'Escanea un código y paga';
+
+  @override
+  String announceUnlockProposal(String message) {
+    return 'Sugerencia. $message';
+  }
 }

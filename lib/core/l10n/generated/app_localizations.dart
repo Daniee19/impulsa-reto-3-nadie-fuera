@@ -927,6 +927,114 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'{count} permisos activos'**
   String trustedPerson_activePermissions(int count);
+
+  /// No description provided for @unlock_proposal_title.
+  ///
+  /// In es, this message translates to:
+  /// **'Tienes una sugerencia'**
+  String get unlock_proposal_title;
+
+  /// No description provided for @unlock_accept.
+  ///
+  /// In es, this message translates to:
+  /// **'Sí, actívalo'**
+  String get unlock_accept;
+
+  /// No description provided for @unlock_practice.
+  ///
+  /// In es, this message translates to:
+  /// **'Primero quiero practicarlo'**
+  String get unlock_practice;
+
+  /// No description provided for @unlock_reject.
+  ///
+  /// In es, this message translates to:
+  /// **'No, por ahora no'**
+  String get unlock_reject;
+
+  /// No description provided for @unlock_feature_transactions.
+  ///
+  /// In es, this message translates to:
+  /// **'Ver movimientos'**
+  String get unlock_feature_transactions;
+
+  /// No description provided for @unlock_feature_recharge.
+  ///
+  /// In es, this message translates to:
+  /// **'Recargar celular'**
+  String get unlock_feature_recharge;
+
+  /// No description provided for @unlock_feature_qr.
+  ///
+  /// In es, this message translates to:
+  /// **'Pagar con QR'**
+  String get unlock_feature_qr;
+
+  /// No description provided for @unlock_proposal_transactions.
+  ///
+  /// In es, this message translates to:
+  /// **'Ya manejas bien tus pagos. ¿Quieres ver tus movimientos?'**
+  String get unlock_proposal_transactions;
+
+  /// No description provided for @unlock_proposal_recharge.
+  ///
+  /// In es, this message translates to:
+  /// **'¿Quieres recargar tu celular desde la app?'**
+  String get unlock_proposal_recharge;
+
+  /// No description provided for @unlock_proposal_qr.
+  ///
+  /// In es, this message translates to:
+  /// **'¿Quieres pagar con código QR?'**
+  String get unlock_proposal_qr;
+
+  /// No description provided for @unlock_moreFeatures.
+  ///
+  /// In es, this message translates to:
+  /// **'Más funciones'**
+  String get unlock_moreFeatures;
+
+  /// No description provided for @unlock_resetToBasic.
+  ///
+  /// In es, this message translates to:
+  /// **'Volver a solo 4 acciones'**
+  String get unlock_resetToBasic;
+
+  /// No description provided for @unlock_resetConfirm.
+  ///
+  /// In es, this message translates to:
+  /// **'Vas a ocultar las funciones extra. Puedes volver a activarlas cuando quieras.'**
+  String get unlock_resetConfirm;
+
+  /// No description provided for @unlock_reactivate.
+  ///
+  /// In es, this message translates to:
+  /// **'Activar de nuevo'**
+  String get unlock_reactivate;
+
+  /// No description provided for @unlock_desc_transactions.
+  ///
+  /// In es, this message translates to:
+  /// **'Consulta tus últimos movimientos'**
+  String get unlock_desc_transactions;
+
+  /// No description provided for @unlock_desc_recharge.
+  ///
+  /// In es, this message translates to:
+  /// **'Recarga tu celular con un monto fijo'**
+  String get unlock_desc_recharge;
+
+  /// No description provided for @unlock_desc_qr.
+  ///
+  /// In es, this message translates to:
+  /// **'Escanea un código y paga'**
+  String get unlock_desc_qr;
+
+  /// No description provided for @announceUnlockProposal.
+  ///
+  /// In es, this message translates to:
+  /// **'Sugerencia. {message}'**
+  String announceUnlockProposal(String message);
 }
 
 class _AppLocalizationsDelegate

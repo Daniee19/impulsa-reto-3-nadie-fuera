@@ -298,5 +298,29 @@
         "type": "int"
       }
     }
+  },
+
+  "unlock_proposal_title": "Tienes una sugerencia",
+  "unlock_accept": "Sí, actívalo",
+  "unlock_practice": "Primero quiero practicarlo",
+  "unlock_reject": "No, por ahora no",
+  "unlock_feature_transactions": "Ver movimientos",
+  "unlock_feature_recharge": "Recargar celular",
+  "unlock_feature_qr": "Pagar con QR",
+  "unlock_proposal_transactions": "Ya manejas bien tus pagos. ¿Quieres ver tus movimientos?",
+  "unlock_proposal_recharge": "¿Quieres recargar tu celular desde la app?",
+  "unlock_proposal_qr": "¿Quieres pagar con código QR?",
+  "unlock_moreFeatures": "Más funciones",
+  "unlock_resetToBasic": "Volver a solo 4 acciones",
+  "unlock_resetConfirm": "Vas a ocultar las funciones extra. Puedes volver a activarlas cuando quieras.",
+  "unlock_reactivate": "Activar de nuevo",
+  "unlock_desc_transactions": "Consulta tus últimos movimientos",
+  "unlock_desc_recharge": "Recarga tu celular con un monto fijo",
+  "unlock_desc_qr": "Escanea un código y paga",
+  "announceUnlockProposal": "Sugerencia. {message}",
+  "@announceUnlockProposal": {
+    "placeholders": {
+      "message": { "type": "String" }
+    }
   }
 }

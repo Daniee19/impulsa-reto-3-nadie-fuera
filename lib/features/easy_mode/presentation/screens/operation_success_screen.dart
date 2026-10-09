@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:impulsa_reto_3_nadie_fuera/core/a11y/a11y_helpers.dart';
 import 'package:impulsa_reto_3_nadie_fuera/core/a11y/amount_to_words.dart';
 import 'package:impulsa_reto_3_nadie_fuera/core/l10n/l10n.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/domain/entities/operation.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/providers/feature_flags_provider.dart';
 
 /// Success screen after a payment or transfer is completed.
-class OperationSuccessScreen extends StatefulWidget {
+class OperationSuccessScreen extends ConsumerStatefulWidget {
   /// Creates the operation success screen.
   const OperationSuccessScreen({required this.operation, super.key});
 
@@ -14,13 +16,16 @@ class OperationSuccessScreen extends StatefulWidget {
   final Operation operation;
 
   @override
-  State<OperationSuccessScreen> createState() => _OperationSuccessScreenState();
+  ConsumerState<OperationSuccessScreen> createState() =>
+      _OperationSuccessScreenState();
 }
 
-class _OperationSuccessScreenState extends State<OperationSuccessScreen> {
+class _OperationSuccessScreenState
+    extends ConsumerState<OperationSuccessScreen> {
   @override
   void initState() {
     super.initState();
+    ref.read(featureFlagRepositoryProvider).incrementOpsWithoutHelp();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
       final l10n = AppLocalizations.of(context)!;

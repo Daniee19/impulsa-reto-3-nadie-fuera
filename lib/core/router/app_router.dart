@@ -18,6 +18,10 @@ import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/scree
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/screens/send_money_confirm_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/screens/send_money_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/presentation/screens/fraud_alert_screen.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/screens/feature_management_screen.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/screens/mobile_recharge_screen.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/screens/qr_payment_screen.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/screens/transaction_history_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/trusted_person/domain/entities/config_suggestion.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/trusted_person/presentation/screens/config_suggestion_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/trusted_person/presentation/screens/trusted_person_change_screen.dart';
@@ -89,8 +93,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               ),
               GoRoute(
                 path: 'settings/trusted-person',
-                builder: (context, state) =>
-                    const TrustedPersonSetupScreen(),
+                builder: (context, state) => const TrustedPersonSetupScreen(),
                 routes: [
                   GoRoute(
                     path: 'register',
@@ -123,14 +126,27 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                   GoRoute(
                     path: 'suggestion',
                     builder: (context, state) {
-                      final suggestion =
-                          state.extra! as ConfigSuggestion;
-                      return ConfigSuggestionScreen(
-                        suggestion: suggestion,
-                      );
+                      final suggestion = state.extra! as ConfigSuggestion;
+                      return ConfigSuggestionScreen(suggestion: suggestion);
                     },
                   ),
                 ],
+              ),
+              GoRoute(
+                path: 'transactions',
+                builder: (context, state) => const TransactionHistoryScreen(),
+              ),
+              GoRoute(
+                path: 'recharge',
+                builder: (context, state) => const MobileRechargeScreen(),
+              ),
+              GoRoute(
+                path: 'qr-payment',
+                builder: (context, state) => const QrPaymentScreen(),
+              ),
+              GoRoute(
+                path: 'settings/features',
+                builder: (context, state) => const FeatureManagementScreen(),
               ),
               GoRoute(
                 path: 'fraud-alert',
