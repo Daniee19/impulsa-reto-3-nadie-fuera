@@ -12,10 +12,15 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_riverpod: ^2.6.1
+  flutter_secure_storage: ^9.2.4
+  flutter_tts: ^4.2.0
   go_router: ^14.8.1
   google_fonts: ^6.2.1
   intl: ^0.20.3
+  local_auth: ^3.0.2
   meta: ^1.18.0
+  shared_preferences: ^2.3.0
+  speech_to_text: ^7.0.0
 
 dev_dependencies:
   accessibility_tools: ^2.3.0
