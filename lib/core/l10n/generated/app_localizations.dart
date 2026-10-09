@@ -304,6 +304,132 @@ abstract class AppLocalizations {
   /// **'S/ {amount}'**
   String easyMode_currency(String amount);
 
+  /// No description provided for @help_title.
+  ///
+  /// In es, this message translates to:
+  /// **'Pedir ayuda'**
+  String get help_title;
+
+  /// No description provided for @help_fab_label.
+  ///
+  /// In es, this message translates to:
+  /// **'Pedir ayuda'**
+  String get help_fab_label;
+
+  /// No description provided for @help_contact_trustedPerson.
+  ///
+  /// In es, this message translates to:
+  /// **'Llamar a {name}'**
+  String help_contact_trustedPerson(String name);
+
+  /// No description provided for @help_contact_bankAdvisor.
+  ///
+  /// In es, this message translates to:
+  /// **'Hablar con el banco'**
+  String get help_contact_bankAdvisor;
+
+  /// No description provided for @help_channel_call.
+  ///
+  /// In es, this message translates to:
+  /// **'Llamar'**
+  String get help_channel_call;
+
+  /// No description provided for @help_channel_chat.
+  ///
+  /// In es, this message translates to:
+  /// **'Escribir'**
+  String get help_channel_chat;
+
+  /// No description provided for @help_channel_video.
+  ///
+  /// In es, this message translates to:
+  /// **'Videollamada con intérprete de lengua de señas'**
+  String get help_channel_video;
+
+  /// No description provided for @help_connecting_trustedPerson.
+  ///
+  /// In es, this message translates to:
+  /// **'Te estamos conectando con {name}...'**
+  String help_connecting_trustedPerson(String name);
+
+  /// No description provided for @help_connecting_bankAdvisor.
+  ///
+  /// In es, this message translates to:
+  /// **'Te estamos conectando con un asesor...'**
+  String get help_connecting_bankAdvisor;
+
+  /// No description provided for @help_connecting_videoInterpreter.
+  ///
+  /// In es, this message translates to:
+  /// **'Te estamos conectando con un asesor e intérprete de lengua de señas'**
+  String get help_connecting_videoInterpreter;
+
+  /// No description provided for @help_context_screen.
+  ///
+  /// In es, this message translates to:
+  /// **'Está en: {screen}'**
+  String help_context_screen(String screen);
+
+  /// No description provided for @help_context_operation.
+  ///
+  /// In es, this message translates to:
+  /// **'Operación: {operation} por S/ {amount}'**
+  String help_context_operation(String operation, String amount);
+
+  /// No description provided for @help_context_noOperation.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin operación en curso'**
+  String get help_context_noOperation;
+
+  /// No description provided for @help_context_minimalMessage.
+  ///
+  /// In es, this message translates to:
+  /// **'{userName} necesita ayuda'**
+  String help_context_minimalMessage(String userName);
+
+  /// No description provided for @help_fallback_title.
+  ///
+  /// In es, this message translates to:
+  /// **'No pudimos comunicarte con {name}'**
+  String help_fallback_title(String name);
+
+  /// No description provided for @help_fallback_question.
+  ///
+  /// In es, this message translates to:
+  /// **'¿Quieres hablar con un asesor del banco?'**
+  String get help_fallback_question;
+
+  /// No description provided for @help_fallback_yes.
+  ///
+  /// In es, this message translates to:
+  /// **'Sí'**
+  String get help_fallback_yes;
+
+  /// No description provided for @help_fallback_back.
+  ///
+  /// In es, this message translates to:
+  /// **'Volver'**
+  String get help_fallback_back;
+
+  /// No description provided for @help_connected_title.
+  ///
+  /// In es, this message translates to:
+  /// **'Conectado'**
+  String get help_connected_title;
+
+  /// No description provided for @help_connected_contextSent.
+  ///
+  /// In es, this message translates to:
+  /// **'Contexto enviado a {name}:'**
+  String help_connected_contextSent(String name);
+
+  /// No description provided for @help_back_button.
+  ///
+  /// In es, this message translates to:
+  /// **'Volver a la app'**
+  String get help_back_button;
+
   /// No description provided for @fraudShield_alert_title.
   ///
   /// In es, this message translates to:
@@ -363,6 +489,444 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Le avisamos a {name}. Puedes esperarle o continuar.'**
   String fraudShield_notification_sent(String name);
+
+  /// No description provided for @assistant_title.
+  ///
+  /// In es, this message translates to:
+  /// **'Asistente'**
+  String get assistant_title;
+
+  /// No description provided for @assistant_mic_label.
+  ///
+  /// In es, this message translates to:
+  /// **'Activar micrófono'**
+  String get assistant_mic_label;
+
+  /// No description provided for @assistant_text_label.
+  ///
+  /// In es, this message translates to:
+  /// **'Escribe tu solicitud'**
+  String get assistant_text_label;
+
+  /// No description provided for @assistant_listening.
+  ///
+  /// In es, this message translates to:
+  /// **'Te escucho...'**
+  String get assistant_listening;
+
+  /// No description provided for @assistant_processing.
+  ///
+  /// In es, this message translates to:
+  /// **'Entendiendo...'**
+  String get assistant_processing;
+
+  /// No description provided for @assistant_unknown.
+  ///
+  /// In es, this message translates to:
+  /// **'No estoy seguro. ¿Quieres ver tu saldo, pagar un recibo, enviar dinero o pedir ayuda?'**
+  String get assistant_unknown;
+
+  /// No description provided for @assistant_outOfScope.
+  ///
+  /// In es, this message translates to:
+  /// **'Solo puedo ayudarte con tu cuenta. ¿Quieres ver tu saldo, pagar un recibo, enviar dinero o pedir ayuda?'**
+  String get assistant_outOfScope;
+
+  /// No description provided for @assistant_balance.
+  ///
+  /// In es, this message translates to:
+  /// **'Tienes S/ {amount} disponibles'**
+  String assistant_balance(String amount);
+
+  /// No description provided for @assistant_payConfirm.
+  ///
+  /// In es, this message translates to:
+  /// **'Vas a pagar tu recibo de {service} por S/ {amount}. ¿Confirmas con tu huella?'**
+  String assistant_payConfirm(String service, String amount);
+
+  /// No description provided for @assistant_sendConfirm.
+  ///
+  /// In es, this message translates to:
+  /// **'Vas a enviar S/ {amount} a {name}. ¿Confirmas con tu huella?'**
+  String assistant_sendConfirm(String amount, String name);
+
+  /// No description provided for @assistant_payDone.
+  ///
+  /// In es, this message translates to:
+  /// **'Pago realizado'**
+  String get assistant_payDone;
+
+  /// No description provided for @assistant_sendDone.
+  ///
+  /// In es, this message translates to:
+  /// **'Dinero enviado'**
+  String get assistant_sendDone;
+
+  /// No description provided for @assistant_needsService.
+  ///
+  /// In es, this message translates to:
+  /// **'¿Qué recibo quieres pagar?'**
+  String get assistant_needsService;
+
+  /// No description provided for @assistant_needsContact.
+  ///
+  /// In es, this message translates to:
+  /// **'¿A quién quieres enviarle?'**
+  String get assistant_needsContact;
+
+  /// No description provided for @assistant_needsAmount.
+  ///
+  /// In es, this message translates to:
+  /// **'¿Cuánto quieres enviarle a {name}?'**
+  String assistant_needsAmount(String name);
+
+  /// No description provided for @assistant_billNotFound.
+  ///
+  /// In es, this message translates to:
+  /// **'No encontré un recibo de {service} pendiente'**
+  String assistant_billNotFound(String service);
+
+  /// No description provided for @assistant_speechFailed.
+  ///
+  /// In es, this message translates to:
+  /// **'No te escuché bien. ¿Puedes repetir o escribirlo?'**
+  String get assistant_speechFailed;
+
+  /// No description provided for @assistant_biometricReason.
+  ///
+  /// In es, this message translates to:
+  /// **'Confirma la operación'**
+  String get assistant_biometricReason;
+
+  /// No description provided for @assistant_biometricFailed.
+  ///
+  /// In es, this message translates to:
+  /// **'No reconocí tu huella. Intenta de nuevo.'**
+  String get assistant_biometricFailed;
+
+  /// No description provided for @assistant_confirmButton.
+  ///
+  /// In es, this message translates to:
+  /// **'Confirmar con huella'**
+  String get assistant_confirmButton;
+
+  /// No description provided for @assistant_cancelButton.
+  ///
+  /// In es, this message translates to:
+  /// **'Cancelar'**
+  String get assistant_cancelButton;
+
+  /// No description provided for @assistant_onlyContacts.
+  ///
+  /// In es, this message translates to:
+  /// **'Solo puedo enviar a tus contactos guardados. ¿A quién quieres enviarle?'**
+  String get assistant_onlyContacts;
+
+  /// No description provided for @assistant_helpRedirect.
+  ///
+  /// In es, this message translates to:
+  /// **'Te conecto con ayuda'**
+  String get assistant_helpRedirect;
+
+  /// No description provided for @microphoneConsent_title.
+  ///
+  /// In es, this message translates to:
+  /// **'Permiso para escucharte'**
+  String get microphoneConsent_title;
+
+  /// No description provided for @microphoneConsent_body.
+  ///
+  /// In es, this message translates to:
+  /// **'Para entender lo que dices, necesito usar tu micrófono. Solo lo uso mientras hablas, no grabo nada.'**
+  String get microphoneConsent_body;
+
+  /// No description provided for @microphoneConsent_accept.
+  ///
+  /// In es, this message translates to:
+  /// **'Aceptar'**
+  String get microphoneConsent_accept;
+
+  /// No description provided for @microphoneConsent_decline.
+  ///
+  /// In es, this message translates to:
+  /// **'No, prefiero escribir'**
+  String get microphoneConsent_decline;
+
+  /// No description provided for @microphoneConsent_denied.
+  ///
+  /// In es, this message translates to:
+  /// **'Puedes escribirme si prefieres no usar el micrófono.'**
+  String get microphoneConsent_denied;
+
+  /// No description provided for @announceHomeScreen.
+  ///
+  /// In es, this message translates to:
+  /// **'Pantalla principal'**
+  String get announceHomeScreen;
+
+  /// No description provided for @announceBalance.
+  ///
+  /// In es, this message translates to:
+  /// **'Tu saldo es {amount}'**
+  String announceBalance(String amount);
+
+  /// No description provided for @announcePaymentSuccess.
+  ///
+  /// In es, this message translates to:
+  /// **'Pago realizado. Pagaste {amount} al recibo de {service}'**
+  String announcePaymentSuccess(String amount, String service);
+
+  /// No description provided for @announceTransferSuccess.
+  ///
+  /// In es, this message translates to:
+  /// **'Dinero enviado. Enviaste {amount} a {name}'**
+  String announceTransferSuccess(String amount, String name);
+
+  /// No description provided for @announceFraudAlert.
+  ///
+  /// In es, this message translates to:
+  /// **'Alerta de seguridad. {riskMessage}'**
+  String announceFraudAlert(String riskMessage);
+
+  /// No description provided for @announceHelpConnecting.
+  ///
+  /// In es, this message translates to:
+  /// **'Te estamos conectando con {name}'**
+  String announceHelpConnecting(String name);
+
+  /// No description provided for @announceError.
+  ///
+  /// In es, this message translates to:
+  /// **'{errorMessage}'**
+  String announceError(String errorMessage);
+
+  /// No description provided for @a11y_operationSuccess.
+  ///
+  /// In es, this message translates to:
+  /// **'Operación exitosa'**
+  String get a11y_operationSuccess;
+
+  /// No description provided for @trustedPerson_title.
+  ///
+  /// In es, this message translates to:
+  /// **'Mi persona de confianza'**
+  String get trustedPerson_title;
+
+  /// No description provided for @trustedPerson_explanation.
+  ///
+  /// In es, this message translates to:
+  /// **'Tu persona de confianza puede ayudarte, pero no puede tocar tu dinero'**
+  String get trustedPerson_explanation;
+
+  /// No description provided for @trustedPerson_register.
+  ///
+  /// In es, this message translates to:
+  /// **'Registrar'**
+  String get trustedPerson_register;
+
+  /// No description provided for @trustedPerson_nameLabel.
+  ///
+  /// In es, this message translates to:
+  /// **'Nombre'**
+  String get trustedPerson_nameLabel;
+
+  /// No description provided for @trustedPerson_phoneLabel.
+  ///
+  /// In es, this message translates to:
+  /// **'Teléfono'**
+  String get trustedPerson_phoneLabel;
+
+  /// No description provided for @trustedPerson_relationshipLabel.
+  ///
+  /// In es, this message translates to:
+  /// **'Relación'**
+  String get trustedPerson_relationshipLabel;
+
+  /// No description provided for @trustedPerson_permission_securityAlerts.
+  ///
+  /// In es, this message translates to:
+  /// **'Avisos de seguridad'**
+  String get trustedPerson_permission_securityAlerts;
+
+  /// No description provided for @trustedPerson_permission_securityAlerts_desc.
+  ///
+  /// In es, this message translates to:
+  /// **'Recibe un aviso si la app detecta algo raro'**
+  String get trustedPerson_permission_securityAlerts_desc;
+
+  /// No description provided for @trustedPerson_permission_helpRequests.
+  ///
+  /// In es, this message translates to:
+  /// **'Pedidos de ayuda'**
+  String get trustedPerson_permission_helpRequests;
+
+  /// No description provided for @trustedPerson_permission_helpRequests_desc.
+  ///
+  /// In es, this message translates to:
+  /// **'Cuando pidas ayuda puedes elegir a esta persona'**
+  String get trustedPerson_permission_helpRequests_desc;
+
+  /// No description provided for @trustedPerson_permission_configHelp.
+  ///
+  /// In es, this message translates to:
+  /// **'Ayudar a configurar'**
+  String get trustedPerson_permission_configHelp;
+
+  /// No description provided for @trustedPerson_permission_configHelp_desc.
+  ///
+  /// In es, this message translates to:
+  /// **'Puede sugerirte cambios pero tú decides'**
+  String get trustedPerson_permission_configHelp_desc;
+
+  /// No description provided for @trustedPerson_confirmRegister.
+  ///
+  /// In es, this message translates to:
+  /// **'Confirmar'**
+  String get trustedPerson_confirmRegister;
+
+  /// No description provided for @trustedPerson_next.
+  ///
+  /// In es, this message translates to:
+  /// **'Siguiente'**
+  String get trustedPerson_next;
+
+  /// No description provided for @trustedPerson_change.
+  ///
+  /// In es, this message translates to:
+  /// **'Cambiar persona de confianza'**
+  String get trustedPerson_change;
+
+  /// No description provided for @trustedPerson_change_warning.
+  ///
+  /// In es, this message translates to:
+  /// **'Vas a quitar a {name} y registrar a otra persona'**
+  String trustedPerson_change_warning(String name);
+
+  /// No description provided for @trustedPerson_remove.
+  ///
+  /// In es, this message translates to:
+  /// **'Quitar persona de confianza'**
+  String get trustedPerson_remove;
+
+  /// No description provided for @trustedPerson_remove_warning.
+  ///
+  /// In es, this message translates to:
+  /// **'{name} dejará de recibir avisos y no podrá ayudarte'**
+  String trustedPerson_remove_warning(String name);
+
+  /// No description provided for @trustedPerson_removed.
+  ///
+  /// In es, this message translates to:
+  /// **'Persona de confianza eliminada'**
+  String get trustedPerson_removed;
+
+  /// No description provided for @trustedPerson_registered.
+  ///
+  /// In es, this message translates to:
+  /// **'Persona de confianza registrada'**
+  String get trustedPerson_registered;
+
+  /// No description provided for @trustedPerson_phoneSelf.
+  ///
+  /// In es, this message translates to:
+  /// **'No puedes registrarte a ti mismo'**
+  String get trustedPerson_phoneSelf;
+
+  /// No description provided for @trustedPerson_phoneInvalid.
+  ///
+  /// In es, this message translates to:
+  /// **'Ingresa 9 dígitos que empiecen con 9'**
+  String get trustedPerson_phoneInvalid;
+
+  /// No description provided for @trustedPerson_nameRequired.
+  ///
+  /// In es, this message translates to:
+  /// **'Ingresa un nombre'**
+  String get trustedPerson_nameRequired;
+
+  /// No description provided for @trustedPerson_relationshipRequired.
+  ///
+  /// In es, this message translates to:
+  /// **'Ingresa la relación'**
+  String get trustedPerson_relationshipRequired;
+
+  /// No description provided for @trustedPerson_noPermissions.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin permisos activos'**
+  String get trustedPerson_noPermissions;
+
+  /// No description provided for @trustedPerson_viewPermissions.
+  ///
+  /// In es, this message translates to:
+  /// **'Ver permisos'**
+  String get trustedPerson_viewPermissions;
+
+  /// No description provided for @trustedPerson_cancel.
+  ///
+  /// In es, this message translates to:
+  /// **'Cancelar'**
+  String get trustedPerson_cancel;
+
+  /// No description provided for @trustedPerson_continue.
+  ///
+  /// In es, this message translates to:
+  /// **'Continuar'**
+  String get trustedPerson_continue;
+
+  /// No description provided for @trustedPerson_suggestion_title.
+  ///
+  /// In es, this message translates to:
+  /// **'{name} te sugiere'**
+  String trustedPerson_suggestion_title(String name);
+
+  /// No description provided for @trustedPerson_suggestion_accept.
+  ///
+  /// In es, this message translates to:
+  /// **'Aceptar'**
+  String get trustedPerson_suggestion_accept;
+
+  /// No description provided for @trustedPerson_suggestion_reject.
+  ///
+  /// In es, this message translates to:
+  /// **'No, gracias'**
+  String get trustedPerson_suggestion_reject;
+
+  /// No description provided for @trustedPerson_suggestion_accepted.
+  ///
+  /// In es, this message translates to:
+  /// **'Cambio aplicado'**
+  String get trustedPerson_suggestion_accepted;
+
+  /// No description provided for @trustedPerson_suggestion_fontSize.
+  ///
+  /// In es, this message translates to:
+  /// **'Hacer la letra más grande'**
+  String get trustedPerson_suggestion_fontSize;
+
+  /// No description provided for @trustedPerson_suggestion_pending.
+  ///
+  /// In es, this message translates to:
+  /// **'Tienes una sugerencia de {name}'**
+  String trustedPerson_suggestion_pending(String name);
+
+  /// No description provided for @trustedPerson_permissionOn.
+  ///
+  /// In es, this message translates to:
+  /// **'Activado'**
+  String get trustedPerson_permissionOn;
+
+  /// No description provided for @trustedPerson_permissionOff.
+  ///
+  /// In es, this message translates to:
+  /// **'Desactivado'**
+  String get trustedPerson_permissionOff;
+
+  /// No description provided for @trustedPerson_activePermissions.
+  ///
+  /// In es, this message translates to:
+  /// **'{count} permisos activos'**
+  String trustedPerson_activePermissions(int count);
 }
 
 class _AppLocalizationsDelegate

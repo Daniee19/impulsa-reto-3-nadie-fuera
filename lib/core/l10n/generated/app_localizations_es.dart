@@ -125,6 +125,87 @@ class AppLocalizationsEs extends AppLocalizations {
   }
 
   @override
+  String get help_title => 'Pedir ayuda';
+
+  @override
+  String get help_fab_label => 'Pedir ayuda';
+
+  @override
+  String help_contact_trustedPerson(String name) {
+    return 'Llamar a $name';
+  }
+
+  @override
+  String get help_contact_bankAdvisor => 'Hablar con el banco';
+
+  @override
+  String get help_channel_call => 'Llamar';
+
+  @override
+  String get help_channel_chat => 'Escribir';
+
+  @override
+  String get help_channel_video =>
+      'Videollamada con intérprete de lengua de señas';
+
+  @override
+  String help_connecting_trustedPerson(String name) {
+    return 'Te estamos conectando con $name...';
+  }
+
+  @override
+  String get help_connecting_bankAdvisor =>
+      'Te estamos conectando con un asesor...';
+
+  @override
+  String get help_connecting_videoInterpreter =>
+      'Te estamos conectando con un asesor e intérprete de lengua de señas';
+
+  @override
+  String help_context_screen(String screen) {
+    return 'Está en: $screen';
+  }
+
+  @override
+  String help_context_operation(String operation, String amount) {
+    return 'Operación: $operation por S/ $amount';
+  }
+
+  @override
+  String get help_context_noOperation => 'Sin operación en curso';
+
+  @override
+  String help_context_minimalMessage(String userName) {
+    return '$userName necesita ayuda';
+  }
+
+  @override
+  String help_fallback_title(String name) {
+    return 'No pudimos comunicarte con $name';
+  }
+
+  @override
+  String get help_fallback_question =>
+      '¿Quieres hablar con un asesor del banco?';
+
+  @override
+  String get help_fallback_yes => 'Sí';
+
+  @override
+  String get help_fallback_back => 'Volver';
+
+  @override
+  String get help_connected_title => 'Conectado';
+
+  @override
+  String help_connected_contextSent(String name) {
+    return 'Contexto enviado a $name:';
+  }
+
+  @override
+  String get help_back_button => 'Volver a la app';
+
+  @override
   String get fraudShield_alert_title => 'Un momento';
 
   @override
@@ -161,5 +242,268 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String fraudShield_notification_sent(String name) {
     return 'Le avisamos a $name. Puedes esperarle o continuar.';
+  }
+
+  @override
+  String get assistant_title => 'Asistente';
+
+  @override
+  String get assistant_mic_label => 'Activar micrófono';
+
+  @override
+  String get assistant_text_label => 'Escribe tu solicitud';
+
+  @override
+  String get assistant_listening => 'Te escucho...';
+
+  @override
+  String get assistant_processing => 'Entendiendo...';
+
+  @override
+  String get assistant_unknown =>
+      'No estoy seguro. ¿Quieres ver tu saldo, pagar un recibo, enviar dinero o pedir ayuda?';
+
+  @override
+  String get assistant_outOfScope =>
+      'Solo puedo ayudarte con tu cuenta. ¿Quieres ver tu saldo, pagar un recibo, enviar dinero o pedir ayuda?';
+
+  @override
+  String assistant_balance(String amount) {
+    return 'Tienes S/ $amount disponibles';
+  }
+
+  @override
+  String assistant_payConfirm(String service, String amount) {
+    return 'Vas a pagar tu recibo de $service por S/ $amount. ¿Confirmas con tu huella?';
+  }
+
+  @override
+  String assistant_sendConfirm(String amount, String name) {
+    return 'Vas a enviar S/ $amount a $name. ¿Confirmas con tu huella?';
+  }
+
+  @override
+  String get assistant_payDone => 'Pago realizado';
+
+  @override
+  String get assistant_sendDone => 'Dinero enviado';
+
+  @override
+  String get assistant_needsService => '¿Qué recibo quieres pagar?';
+
+  @override
+  String get assistant_needsContact => '¿A quién quieres enviarle?';
+
+  @override
+  String assistant_needsAmount(String name) {
+    return '¿Cuánto quieres enviarle a $name?';
+  }
+
+  @override
+  String assistant_billNotFound(String service) {
+    return 'No encontré un recibo de $service pendiente';
+  }
+
+  @override
+  String get assistant_speechFailed =>
+      'No te escuché bien. ¿Puedes repetir o escribirlo?';
+
+  @override
+  String get assistant_biometricReason => 'Confirma la operación';
+
+  @override
+  String get assistant_biometricFailed =>
+      'No reconocí tu huella. Intenta de nuevo.';
+
+  @override
+  String get assistant_confirmButton => 'Confirmar con huella';
+
+  @override
+  String get assistant_cancelButton => 'Cancelar';
+
+  @override
+  String get assistant_onlyContacts =>
+      'Solo puedo enviar a tus contactos guardados. ¿A quién quieres enviarle?';
+
+  @override
+  String get assistant_helpRedirect => 'Te conecto con ayuda';
+
+  @override
+  String get microphoneConsent_title => 'Permiso para escucharte';
+
+  @override
+  String get microphoneConsent_body =>
+      'Para entender lo que dices, necesito usar tu micrófono. Solo lo uso mientras hablas, no grabo nada.';
+
+  @override
+  String get microphoneConsent_accept => 'Aceptar';
+
+  @override
+  String get microphoneConsent_decline => 'No, prefiero escribir';
+
+  @override
+  String get microphoneConsent_denied =>
+      'Puedes escribirme si prefieres no usar el micrófono.';
+
+  @override
+  String get announceHomeScreen => 'Pantalla principal';
+
+  @override
+  String announceBalance(String amount) {
+    return 'Tu saldo es $amount';
+  }
+
+  @override
+  String announcePaymentSuccess(String amount, String service) {
+    return 'Pago realizado. Pagaste $amount al recibo de $service';
+  }
+
+  @override
+  String announceTransferSuccess(String amount, String name) {
+    return 'Dinero enviado. Enviaste $amount a $name';
+  }
+
+  @override
+  String announceFraudAlert(String riskMessage) {
+    return 'Alerta de seguridad. $riskMessage';
+  }
+
+  @override
+  String announceHelpConnecting(String name) {
+    return 'Te estamos conectando con $name';
+  }
+
+  @override
+  String announceError(String errorMessage) {
+    return '$errorMessage';
+  }
+
+  @override
+  String get a11y_operationSuccess => 'Operación exitosa';
+
+  @override
+  String get trustedPerson_title => 'Mi persona de confianza';
+
+  @override
+  String get trustedPerson_explanation =>
+      'Tu persona de confianza puede ayudarte, pero no puede tocar tu dinero';
+
+  @override
+  String get trustedPerson_register => 'Registrar';
+
+  @override
+  String get trustedPerson_nameLabel => 'Nombre';
+
+  @override
+  String get trustedPerson_phoneLabel => 'Teléfono';
+
+  @override
+  String get trustedPerson_relationshipLabel => 'Relación';
+
+  @override
+  String get trustedPerson_permission_securityAlerts => 'Avisos de seguridad';
+
+  @override
+  String get trustedPerson_permission_securityAlerts_desc =>
+      'Recibe un aviso si la app detecta algo raro';
+
+  @override
+  String get trustedPerson_permission_helpRequests => 'Pedidos de ayuda';
+
+  @override
+  String get trustedPerson_permission_helpRequests_desc =>
+      'Cuando pidas ayuda puedes elegir a esta persona';
+
+  @override
+  String get trustedPerson_permission_configHelp => 'Ayudar a configurar';
+
+  @override
+  String get trustedPerson_permission_configHelp_desc =>
+      'Puede sugerirte cambios pero tú decides';
+
+  @override
+  String get trustedPerson_confirmRegister => 'Confirmar';
+
+  @override
+  String get trustedPerson_next => 'Siguiente';
+
+  @override
+  String get trustedPerson_change => 'Cambiar persona de confianza';
+
+  @override
+  String trustedPerson_change_warning(String name) {
+    return 'Vas a quitar a $name y registrar a otra persona';
+  }
+
+  @override
+  String get trustedPerson_remove => 'Quitar persona de confianza';
+
+  @override
+  String trustedPerson_remove_warning(String name) {
+    return '$name dejará de recibir avisos y no podrá ayudarte';
+  }
+
+  @override
+  String get trustedPerson_removed => 'Persona de confianza eliminada';
+
+  @override
+  String get trustedPerson_registered => 'Persona de confianza registrada';
+
+  @override
+  String get trustedPerson_phoneSelf => 'No puedes registrarte a ti mismo';
+
+  @override
+  String get trustedPerson_phoneInvalid =>
+      'Ingresa 9 dígitos que empiecen con 9';
+
+  @override
+  String get trustedPerson_nameRequired => 'Ingresa un nombre';
+
+  @override
+  String get trustedPerson_relationshipRequired => 'Ingresa la relación';
+
+  @override
+  String get trustedPerson_noPermissions => 'Sin permisos activos';
+
+  @override
+  String get trustedPerson_viewPermissions => 'Ver permisos';
+
+  @override
+  String get trustedPerson_cancel => 'Cancelar';
+
+  @override
+  String get trustedPerson_continue => 'Continuar';
+
+  @override
+  String trustedPerson_suggestion_title(String name) {
+    return '$name te sugiere';
+  }
+
+  @override
+  String get trustedPerson_suggestion_accept => 'Aceptar';
+
+  @override
+  String get trustedPerson_suggestion_reject => 'No, gracias';
+
+  @override
+  String get trustedPerson_suggestion_accepted => 'Cambio aplicado';
+
+  @override
+  String get trustedPerson_suggestion_fontSize => 'Hacer la letra más grande';
+
+  @override
+  String trustedPerson_suggestion_pending(String name) {
+    return 'Tienes una sugerencia de $name';
+  }
+
+  @override
+  String get trustedPerson_permissionOn => 'Activado';
+
+  @override
+  String get trustedPerson_permissionOff => 'Desactivado';
+
+  @override
+  String trustedPerson_activePermissions(int count) {
+    return '$count permisos activos';
   }
 }

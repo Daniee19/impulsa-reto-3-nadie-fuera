@@ -59,6 +59,64 @@
     }
   },
 
+  "help_title": "Pedir ayuda",
+  "help_fab_label": "Pedir ayuda",
+  "help_contact_trustedPerson": "Llamar a {name}",
+  "@help_contact_trustedPerson": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "help_contact_bankAdvisor": "Hablar con el banco",
+  "help_channel_call": "Llamar",
+  "help_channel_chat": "Escribir",
+  "help_channel_video": "Videollamada con intérprete de lengua de señas",
+  "help_connecting_trustedPerson": "Te estamos conectando con {name}...",
+  "@help_connecting_trustedPerson": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "help_connecting_bankAdvisor": "Te estamos conectando con un asesor...",
+  "help_connecting_videoInterpreter": "Te estamos conectando con un asesor e intérprete de lengua de señas",
+  "help_context_screen": "Está en: {screen}",
+  "@help_context_screen": {
+    "placeholders": {
+      "screen": { "type": "String" }
+    }
+  },
+  "help_context_operation": "Operación: {operation} por S/ {amount}",
+  "@help_context_operation": {
+    "placeholders": {
+      "operation": { "type": "String" },
+      "amount": { "type": "String" }
+    }
+  },
+  "help_context_noOperation": "Sin operación en curso",
+  "help_context_minimalMessage": "{userName} necesita ayuda",
+  "@help_context_minimalMessage": {
+    "placeholders": {
+      "userName": { "type": "String" }
+    }
+  },
+  "help_fallback_title": "No pudimos comunicarte con {name}",
+  "@help_fallback_title": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "help_fallback_question": "¿Quieres hablar con un asesor del banco?",
+  "help_fallback_yes": "Sí",
+  "help_fallback_back": "Volver",
+  "help_connected_title": "Conectado",
+  "help_connected_contextSent": "Contexto enviado a {name}:",
+  "@help_connected_contextSent": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "help_back_button": "Volver a la app",
+
   "fraudShield_alert_title": "Un momento",
   "fraudShield_alert_unusualAmount": "Este pago es mucho más alto de lo que sueles pagar.",
   "fraudShield_alert_newRecipient": "Nunca le has enviado dinero a esta persona.",
@@ -77,6 +135,168 @@
   "@fraudShield_notification_sent": {
     "placeholders": {
       "name": { "type": "String" }
+    }
+  },
+
+  "assistant_title": "Asistente",
+  "assistant_mic_label": "Activar micrófono",
+  "assistant_text_label": "Escribe tu solicitud",
+  "assistant_listening": "Te escucho...",
+  "assistant_processing": "Entendiendo...",
+  "assistant_unknown": "No estoy seguro. ¿Quieres ver tu saldo, pagar un recibo, enviar dinero o pedir ayuda?",
+  "assistant_outOfScope": "Solo puedo ayudarte con tu cuenta. ¿Quieres ver tu saldo, pagar un recibo, enviar dinero o pedir ayuda?",
+  "assistant_balance": "Tienes S/ {amount} disponibles",
+  "@assistant_balance": {
+    "placeholders": {
+      "amount": { "type": "String" }
+    }
+  },
+  "assistant_payConfirm": "Vas a pagar tu recibo de {service} por S/ {amount}. ¿Confirmas con tu huella?",
+  "@assistant_payConfirm": {
+    "placeholders": {
+      "service": { "type": "String" },
+      "amount": { "type": "String" }
+    }
+  },
+  "assistant_sendConfirm": "Vas a enviar S/ {amount} a {name}. ¿Confirmas con tu huella?",
+  "@assistant_sendConfirm": {
+    "placeholders": {
+      "amount": { "type": "String" },
+      "name": { "type": "String" }
+    }
+  },
+  "assistant_payDone": "Pago realizado",
+  "assistant_sendDone": "Dinero enviado",
+  "assistant_needsService": "¿Qué recibo quieres pagar?",
+  "assistant_needsContact": "¿A quién quieres enviarle?",
+  "assistant_needsAmount": "¿Cuánto quieres enviarle a {name}?",
+  "@assistant_needsAmount": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "assistant_billNotFound": "No encontré un recibo de {service} pendiente",
+  "@assistant_billNotFound": {
+    "placeholders": {
+      "service": { "type": "String" }
+    }
+  },
+  "assistant_speechFailed": "No te escuché bien. ¿Puedes repetir o escribirlo?",
+  "assistant_biometricReason": "Confirma la operación",
+  "assistant_biometricFailed": "No reconocí tu huella. Intenta de nuevo.",
+  "assistant_confirmButton": "Confirmar con huella",
+  "assistant_cancelButton": "Cancelar",
+  "assistant_onlyContacts": "Solo puedo enviar a tus contactos guardados. ¿A quién quieres enviarle?",
+  "assistant_helpRedirect": "Te conecto con ayuda",
+  "microphoneConsent_title": "Permiso para escucharte",
+  "microphoneConsent_body": "Para entender lo que dices, necesito usar tu micrófono. Solo lo uso mientras hablas, no grabo nada.",
+  "microphoneConsent_accept": "Aceptar",
+  "microphoneConsent_decline": "No, prefiero escribir",
+  "microphoneConsent_denied": "Puedes escribirme si prefieres no usar el micrófono.",
+
+  "announceHomeScreen": "Pantalla principal",
+  "announceBalance": "Tu saldo es {amount}",
+  "@announceBalance": {
+    "placeholders": {
+      "amount": { "type": "String" }
+    }
+  },
+  "announcePaymentSuccess": "Pago realizado. Pagaste {amount} al recibo de {service}",
+  "@announcePaymentSuccess": {
+    "placeholders": {
+      "amount": { "type": "String" },
+      "service": { "type": "String" }
+    }
+  },
+  "announceTransferSuccess": "Dinero enviado. Enviaste {amount} a {name}",
+  "@announceTransferSuccess": {
+    "placeholders": {
+      "amount": { "type": "String" },
+      "name": { "type": "String" }
+    }
+  },
+  "announceFraudAlert": "Alerta de seguridad. {riskMessage}",
+  "@announceFraudAlert": {
+    "placeholders": {
+      "riskMessage": { "type": "String" }
+    }
+  },
+  "announceHelpConnecting": "Te estamos conectando con {name}",
+  "@announceHelpConnecting": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "announceError": "{errorMessage}",
+  "@announceError": {
+    "placeholders": {
+      "errorMessage": { "type": "String" }
+    }
+  },
+  "a11y_operationSuccess": "Operación exitosa",
+
+  "trustedPerson_title": "Mi persona de confianza",
+  "trustedPerson_explanation": "Tu persona de confianza puede ayudarte, pero no puede tocar tu dinero",
+  "trustedPerson_register": "Registrar",
+  "trustedPerson_nameLabel": "Nombre",
+  "trustedPerson_phoneLabel": "Teléfono",
+  "trustedPerson_relationshipLabel": "Relación",
+  "trustedPerson_permission_securityAlerts": "Avisos de seguridad",
+  "trustedPerson_permission_securityAlerts_desc": "Recibe un aviso si la app detecta algo raro",
+  "trustedPerson_permission_helpRequests": "Pedidos de ayuda",
+  "trustedPerson_permission_helpRequests_desc": "Cuando pidas ayuda puedes elegir a esta persona",
+  "trustedPerson_permission_configHelp": "Ayudar a configurar",
+  "trustedPerson_permission_configHelp_desc": "Puede sugerirte cambios pero tú decides",
+  "trustedPerson_confirmRegister": "Confirmar",
+  "trustedPerson_next": "Siguiente",
+  "trustedPerson_change": "Cambiar persona de confianza",
+  "trustedPerson_change_warning": "Vas a quitar a {name} y registrar a otra persona",
+  "@trustedPerson_change_warning": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "trustedPerson_remove": "Quitar persona de confianza",
+  "trustedPerson_remove_warning": "{name} dejará de recibir avisos y no podrá ayudarte",
+  "@trustedPerson_remove_warning": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "trustedPerson_removed": "Persona de confianza eliminada",
+  "trustedPerson_registered": "Persona de confianza registrada",
+  "trustedPerson_phoneSelf": "No puedes registrarte a ti mismo",
+  "trustedPerson_phoneInvalid": "Ingresa 9 dígitos que empiecen con 9",
+  "trustedPerson_nameRequired": "Ingresa un nombre",
+  "trustedPerson_relationshipRequired": "Ingresa la relación",
+  "trustedPerson_noPermissions": "Sin permisos activos",
+  "trustedPerson_viewPermissions": "Ver permisos",
+  "trustedPerson_cancel": "Cancelar",
+  "trustedPerson_continue": "Continuar",
+  "trustedPerson_suggestion_title": "{name} te sugiere",
+  "@trustedPerson_suggestion_title": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "trustedPerson_suggestion_accept": "Aceptar",
+  "trustedPerson_suggestion_reject": "No, gracias",
+  "trustedPerson_suggestion_accepted": "Cambio aplicado",
+  "trustedPerson_suggestion_fontSize": "Hacer la letra más grande",
+  "trustedPerson_suggestion_pending": "Tienes una sugerencia de {name}",
+  "@trustedPerson_suggestion_pending": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "trustedPerson_permissionOn": "Activado",
+  "trustedPerson_permissionOff": "Desactivado",
+  "trustedPerson_activePermissions": "{count} permisos activos",
+  "@trustedPerson_activePermissions": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
     }
   }
 }

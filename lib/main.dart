@@ -14,14 +14,12 @@ void main() {
   runApp(
     ProviderScope(
       overrides: [
-        accountRepositoryProvider
-            .overrideWithValue(MockAccountRepository()),
-        billRepositoryProvider
-            .overrideWithValue(MockBillRepository()),
-        contactRepositoryProvider
-            .overrideWithValue(MockContactRepository()),
-        operationRepositoryProvider
-            .overrideWithValue(MockOperationRepository()),
+        accountRepositoryProvider.overrideWithValue(MockAccountRepository()),
+        billRepositoryProvider.overrideWithValue(MockBillRepository()),
+        contactRepositoryProvider.overrideWithValue(MockContactRepository()),
+        operationRepositoryProvider.overrideWithValue(
+          MockOperationRepository(),
+        ),
       ],
       child: const App(),
     ),
