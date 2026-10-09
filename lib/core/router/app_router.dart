@@ -23,6 +23,9 @@ import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/
 import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/screens/qr_payment_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/screens/transaction_history_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/trusted_person/domain/entities/config_suggestion.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/voice_assistant/presentation/screens/microphone_consent_screen.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/voice_assistant/presentation/screens/operation_summary_screen.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/voice_assistant/presentation/screens/voice_assistant_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/trusted_person/presentation/screens/config_suggestion_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/trusted_person/presentation/screens/trusted_person_change_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/trusted_person/presentation/screens/trusted_person_detail_screen.dart';
@@ -147,6 +150,21 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: 'settings/features',
                 builder: (context, state) => const FeatureManagementScreen(),
+              ),
+              GoRoute(
+                path: 'assistant',
+                builder: (context, state) => const VoiceAssistantScreen(),
+                routes: [
+                  GoRoute(
+                    path: 'consent',
+                    builder: (context, state) =>
+                        const MicrophoneConsentScreen(),
+                  ),
+                  GoRoute(
+                    path: 'summary',
+                    builder: (context, state) => const OperationSummaryScreen(),
+                  ),
+                ],
               ),
               GoRoute(
                 path: 'fraud-alert',
