@@ -18,10 +18,10 @@
 
 **Purpose**: Project scaffolding, dependencies, linter migration, localization config
 
-- [ ] T001 Create project directory structure per plan.md: `lib/core/{theme,router,l10n/arb,a11y,presentation/widgets}`, `lib/features/easy_mode/{domain/{entities,repositories},data/repositories,presentation/{providers,screens,widgets}}`, `test/core/theme/`, `test/features/easy_mode/{domain/entities,presentation/screens}`, `integration_test/`
-- [ ] T002 [P] Update pubspec.yaml — add dependencies: `flutter_riverpod`, `riverpod_annotation`, `go_router`, `freezed_annotation`, `json_annotation`, `google_fonts`, `intl`; add dev_dependencies: `freezed`, `build_runner`, `riverpod_generator`, `json_serializable`, `very_good_analysis`, `accessibility_tools`; remove `flutter_lints`
-- [ ] T003 [P] Update analysis_options.yaml — change include to `package:very_good_analysis/analysis_options.yaml`, remove flutter_lints reference
-- [ ] T004 [P] Configure l10n: create `l10n.yaml` (arb-dir: `lib/core/l10n/arb`, template-arb-file: `app_es.arb`, output-localization-file: `app_localizations.dart`); set `generate: true` in pubspec.yaml flutter section; create `lib/core/l10n/arb/app_es.arb` with all Modo Fácil UI strings (key convention: `easyMode_screenName_element`); create `lib/core/l10n/l10n.dart` export
+- [x] T001 Create project directory structure per plan.md: `lib/core/{theme,router,l10n/arb,a11y,presentation/widgets}`, `lib/features/easy_mode/{domain/{entities,repositories},data/repositories,presentation/{providers,screens,widgets}}`, `test/core/theme/`, `test/features/easy_mode/{domain/entities,presentation/screens}`, `integration_test/`
+- [x] T002 [P] Update pubspec.yaml — add dependencies: `flutter_riverpod`, `riverpod_annotation`, `go_router`, `freezed_annotation`, `json_annotation`, `google_fonts`, `intl`; add dev_dependencies: `freezed`, `build_runner`, `riverpod_generator`, `json_serializable`, `very_good_analysis`, `accessibility_tools`; remove `flutter_lints`
+- [x] T003 [P] Update analysis_options.yaml — change include to `package:very_good_analysis/analysis_options.yaml`, remove flutter_lints reference
+- [x] T004 [P] Configure l10n: create `l10n.yaml` (arb-dir: `lib/core/l10n/arb`, template-arb-file: `app_es.arb`, output-localization-file: `app_localizations.dart`); set `generate: true` in pubspec.yaml flutter section; create `lib/core/l10n/arb/app_es.arb` with all Modo Fácil UI strings (key convention: `easyMode_screenName_element`); create `lib/core/l10n/l10n.dart` export
 
 ---
 
@@ -33,40 +33,40 @@
 
 ### Core Infrastructure
 
-- [ ] T005 Create accessible theme in lib/core/theme/app_theme.dart — Atkinson Hyperlegible via google_fonts; body text ≥18sp, monetary amounts ≥28sp; palette: primary #1A3C6E (>7:1 on white), error #B3261E (>5:1), surface #FFFFFF, onSurface #1C1B1F, secondary #2E7D32; MaterialTapTargetSize.padded; does NOT cap MediaQuery.textScalerOf
-- [ ] T006 [P] Create a11y helpers in lib/core/a11y/a11y_helpers.dart — SemanticsService.announce wrapper for Spanish, a11y constants (minTapTarget: 48dp, minSeparation: 8dp)
-- [ ] T007 [P] Create AccessibleButton widget in lib/core/presentation/widgets/accessible_button.dart — area ≥48×48dp with 8dp separation, Semantics label in Spanish, tooltip, high contrast. Params: text, icon, onPressed
-- [ ] T008 [P] Create ConfirmationScreen widget in lib/core/presentation/widgets/confirmation_screen.dart — scaffold showing recipient name + amount in ≥28sp, "Confirmar" button + "Volver" button (both ≥48dp), SemanticsService.announce on load, respects textScaler 2.0 without overflow
-- [ ] T009 [P] Create ErrorMessage widget in lib/core/presentation/widgets/error_message.dart — plain-language error (≤15 words, no jargon) with suggested action, SemanticsService.announce, high contrast
+- [x] T005 Create accessible theme in lib/core/theme/app_theme.dart — Atkinson Hyperlegible via google_fonts; body text ≥18sp, monetary amounts ≥28sp; palette: primary #1A3C6E (>7:1 on white), error #B3261E (>5:1), surface #FFFFFF, onSurface #1C1B1F, secondary #2E7D32; MaterialTapTargetSize.padded; does NOT cap MediaQuery.textScalerOf
+- [x] T006 [P] Create a11y helpers in lib/core/a11y/a11y_helpers.dart — SemanticsService.announce wrapper for Spanish, a11y constants (minTapTarget: 48dp, minSeparation: 8dp)
+- [x] T007 [P] Create AccessibleButton widget in lib/core/presentation/widgets/accessible_button.dart — area ≥48×48dp with 8dp separation, Semantics label in Spanish, tooltip, high contrast. Params: text, icon, onPressed
+- [x] T008 [P] Create ConfirmationScreen widget in lib/core/presentation/widgets/confirmation_screen.dart — scaffold showing recipient name + amount in ≥28sp, "Confirmar" button + "Volver" button (both ≥48dp), SemanticsService.announce on load, respects textScaler 2.0 without overflow
+- [x] T009 [P] Create ErrorMessage widget in lib/core/presentation/widgets/error_message.dart — plain-language error (≤15 words, no jargon) with suggested action, SemanticsService.announce, high contrast
 
 ### Domain Entities (all Dart puro, freezed, no Flutter imports)
 
-- [ ] T010 [P] Create Account entity (freezed) in lib/features/easy_mode/domain/entities/account.dart — fields: id (String, non-empty), holderName (String, non-empty), maskedNumber (String, format "****NNNN"), availableBalance (double, ≥0), currency (String, always "PEN")
-- [ ] T011 [P] Create Bill entity + BillStatus enum (freezed) in lib/features/easy_mode/domain/entities/bill.dart — fields: id (String, non-empty), serviceName (String, non-empty, ≤15 chars), providerName (String, non-empty), amount (double, >0), dueDate (DateTime, non-null), status (BillStatus: pending | paid)
-- [ ] T012 [P] Create SavedContact entity (freezed) in lib/features/easy_mode/domain/entities/saved_contact.dart — fields: id (String, non-empty), name (String, non-empty), initial (String, 1 char), maskedAccount (String, format "****NNNN")
-- [ ] T013 [P] Create Operation entity + enums (freezed) in lib/features/easy_mode/domain/entities/operation.dart — fields: id (String, non-empty), type (OperationType: payment | transfer), recipientName (String, non-empty), amount (double, >0), date (DateTime, non-null), status (OperationStatus: success | failed), description (String, non-empty). No state transitions — created with final status.
+- [x] T010 [P] Create Account entity (freezed) in lib/features/easy_mode/domain/entities/account.dart — fields: id (String, non-empty), holderName (String, non-empty), maskedNumber (String, format "****NNNN"), availableBalance (double, ≥0), currency (String, always "PEN")
+- [x] T011 [P] Create Bill entity + BillStatus enum (freezed) in lib/features/easy_mode/domain/entities/bill.dart — fields: id (String, non-empty), serviceName (String, non-empty, ≤15 chars), providerName (String, non-empty), amount (double, >0), dueDate (DateTime, non-null), status (BillStatus: pending | paid)
+- [x] T012 [P] Create SavedContact entity (freezed) in lib/features/easy_mode/domain/entities/saved_contact.dart — fields: id (String, non-empty), name (String, non-empty), initial (String, 1 char), maskedAccount (String, format "****NNNN")
+- [x] T013 [P] Create Operation entity + enums (freezed) in lib/features/easy_mode/domain/entities/operation.dart — fields: id (String, non-empty), type (OperationType: payment | transfer), recipientName (String, non-empty), amount (double, >0), date (DateTime, non-null), status (OperationStatus: success | failed), description (String, non-empty). No state transitions — created with final status.
 
 ### Abstract Repository Interfaces (domain layer)
 
-- [ ] T014 [P] Create abstract AccountRepository in lib/features/easy_mode/domain/repositories/account_repository.dart — `Future<Account> getAccount()`, `Future<Account> updateBalance(String accountId, double newBalance)` throws if newBalance < 0
-- [ ] T015 [P] Create abstract BillRepository in lib/features/easy_mode/domain/repositories/bill_repository.dart — `Future<List<Bill>> getBills({BillStatus? status})`, `Future<Bill> getBillById(String billId)`, `Future<Bill> payBill(String billId)` throws if already paid
-- [ ] T016 [P] Create abstract ContactRepository in lib/features/easy_mode/domain/repositories/contact_repository.dart — `Future<List<SavedContact>> getContacts()`, `Future<SavedContact> getContactById(String contactId)`. Read-only in this feature.
-- [ ] T017 [P] Create abstract OperationRepository in lib/features/easy_mode/domain/repositories/operation_repository.dart — `Future<Operation> createOperation({required OperationType type, required String recipientName, required double amount, required String description})` generates id+date automatically, `Future<List<Operation>> getOperations()` ordered by date desc
+- [x] T014 [P] Create abstract AccountRepository in lib/features/easy_mode/domain/repositories/account_repository.dart — `Future<Account> getAccount()`, `Future<Account> updateBalance(String accountId, double newBalance)` throws if newBalance < 0
+- [x] T015 [P] Create abstract BillRepository in lib/features/easy_mode/domain/repositories/bill_repository.dart — `Future<List<Bill>> getBills({BillStatus? status})`, `Future<Bill> getBillById(String billId)`, `Future<Bill> payBill(String billId)` throws if already paid
+- [x] T016 [P] Create abstract ContactRepository in lib/features/easy_mode/domain/repositories/contact_repository.dart — `Future<List<SavedContact>> getContacts()`, `Future<SavedContact> getContactById(String contactId)`. Read-only in this feature.
+- [x] T017 [P] Create abstract OperationRepository in lib/features/easy_mode/domain/repositories/operation_repository.dart — `Future<Operation> createOperation({required OperationType type, required String recipientName, required double amount, required String description})` generates id+date automatically, `Future<List<Operation>> getOperations()` ordered by date desc
 
 ### Mock Repository Implementations (data layer)
 
-- [ ] T018 [P] Implement MockAccountRepository in lib/features/easy_mode/data/repositories/mock_account_repository.dart — mock data: Rosa Martínez, ****5678, S/ 2,450.00, PEN. Future.delayed(300ms) simulated latency. updateBalance mutates in-memory state.
-- [ ] T019 [P] Implement MockBillRepository in lib/features/easy_mode/data/repositories/mock_bill_repository.dart — mock data: Luz/Enel S/85.50 vence 2026-10-15, Agua/Sedapal S/42.00 vence 2026-10-20, Gas/Cálidda S/63.20 vence 2026-10-25. payBill changes status to paid in-memory. 300ms latency.
-- [ ] T020 [P] Implement MockContactRepository in lib/features/easy_mode/data/repositories/mock_contact_repository.dart — mock data: Valeria Martínez V ****9012, Carlos López C ****3456, María Sánchez M ****7890. 300ms latency.
-- [ ] T021 [P] Implement MockOperationRepository in lib/features/easy_mode/data/repositories/mock_operation_repository.dart — empty list at start, createOperation always returns status: success, generates UUID id and DateTime.now() date. 300ms latency.
+- [x] T018 [P] Implement MockAccountRepository in lib/features/easy_mode/data/repositories/mock_account_repository.dart — mock data: Rosa Martínez, ****5678, S/ 2,450.00, PEN. Future.delayed(300ms) simulated latency. updateBalance mutates in-memory state.
+- [x] T019 [P] Implement MockBillRepository in lib/features/easy_mode/data/repositories/mock_bill_repository.dart — mock data: Luz/Enel S/85.50 vence 2026-10-15, Agua/Sedapal S/42.00 vence 2026-10-20, Gas/Cálidda S/63.20 vence 2026-10-25. payBill changes status to paid in-memory. 300ms latency.
+- [x] T020 [P] Implement MockContactRepository in lib/features/easy_mode/data/repositories/mock_contact_repository.dart — mock data: Valeria Martínez V ****9012, Carlos López C ****3456, María Sánchez M ****7890. 300ms latency.
+- [x] T021 [P] Implement MockOperationRepository in lib/features/easy_mode/data/repositories/mock_operation_repository.dart — empty list at start, createOperation always returns status: success, generates UUID id and DateTime.now() date. 300ms latency.
 
 ### Providers & Routing
 
-- [ ] T022 Create Riverpod providers (@riverpod codegen) for all repositories in lib/features/easy_mode/presentation/providers/ — account_provider.dart, bill_provider.dart, contact_provider.dart, operation_provider.dart. Each exposes abstract interface, overrideable with mock in ProviderScope.
-- [ ] T023 Configure go_router in lib/core/router/app_router.dart — routes: `/easy-mode` → EasyModeHomeScreen, `/easy-mode/balance` → BalanceScreen, `/easy-mode/pay-bill` → PayBillScreen, `/easy-mode/pay-bill/:billId/confirm` → PayBillConfirmScreen, `/easy-mode/send-money` → SendMoneyScreen, `/easy-mode/send-money/confirm` → SendMoneyConfirmScreen, `/easy-mode/help` → HelpScreen, `/easy-mode/success` → OperationSuccessScreen
-- [ ] T024 Create app.dart in lib/app.dart — MaterialApp.router with ProviderScope, appTheme, l10n (locale: es), override repo providers with mock implementations
-- [ ] T025 Update main.dart in lib/main.dart — runApp entry point wrapping App in ProviderScope
-- [ ] T026 Run `dart run build_runner build --delete-conflicting-outputs` for freezed + riverpod codegen, verify no errors
+- [x] T022 Create Riverpod providers (@riverpod codegen) for all repositories in lib/features/easy_mode/presentation/providers/ — account_provider.dart, bill_provider.dart, contact_provider.dart, operation_provider.dart. Each exposes abstract interface, overrideable with mock in ProviderScope.
+- [x] T023 Configure go_router in lib/core/router/app_router.dart — routes: `/easy-mode` → EasyModeHomeScreen, `/easy-mode/balance` → BalanceScreen, `/easy-mode/pay-bill` → PayBillScreen, `/easy-mode/pay-bill/:billId/confirm` → PayBillConfirmScreen, `/easy-mode/send-money` → SendMoneyScreen, `/easy-mode/send-money/confirm` → SendMoneyConfirmScreen, `/easy-mode/help` → HelpScreen, `/easy-mode/success` → OperationSuccessScreen
+- [x] T024 Create app.dart in lib/app.dart — MaterialApp.router with ProviderScope, appTheme, l10n (locale: es), override repo providers with mock implementations
+- [x] T025 Update main.dart in lib/main.dart — runApp entry point wrapping App in ProviderScope
+- [x] T026 Run `dart run build_runner build --delete-conflicting-outputs` for freezed + riverpod codegen, verify no errors
 
 ### Foundational Tests
 
@@ -85,9 +85,9 @@
 
 ### Implementation
 
-- [ ] T029 [US1] Create ActionCard widget in lib/features/easy_mode/presentation/widgets/action_card.dart — large card for home screen actions: icon + text, ≥48×48dp tap target, Semantics label, high contrast, responsive to textScaler 2.0
-- [ ] T030 [US1] Create EasyModeHomeScreen in lib/features/easy_mode/presentation/screens/easy_mode_home_screen.dart — exactly 4 ActionCard buttons: "Ver mi saldo" (icon: account_balance_wallet), "Pagar recibo" (icon: receipt_long), "Enviar dinero" (icon: send), "Pedir ayuda" (icon: help). Grid/column layout, max 4 actions per screen (FR-001). Semantics reading order: saldo → pagar → enviar → ayuda (US5). No unlabeled elements.
-- [ ] T031 [US1] Create BalanceScreen in lib/features/easy_mode/presentation/screens/balance_screen.dart — watches accountProvider; shows availableBalance in ≥28sp with currency "S/", holderName, maskedNumber; Semantics labels for TalkBack reading in order (nombre → saldo → número de cuenta); handles loading state (AsyncValue); no overflow at textScaler 2.0; back button returns to home
+- [x] T029 [US1] Create ActionCard widget in lib/features/easy_mode/presentation/widgets/action_card.dart — large card for home screen actions: icon + text, ≥48×48dp tap target, Semantics label, high contrast, responsive to textScaler 2.0
+- [x] T030 [US1] Create EasyModeHomeScreen in lib/features/easy_mode/presentation/screens/easy_mode_home_screen.dart — exactly 4 ActionCard buttons: "Ver mi saldo" (icon: account_balance_wallet), "Pagar recibo" (icon: receipt_long), "Enviar dinero" (icon: send), "Pedir ayuda" (icon: help). Grid/column layout, max 4 actions per screen (FR-001). Semantics reading order: saldo → pagar → enviar → ayuda (US5). No unlabeled elements.
+- [x] T031 [US1] Create BalanceScreen in lib/features/easy_mode/presentation/screens/balance_screen.dart — watches accountProvider; shows availableBalance in ≥28sp with currency "S/", holderName, maskedNumber; Semantics labels for TalkBack reading in order (nombre → saldo → número de cuenta); handles loading state (AsyncValue); no overflow at textScaler 2.0; back button returns to home
 
 ### Tests
 
@@ -106,10 +106,10 @@
 
 ### Implementation
 
-- [ ] T034 [US2] Create PayBillScreen in lib/features/easy_mode/presentation/screens/pay_bill_screen.dart — watches billProvider (status: pending); list of bills showing serviceName + amount in large text (≥18sp); tap selects bill and navigates to confirm; empty state: "No tienes recibos pendientes" + back button (edge case). Semantics labels per item.
-- [ ] T035 [US2] Create PayBillConfirmScreen in lib/features/easy_mode/presentation/screens/pay_bill_confirm_screen.dart — receives billId from route param; shows serviceName, providerName, amount (≥28sp); uses ConfirmationScreen widget; "Confirmar" calls pay flow logic; "Volver" returns to list preserving state (FR-010). Reads bill data from billProvider.
-- [ ] T036 [US2] Create OperationSuccessScreen in lib/features/easy_mode/presentation/screens/operation_success_screen.dart — shows success/failure message with operation summary (type, recipient, amount); SemanticsService.announce "Pago realizado" for payments or "Dinero enviado" for transfers (FR-015); button to return home. Receives operation data via route extra.
-- [ ] T037 [US2] Implement pay bill flow logic — on confirm: (1) accountRepository.updateBalance(currentBalance - bill.amount), (2) billRepository.payBill(billId), (3) operationRepository.createOperation(type: payment, recipientName: bill.serviceName, amount: bill.amount). On success → navigate to /easy-mode/success. On error → show ErrorMessage "Algo salió mal. Tu dinero no se movió." Balance unchanged on error.
+- [x] T034 [US2] Create PayBillScreen in lib/features/easy_mode/presentation/screens/pay_bill_screen.dart — watches billProvider (status: pending); list of bills showing serviceName + amount in large text (≥18sp); tap selects bill and navigates to confirm; empty state: "No tienes recibos pendientes" + back button (edge case). Semantics labels per item.
+- [x] T035 [US2] Create PayBillConfirmScreen in lib/features/easy_mode/presentation/screens/pay_bill_confirm_screen.dart — receives billId from route param; shows serviceName, providerName, amount (≥28sp); uses ConfirmationScreen widget; "Confirmar" calls pay flow logic; "Volver" returns to list preserving state (FR-010). Reads bill data from billProvider.
+- [x] T036 [US2] Create OperationSuccessScreen in lib/features/easy_mode/presentation/screens/operation_success_screen.dart — shows success/failure message with operation summary (type, recipient, amount); SemanticsService.announce "Pago realizado" for payments or "Dinero enviado" for transfers (FR-015); button to return home. Receives operation data via route extra.
+- [x] T037 [US2] Implement pay bill flow logic — on confirm: (1) accountRepository.updateBalance(currentBalance - bill.amount), (2) billRepository.payBill(billId), (3) operationRepository.createOperation(type: payment, recipientName: bill.serviceName, amount: bill.amount). On success → navigate to /easy-mode/success. On error → show ErrorMessage "Algo salió mal. Tu dinero no se movió." Balance unchanged on error.
 
 ### Tests
 
@@ -127,9 +127,9 @@
 
 ### Implementation
 
-- [ ] T039 [US3] Create SendMoneyScreen in lib/features/easy_mode/presentation/screens/send_money_screen.dart — watches contactProvider; list of contacts showing name + initial (large avatar) in large text; select contact → shows amount input (≥28sp, numeric keyboard); validates amount > 0; validates amount ≤ availableBalance → if exceeds: "No tienes suficiente dinero. Tu saldo es S/ {saldo}" (FR-011, US3-AS4, no jargon); empty contacts: "No tienes contactos guardados. Pide ayuda para agregar uno." (edge case). Semantics labels.
-- [ ] T040 [US3] Create SendMoneyConfirmScreen in lib/features/easy_mode/presentation/screens/send_money_confirm_screen.dart — shows contact name, amount (≥28sp), remaining balance after transfer; uses ConfirmationScreen widget; "Confirmar" calls send flow; "Volver" returns to input preserving contact + amount (FR-010). Receives contact + amount via route extra.
-- [ ] T041 [US3] Implement send money flow logic — on confirm: (1) accountRepository.updateBalance(currentBalance - amount), (2) operationRepository.createOperation(type: transfer, recipientName: contact.name, amount: amount). On success → navigate to /easy-mode/success. On error → ErrorMessage, balance unchanged.
+- [x] T039 [US3] Create SendMoneyScreen in lib/features/easy_mode/presentation/screens/send_money_screen.dart — watches contactProvider; list of contacts showing name + initial (large avatar) in large text; select contact → shows amount input (≥28sp, numeric keyboard); validates amount > 0; validates amount ≤ availableBalance → if exceeds: "No tienes suficiente dinero. Tu saldo es S/ {saldo}" (FR-011, US3-AS4, no jargon); empty contacts: "No tienes contactos guardados. Pide ayuda para agregar uno." (edge case). Semantics labels.
+- [x] T040 [US3] Create SendMoneyConfirmScreen in lib/features/easy_mode/presentation/screens/send_money_confirm_screen.dart — shows contact name, amount (≥28sp), remaining balance after transfer; uses ConfirmationScreen widget; "Confirmar" calls send flow; "Volver" returns to input preserving contact + amount (FR-010). Receives contact + amount via route extra.
+- [x] T041 [US3] Implement send money flow logic — on confirm: (1) accountRepository.updateBalance(currentBalance - amount), (2) operationRepository.createOperation(type: transfer, recipientName: contact.name, amount: amount). On success → navigate to /easy-mode/success. On error → ErrorMessage, balance unchanged.
 
 ### Tests
 
@@ -147,7 +147,7 @@
 
 ### Implementation
 
-- [ ] T043 [US4] Create HelpScreen in lib/features/easy_mode/presentation/screens/help_screen.dart — two AccessibleButton options: "Llamar a un asesor" (icon: phone), "Escribir a un asesor" (icon: chat). Large text + descriptive icons. On tap → simulated confirmation: "Te estamos conectando con alguien que te va a ayudar" (FR-012 ≤15 words). Semantics labels: "Llamar a un asesor", "Escribir a un asesor". All elements ≥48×48dp.
+- [x] T043 [US4] Create HelpScreen in lib/features/easy_mode/presentation/screens/help_screen.dart — two AccessibleButton options: "Llamar a un asesor" (icon: phone), "Escribir a un asesor" (icon: chat). Large text + descriptive icons. On tap → simulated confirmation: "Te estamos conectando con alguien que te va a ayudar" (FR-012 ≤15 words). Semantics labels: "Llamar a un asesor", "Escribir a un asesor". All elements ≥48×48dp.
 
 ### Tests
 

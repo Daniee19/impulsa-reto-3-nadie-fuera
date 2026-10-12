@@ -95,7 +95,7 @@ void main() {
       await tester.pumpWidget(buildTestWidget(alertState: testAlertState));
       await tester.pumpAndSettle();
 
-      expect(find.byIcon(Icons.warning_amber), findsOneWidget);
+      expect(find.byIcon(Icons.shield_outlined), findsOneWidget);
     });
 
     testWidgets('shows combined message for multiple rules', (tester) async {
@@ -109,7 +109,7 @@ void main() {
       await tester.pumpWidget(buildTestWidget(alertState: combinedAlert));
       await tester.pumpAndSettle();
 
-      expect(find.byIcon(Icons.warning_amber), findsOneWidget);
+      expect(find.byIcon(Icons.shield_outlined), findsOneWidget);
       expect(find.text('Cancelar'), findsOneWidget);
       expect(find.text('Continuar de todos modos'), findsOneWidget);
     });

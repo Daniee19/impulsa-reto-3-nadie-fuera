@@ -49,6 +49,14 @@ class _FakeBillRepo implements BillRepository {
   Future<Bill> getBillById(String billId) => throw UnimplementedError();
   @override
   Future<Bill> payBill(String billId) => throw UnimplementedError();
+  @override
+  Future<Bill> addBill({
+    required String serviceName,
+    required String providerName,
+    required double amount,
+    required DateTime dueDate,
+  }) =>
+      throw UnimplementedError();
 }
 
 class _FakeContactRepo implements ContactRepository {

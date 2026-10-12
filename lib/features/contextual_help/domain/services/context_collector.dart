@@ -9,6 +9,7 @@ class ContextCollector {
     required String screenName,
     String? flowStep,
     OperationInProgress? operation,
+    String? frictionDetail,
   }) {
     return HelpContext(
       screenName: screenName,
@@ -17,6 +18,7 @@ class ContextCollector {
       operationType: operation?.type,
       operationAmount: operation?.amount,
       operationRecipient: operation?.recipientName,
+      frictionDetail: frictionDetail,
       timestamp: DateTime.now(),
     );
   }

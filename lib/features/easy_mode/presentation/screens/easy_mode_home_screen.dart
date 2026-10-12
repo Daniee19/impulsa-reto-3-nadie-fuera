@@ -11,6 +11,7 @@ import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/
 import 'package:impulsa_reto_3_nadie_fuera/features/gradual_unlock/presentation/widgets/unlock_proposal_card.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/payment_reminders/presentation/providers/reminder_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/payment_reminders/presentation/widgets/reminder_card.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/practice_mode/presentation/providers/practice_session_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/scam_lessons/presentation/providers/lesson_suggestion_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/scam_lessons/presentation/widgets/lesson_suggestion_card.dart';
 
@@ -31,40 +32,22 @@ class _EasyModeHomeScreenState extends ConsumerState<EasyModeHomeScreen> {
       if (!mounted) return;
       final l10n = AppLocalizations.of(context)!;
       A11yHelpers.screenAnnounce(View.of(context), l10n.announceHomeScreen);
-      ref.read(unlockProposalProvider.notifier).evaluate();
+      if (!ref.read(practiceSessionProvider).active) {
+        ref.read(unlockProposalProvider.notifier).evaluate();
+      }
     });
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final proposal = ref.watch(unlockProposalProvider);
-    final lessonSuggestion = ref.watch(lessonSuggestionProvider);
-    final remindersAsync = ref.watch(activeRemindersProvider);
-    final extras = ref.watch(activeExtraFeaturesProvider);
-    final statesAsync = ref.watch(featureStatesProvider);
-    final hasUnlockedFeatures = statesAsync.maybeWhen(
-      data: (states) => states.values.any(
-        (s) => s == FeatureState.active || s == FeatureState.unlockedHidden,
-      ),
-      orElse: () => false,
-    );
+    final isPractice = ref.watch(practiceSessionProvider).active;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.easyMode_home_title),
         actions: [
-          if (hasUnlockedFeatures)
-            IconButton(
-              icon: const Icon(Icons.tune),
-              tooltip: l10n.unlock_moreFeatures,
-              onPressed: () => context.go('/easy-mode/settings/features'),
-            ),
-          IconButton(
-            icon: const Icon(Icons.person),
-            tooltip: l10n.trustedPerson_title,
-            onPressed: () => context.go('/easy-mode/settings/trusted-person'),
-          ),
+          if (!isPractice) ..._buildAppBarActions(context, l10n),
         ],
       ),
       body: SafeArea(
@@ -72,31 +55,7 @@ class _EasyModeHomeScreenState extends ConsumerState<EasyModeHomeScreen> {
           padding: const EdgeInsets.all(16),
           child: Column(
             children: [
-              ...remindersAsync.maybeWhen(
-                data: (reminders) => reminders
-                    .take(3)
-                    .map((r) => ReminderCard(reminder: r))
-                    .toList(),
-                orElse: () => <Widget>[],
-              ),
-              if (lessonSuggestion != null)
-                LessonSuggestionCard(
-                  suggestion: lessonSuggestion,
-                ),
-              if (proposal != null)
-                UnlockProposalCard(
-                  config: ExtraFeatureConfig.forFeature(proposal.feature),
-                  onAccept: () => ref
-                      .read(unlockProposalProvider.notifier)
-                      .accept(proposal.feature),
-                  onPractice: () {
-                    ref.read(unlockProposalProvider.notifier).dismiss();
-                    // ponytail: navigate to 008 practice mode when implemented
-                  },
-                  onReject: () => ref
-                      .read(unlockProposalProvider.notifier)
-                      .reject(proposal.feature),
-                ),
+              if (!isPractice) ..._buildExtras(l10n),
               ActionCard(
                 label: l10n.easyMode_home_checkBalance,
                 icon: Icons.account_balance_wallet,
@@ -117,29 +76,84 @@ class _EasyModeHomeScreenState extends ConsumerState<EasyModeHomeScreen> {
                 icon: Icons.help,
                 onTap: () => context.push('/easy-mode/help/contact-picker'),
               ),
-              ActionCard(
-                label: l10n.assistant_title,
-                icon: Icons.record_voice_over,
-                onTap: () => context.push('/easy-mode/assistant'),
-              ),
-              ActionCard(
-                label: l10n.practice_title,
-                icon: Icons.school,
-                onTap: () => context.push('/easy-mode/practice'),
-              ),
-              ActionCard(
-                label: l10n.lesson_listTitle,
-                icon: Icons.shield,
-                onTap: () => context.push('/easy-mode/lessons'),
-              ),
-              ExtraFeaturesSection(
-                features: extras,
-                onFeatureTap: (route) => context.go(route),
-              ),
+              if (!isPractice) ...[
+                ActionCard(
+                  label: l10n.assistant_title,
+                  icon: Icons.record_voice_over,
+                  onTap: () => context.push('/easy-mode/assistant'),
+                ),
+                ActionCard(
+                  label: l10n.practice_title,
+                  icon: Icons.school,
+                  onTap: () => context.push('/easy-mode/practice'),
+                ),
+                ActionCard(
+                  label: l10n.lesson_listTitle,
+                  icon: Icons.shield,
+                  onTap: () => context.push('/easy-mode/lessons'),
+                ),
+                ExtraFeaturesSection(
+                  features: ref.watch(activeExtraFeaturesProvider),
+                  onFeatureTap: (route) => context.go(route),
+                ),
+              ],
             ],
           ),
         ),
       ),
     );
+  }
+
+  List<Widget> _buildAppBarActions(BuildContext context, AppLocalizations l10n) {
+    final statesAsync = ref.watch(featureStatesProvider);
+    final hasUnlockedFeatures = statesAsync.maybeWhen(
+      data: (states) => states.values.any(
+        (s) => s == FeatureState.active || s == FeatureState.unlockedHidden,
+      ),
+      orElse: () => false,
+    );
+    return [
+      if (hasUnlockedFeatures)
+        IconButton(
+          icon: const Icon(Icons.tune),
+          tooltip: l10n.unlock_moreFeatures,
+          onPressed: () => context.go('/easy-mode/settings/features'),
+        ),
+      IconButton(
+        icon: const Icon(Icons.person),
+        tooltip: l10n.trustedPerson_title,
+        onPressed: () => context.go('/easy-mode/settings/trusted-person'),
+      ),
+    ];
+  }
+
+  List<Widget> _buildExtras(AppLocalizations l10n) {
+    final proposal = ref.watch(unlockProposalProvider);
+    final lessonSuggestion = ref.watch(lessonSuggestionProvider);
+
+    return [
+      ...ref.watch(activeRemindersProvider).maybeWhen(
+        data: (reminders) => reminders
+            .take(3)
+            .map((r) => ReminderCard(reminder: r))
+            .toList(),
+        orElse: () => <Widget>[],
+      ),
+      if (lessonSuggestion != null)
+        LessonSuggestionCard(suggestion: lessonSuggestion),
+      if (proposal != null)
+        UnlockProposalCard(
+          config: ExtraFeatureConfig.forFeature(proposal.feature),
+          onAccept: () => ref
+              .read(unlockProposalProvider.notifier)
+              .accept(proposal.feature),
+          onPractice: () {
+            ref.read(unlockProposalProvider.notifier).dismiss();
+          },
+          onReject: () => ref
+              .read(unlockProposalProvider.notifier)
+              .reject(proposal.feature),
+        ),
+    ];
   }
 }

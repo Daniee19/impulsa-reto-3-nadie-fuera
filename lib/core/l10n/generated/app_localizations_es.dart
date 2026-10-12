@@ -54,6 +54,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get easyMode_payBill_amount => 'Monto a pagar';
 
   @override
+  String get easyMode_payBill_pendingAmount => 'Pendiente de consulta';
+
+  @override
   String get easyMode_sendMoney_title => 'Enviar dinero';
 
   @override
@@ -246,6 +249,9 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get assistant_title => 'Asistente';
+
+  @override
+  String get assistant_greeting => '¿En qué te ayudo?';
 
   @override
   String get assistant_mic_label => 'Activar micrófono';
@@ -796,6 +802,36 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get lesson_pause => 'Pausar';
+
+  @override
+  String get easyMode_payBill_quickAccess => 'Tus servicios';
+
+  @override
+  String get easyMode_payBill_addService => 'Agregar servicio';
+
+  @override
+  String get easyMode_payBill_addTitle => 'Nuevo servicio';
+
+  @override
+  String get easyMode_payBill_serviceNameLabel => 'Nombre del servicio';
+
+  @override
+  String get easyMode_payBill_serviceNameHint => 'Ejemplo: Internet, Teléfono';
+
+  @override
+  String get easyMode_payBill_providerLabel => 'Empresa';
+
+  @override
+  String get easyMode_payBill_providerHint => 'Ejemplo: Movistar, Claro';
+
+  @override
+  String get easyMode_payBill_amountLabel => 'Monto';
+
+  @override
+  String get easyMode_payBill_serviceAdded => 'Servicio agregado';
+
+  @override
+  String get easyMode_payBill_fieldRequired => 'Este campo es obligatorio';
 
   @override
   String get reminder_title => 'Recordatorios';

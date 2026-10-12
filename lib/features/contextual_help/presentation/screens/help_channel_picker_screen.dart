@@ -8,6 +8,7 @@ import 'package:impulsa_reto_3_nadie_fuera/features/contextual_help/domain/entit
 import 'package:impulsa_reto_3_nadie_fuera/features/contextual_help/domain/entities/help_target.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/contextual_help/presentation/providers/help_context_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/contextual_help/presentation/providers/help_session_provider.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/friction_detection/presentation/providers/friction_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/trusted_person/domain/entities/trusted_permission.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/trusted_person/presentation/providers/trusted_person_provider.dart';
 
@@ -104,6 +105,7 @@ class HelpChannelPickerScreen extends ConsumerWidget {
   ) async {
     await SystemSound.play(SystemSoundType.click);
     final helpContext = ref.read(helpContextProvider);
+    ref.read(frictionContextProvider.notifier).state = null;
     await ref
         .read(helpSessionProvider.notifier)
         .startSession(

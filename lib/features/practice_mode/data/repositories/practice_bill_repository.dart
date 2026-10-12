@@ -54,5 +54,24 @@ class PracticeBillRepository implements BillRepository {
     return paid;
   }
 
+  @override
+  Future<Bill> addBill({
+    required String serviceName,
+    required String providerName,
+    required double amount,
+    required DateTime dueDate,
+  }) async {
+    final bill = Bill(
+      id: 'p-bill-${DateTime.now().millisecondsSinceEpoch}',
+      serviceName: serviceName,
+      providerName: providerName,
+      amount: amount,
+      dueDate: dueDate,
+      status: BillStatus.pending,
+    );
+    _bills = [..._bills, bill];
+    return bill;
+  }
+
   void reset() => _bills = _initialBills();
 }

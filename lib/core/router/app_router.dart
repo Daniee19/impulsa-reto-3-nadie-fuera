@@ -8,7 +8,6 @@ import 'package:impulsa_reto_3_nadie_fuera/features/contextual_help/presentation
 import 'package:impulsa_reto_3_nadie_fuera/features/contextual_help/presentation/screens/help_connecting_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/contextual_help/presentation/screens/help_contact_picker_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/contextual_help/presentation/screens/help_fallback_screen.dart';
-import 'package:impulsa_reto_3_nadie_fuera/features/contextual_help/presentation/widgets/help_fab.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/domain/entities/operation.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/screens/balance_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/screens/easy_mode_home_screen.dart';
@@ -58,7 +57,6 @@ final appRouterProvider = Provider<GoRouter>((ref) {
     routes: [
       ShellRoute(
         builder: (context, state, child) {
-          final isHelpScreen = state.uri.path.contains('/help/');
           final isPractice = ProviderScope.containerOf(context)
               .read(practiceSessionProvider)
               .active;
@@ -73,12 +71,6 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               children: [
                 wrappedChild,
                 const FrictionOfferOverlay(),
-                if (!isHelpScreen)
-                  Positioned(
-                    right: 16,
-                    bottom: MediaQuery.of(context).padding.bottom + 16,
-                    child: const HelpFab(),
-                  ),
               ],
             ),
           );

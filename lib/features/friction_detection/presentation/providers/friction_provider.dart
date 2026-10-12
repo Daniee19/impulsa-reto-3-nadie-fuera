@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/contextual_help/presentation/providers/navigation_context_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/friction_detection/domain/entities/friction_context.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/friction_detection/domain/entities/friction_offer.dart';
-import 'package:impulsa_reto_3_nadie_fuera/features/friction_detection/domain/entities/friction_signal.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/friction_detection/domain/services/friction_detector.dart';
 
 /// Orchestrates friction detection and help offer state.
@@ -12,7 +11,6 @@ class FrictionNotifier extends StateNotifier<FrictionOffer> {
   /// Creates the notifier.
   FrictionNotifier(this._ref) : super(const FrictionOffer.hidden()) {
     _detector = FrictionDetector();
-    _previousRoute = _ref.read(navigationContextProvider).currentRoute;
 
     _ref.listen<NavigationState>(navigationContextProvider, (prev, next) {
       _onRouteChanged(prev?.currentRoute ?? '', next.currentRoute);
@@ -21,7 +19,6 @@ class FrictionNotifier extends StateNotifier<FrictionOffer> {
 
   final Ref _ref;
   late final FrictionDetector _detector;
-  late String _previousRoute;
   Timer? _inactivityTimer;
 
   String get _flowId {
@@ -58,7 +55,6 @@ class FrictionNotifier extends StateNotifier<FrictionOffer> {
     }
 
     _startInactivityTimer();
-    _previousRoute = newRoute;
   }
 
   bool _isBackNavigation(String oldRoute, String newRoute) {

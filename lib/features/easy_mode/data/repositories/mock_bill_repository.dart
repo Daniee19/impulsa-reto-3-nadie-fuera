@@ -57,4 +57,24 @@ class MockBillRepository implements BillRepository {
     _bills[index] = _bills[index].copyWith(status: BillStatus.paid);
     return _bills[index];
   }
+
+  @override
+  Future<Bill> addBill({
+    required String serviceName,
+    required String providerName,
+    required double amount,
+    required DateTime dueDate,
+  }) async {
+    await Future<void>.delayed(const Duration(milliseconds: 300));
+    final bill = Bill(
+      id: 'bill-${DateTime.now().millisecondsSinceEpoch}',
+      serviceName: serviceName,
+      providerName: providerName,
+      amount: amount,
+      dueDate: dueDate,
+      status: BillStatus.pending,
+    );
+    _bills.add(bill);
+    return bill;
+  }
 }

@@ -13,6 +13,7 @@ class HelpContext {
     this.operationType,
     this.operationAmount,
     this.operationRecipient,
+    this.frictionDetail,
   });
 
   /// Human-readable screen name in Spanish.
@@ -33,6 +34,9 @@ class HelpContext {
   /// Recipient name of in-progress operation, null if none.
   final String? operationRecipient;
 
+  /// Human-readable friction detail, null if no friction detected.
+  final String? frictionDetail;
+
   /// When the help was requested.
   final DateTime timestamp;
 
@@ -46,6 +50,7 @@ class HelpContext {
           operationType == other.operationType &&
           operationAmount == other.operationAmount &&
           operationRecipient == other.operationRecipient &&
+          frictionDetail == other.frictionDetail &&
           timestamp == other.timestamp;
 
   @override
@@ -56,6 +61,7 @@ class HelpContext {
     operationType,
     operationAmount,
     operationRecipient,
+    frictionDetail,
     timestamp,
   );
 }

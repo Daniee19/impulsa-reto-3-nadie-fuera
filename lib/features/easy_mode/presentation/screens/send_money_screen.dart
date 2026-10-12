@@ -14,6 +14,7 @@ import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/provi
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/providers/operation_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/screens/send_money_confirm_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/domain/entities/operation_context.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/friction_detection/presentation/providers/friction_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/presentation/providers/fraud_alert_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/presentation/providers/risk_engine_provider.dart';
 
@@ -44,6 +45,9 @@ class _SendMoneyScreenState extends ConsumerState<SendMoneyScreen> {
 
     if (amount == null || amount <= 0) {
       setState(() => _errorText = l10n.easyMode_error_amountZero);
+      ref
+          .read(frictionNotifierProvider.notifier)
+          .onValidationError('amount', 'invalid_amount');
       return;
     }
 
@@ -54,6 +58,9 @@ class _SendMoneyScreenState extends ConsumerState<SendMoneyScreen> {
           account.availableBalance.toStringAsFixed(2),
         );
       });
+      ref
+          .read(frictionNotifierProvider.notifier)
+          .onValidationError('amount', 'insufficient_funds');
       return;
     }
 

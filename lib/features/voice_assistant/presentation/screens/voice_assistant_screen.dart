@@ -9,9 +9,7 @@ import 'package:impulsa_reto_3_nadie_fuera/features/voice_assistant/presentation
 import 'package:impulsa_reto_3_nadie_fuera/features/voice_assistant/presentation/providers/voice_assistant_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/voice_assistant/presentation/widgets/assistant_message.dart'
     as widgets;
-import 'package:impulsa_reto_3_nadie_fuera/features/voice_assistant/presentation/widgets/intent_options.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/voice_assistant/presentation/widgets/text_input_field.dart';
-import 'package:impulsa_reto_3_nadie_fuera/features/voice_assistant/presentation/widgets/voice_input_button.dart';
 
 /// Main voice/text assistant screen.
 class VoiceAssistantScreen extends ConsumerStatefulWidget {
@@ -23,10 +21,22 @@ class VoiceAssistantScreen extends ConsumerStatefulWidget {
       _VoiceAssistantScreenState();
 }
 
-class _VoiceAssistantScreenState extends ConsumerState<VoiceAssistantScreen> {
+class _VoiceAssistantScreenState extends ConsumerState<VoiceAssistantScreen>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _pulseController;
+  late final Animation<double> _pulseAnimation;
+
   @override
   void initState() {
     super.initState();
+    _pulseController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1500),
+    )..repeat(reverse: true);
+    _pulseAnimation = Tween(begin: 1.0, end: 1.15).animate(
+      CurvedAnimation(parent: _pulseController, curve: Curves.easeInOut),
+    );
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted) return;
       final l10n = AppLocalizations.of(context)!;
@@ -37,6 +47,12 @@ class _VoiceAssistantScreenState extends ConsumerState<VoiceAssistantScreen> {
       );
       notifier.startSession();
     });
+  }
+
+  @override
+  void dispose() {
+    _pulseController.dispose();
+    super.dispose();
   }
 
   void _onIntentSelected(AssistantIntentType type) {
@@ -52,11 +68,32 @@ class _VoiceAssistantScreenState extends ConsumerState<VoiceAssistantScreen> {
         .processInput(text, InputSource.text);
   }
 
+  void _onMicTap() {
+    final hasConsent = ref.read(microphoneConsentProvider);
+    if (!hasConsent) {
+      context.push('/easy-mode/assistant/consent');
+      return;
+    }
+    final notifier = ref.read(voiceAssistantProvider.notifier);
+    final session = ref.read(voiceAssistantProvider);
+    if (session?.status == VoiceSessionStatus.listening) {
+      notifier.stopListening();
+    } else {
+      notifier.startListening();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final session = ref.watch(voiceAssistantProvider);
     final hasConsent = ref.watch(microphoneConsentProvider);
+    final theme = Theme.of(context);
+    final isListening =
+        session?.status == VoiceSessionStatus.listening;
+    final isIdle = session == null ||
+        session.status == VoiceSessionStatus.idle;
+    final hasMessage = session?.assistantMessage != null;
 
     return Scaffold(
       appBar: AppBar(title: Text(l10n.assistant_title)),
@@ -69,43 +106,131 @@ class _VoiceAssistantScreenState extends ConsumerState<VoiceAssistantScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    if (!hasConsent)
+                    if (!hasConsent && isIdle)
                       widgets.AssistantMessage(
                         message: l10n.microphoneConsent_denied,
                       ),
-                    if (session?.status == VoiceSessionStatus.listening)
+                    if (isListening)
                       widgets.AssistantMessage(
                         message: l10n.assistant_listening,
                       ),
-                    if (session?.status == VoiceSessionStatus.processing)
-                      const Center(child: CircularProgressIndicator()),
-                    if (session?.assistantMessage != null)
+                    if (session?.status ==
+                        VoiceSessionStatus.processing)
+                      const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    if (hasMessage)
                       widgets.AssistantMessage(
                         message: session!.assistantMessage!,
                       ),
-                    if (_showOptions(session))
-                      Padding(
-                        padding: const EdgeInsets.only(top: 16),
-                        child: IntentOptions(onSelect: _onIntentSelected),
+                    if (isIdle && !hasMessage) ...[
+                      const SizedBox(height: 8),
+                      Text(
+                        l10n.assistant_greeting,
+                        style:
+                            theme.textTheme.displayMedium?.copyWith(
+                          color: theme.colorScheme.primary,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
+                    ],
                   ],
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16),
-              child: Row(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+              child: Wrap(
+                spacing: 8,
+                runSpacing: 8,
+                alignment: WrapAlignment.center,
                 children: [
-                  Expanded(
-                    child: TextInputField(
-                      onSubmit: (text) => ref
-                          .read(voiceAssistantProvider.notifier)
-                          .processInput(text, InputSource.text),
+                  _QuickChip(
+                    icon: Icons.account_balance_wallet,
+                    label: l10n.easyMode_home_checkBalance,
+                    onTap: () => _onIntentSelected(
+                      AssistantIntentType.checkBalance,
                     ),
                   ),
-                  const SizedBox(width: 8),
-                  const VoiceInputButton(),
+                  _QuickChip(
+                    icon: Icons.receipt_long,
+                    label: l10n.easyMode_home_payBill,
+                    onTap: () => _onIntentSelected(
+                      AssistantIntentType.payBill,
+                    ),
+                  ),
+                  _QuickChip(
+                    icon: Icons.send,
+                    label: l10n.easyMode_home_sendMoney,
+                    onTap: () => _onIntentSelected(
+                      AssistantIntentType.sendMoney,
+                    ),
+                  ),
+                  _QuickChip(
+                    icon: Icons.help,
+                    label: l10n.easyMode_home_getHelp,
+                    onTap: () => _onIntentSelected(
+                      AssistantIntentType.requestHelp,
+                    ),
+                  ),
                 ],
+              ),
+            ),
+            const SizedBox(height: 12),
+            Semantics(
+              label: l10n.assistant_mic_label,
+              button: true,
+              child: GestureDetector(
+                onTap: _onMicTap,
+                child: AnimatedBuilder(
+                  animation: _pulseAnimation,
+                  builder: (context, child) {
+                    final scale = isListening
+                        ? _pulseAnimation.value
+                        : 1.0;
+                    return Transform.scale(
+                      scale: scale,
+                      child: child,
+                    );
+                  },
+                  child: Container(
+                    width: 72,
+                    height: 72,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: isListening
+                          ? Colors.red
+                          : theme.colorScheme.primary,
+                      boxShadow: [
+                        BoxShadow(
+                          color: (isListening
+                                  ? Colors.red
+                                  : theme.colorScheme.primary)
+                              .withValues(alpha: 0.3),
+                          blurRadius: 16,
+                          spreadRadius: 4,
+                        ),
+                      ],
+                    ),
+                    child: Icon(
+                      isListening
+                          ? Icons.stop
+                          : hasConsent
+                              ? Icons.mic
+                              : Icons.mic_off,
+                      color: Colors.white,
+                      size: 36,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
+              child: TextInputField(
+                onSubmit: (text) => ref
+                    .read(voiceAssistantProvider.notifier)
+                    .processInput(text, InputSource.text),
               ),
             ),
           ],
@@ -113,10 +238,25 @@ class _VoiceAssistantScreenState extends ConsumerState<VoiceAssistantScreen> {
       ),
     );
   }
+}
 
-  bool _showOptions(VoiceSession? session) {
-    if (session == null) return false;
-    if (session.status != VoiceSessionStatus.idle) return false;
-    return session.parsedIntent?.type == AssistantIntentType.unknown;
+class _QuickChip extends StatelessWidget {
+  const _QuickChip({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+  });
+
+  final IconData icon;
+  final String label;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return ActionChip(
+      avatar: Icon(icon, size: 18),
+      label: Text(label),
+      onPressed: onTap,
+    );
   }
 }

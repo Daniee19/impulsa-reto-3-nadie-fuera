@@ -1,6 +1,8 @@
 import 'package:flutter/widgets.dart';
 
 /// Tracks route changes and notifies via callback.
+///
+/// Defers notifications to avoid modifying providers during build.
 class NavigationObserver extends NavigatorObserver {
   /// Creates the observer with a route change callback.
   NavigationObserver(this._onRouteChanged);
@@ -23,6 +25,9 @@ class NavigationObserver extends NavigatorObserver {
   }
 
   void _notify(Route<dynamic> route) {
-    _onRouteChanged(route.settings.name ?? '/easy-mode');
+    final name = route.settings.name ?? '/easy-mode';
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _onRouteChanged(name);
+    });
   }
 }

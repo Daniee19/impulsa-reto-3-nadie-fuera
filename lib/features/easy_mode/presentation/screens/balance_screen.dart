@@ -50,67 +50,110 @@ class _BalanceScreenState extends ConsumerState<BalanceScreen> {
           ),
           data: (account) {
             _announceBalance(account.availableBalance);
-            return Padding(
-              padding: const EdgeInsets.all(32),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Semantics(
-                    label:
-                        '${l10n.easyMode_balance_accountLabel}: '
-                        '${account.holderName}',
-                    child: Text(
-                      account.holderName,
-                      style: theme.textTheme.titleLarge,
-                      textAlign: TextAlign.center,
+            return Center(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(32),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.account_balance_wallet,
+                      size: 64,
+                      color: theme.colorScheme.primary,
                     ),
-                  ),
-                  const SizedBox(height: 8),
-                  Semantics(
-                    label:
-                        '${l10n.easyMode_balance_accountLabel}: '
-                        '${account.maskedNumber}',
-                    child: Text(
-                      account.maskedNumber,
-                      style: theme.textTheme.bodyLarge?.copyWith(
-                        color: theme.colorScheme.onSurface.withValues(
-                          alpha: 0.7,
+                    const SizedBox(height: 16),
+                    Semantics(
+                      label:
+                          '${l10n.easyMode_balance_accountLabel}: '
+                          '${account.holderName}',
+                      child: Text(
+                        account.holderName,
+                        style: theme.textTheme.titleLarge,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Semantics(
+                      label:
+                          '${l10n.easyMode_balance_accountLabel}: '
+                          '${account.maskedNumber}',
+                      child: Text(
+                        account.maskedNumber,
+                        style: theme.textTheme.bodyLarge?.copyWith(
+                          color: theme.colorScheme.onSurface.withValues(
+                            alpha: 0.6,
+                          ),
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                    const SizedBox(height: 32),
+                    Card(
+                      elevation: 4,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          gradient: LinearGradient(
+                            colors: [
+                              theme.colorScheme.primary,
+                              theme.colorScheme.primary.withValues(alpha: 0.8),
+                            ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 32,
+                          vertical: 40,
+                        ),
+                        child: Column(
+                          children: [
+                            Text(
+                              l10n.easyMode_balance_availableBalance,
+                              style: theme.textTheme.bodyLarge?.copyWith(
+                                color: theme.colorScheme.onPrimary
+                                    .withValues(alpha: 0.85),
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(height: 12),
+                            Semantics(
+                              label:
+                                  '${l10n.easyMode_balance_availableBalance}: '
+                                  '${AmountToWords.convert(account.availableBalance)}',
+                              excludeSemantics: true,
+                              child: Text(
+                                'S/ ${account.availableBalance.toStringAsFixed(2)}',
+                                style: TextStyle(
+                                  fontSize: 40,
+                                  fontWeight: FontWeight.bold,
+                                  color: theme.colorScheme.onPrimary,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                      textAlign: TextAlign.center,
                     ),
-                  ),
-                  const SizedBox(height: 32),
-                  Text(
-                    l10n.easyMode_balance_availableBalance,
-                    style: theme.textTheme.bodyLarge,
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 8),
-                  Semantics(
-                    label:
-                        '${l10n.easyMode_balance_availableBalance}: '
-                        '${AmountToWords.convert(account.availableBalance)}',
-                    excludeSemantics: true,
-                    child: Text(
-                      'S/ ${account.availableBalance.toStringAsFixed(2)}',
-                      style: theme.textTheme.displayLarge,
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  const SizedBox(height: A11yHelpers.minTapTarget),
-                  ElevatedButton.icon(
-                    onPressed: () => Navigator.of(context).pop(),
-                    icon: const Icon(Icons.arrow_back),
-                    label: Text(l10n.easyMode_back_button),
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(
-                        A11yHelpers.minTapTarget,
-                        A11yHelpers.minTapTarget,
+                    const SizedBox(height: 40),
+                    ElevatedButton.icon(
+                      onPressed: () => Navigator.of(context).pop(),
+                      icon: const Icon(Icons.arrow_back),
+                      label: Text(l10n.easyMode_back_button),
+                      style: ElevatedButton.styleFrom(
+                        minimumSize: const Size(
+                          A11yHelpers.minTapTarget,
+                          A11yHelpers.minTapTarget,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             );
           },

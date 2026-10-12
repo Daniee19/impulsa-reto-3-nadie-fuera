@@ -22,6 +22,7 @@
   "easyMode_payBill_confirmTitle": "Confirmar pago",
   "easyMode_payBill_service": "Servicio",
   "easyMode_payBill_amount": "Monto a pagar",
+  "easyMode_payBill_pendingAmount": "Pendiente de consulta",
 
   "easyMode_sendMoney_title": "Enviar dinero",
   "easyMode_sendMoney_noContacts": "No tienes contactos guardados. Pide ayuda para agregar uno.",
@@ -139,6 +140,7 @@
   },
 
   "assistant_title": "Asistente",
+  "assistant_greeting": "¿En qué te ayudo?",
   "assistant_mic_label": "Activar micrófono",
   "assistant_text_label": "Escribe tu solicitud",
   "assistant_listening": "Te escucho...",
@@ -424,6 +426,17 @@
   "lesson_completed": "Completada",
   "lesson_notSeen": "No vista",
   "lesson_pause": "Pausar",
+
+  "easyMode_payBill_quickAccess": "Tus servicios",
+  "easyMode_payBill_addService": "Agregar servicio",
+  "easyMode_payBill_addTitle": "Nuevo servicio",
+  "easyMode_payBill_serviceNameLabel": "Nombre del servicio",
+  "easyMode_payBill_serviceNameHint": "Ejemplo: Internet, Teléfono",
+  "easyMode_payBill_providerLabel": "Empresa",
+  "easyMode_payBill_providerHint": "Ejemplo: Movistar, Claro",
+  "easyMode_payBill_amountLabel": "Monto",
+  "easyMode_payBill_serviceAdded": "Servicio agregado",
+  "easyMode_payBill_fieldRequired": "Este campo es obligatorio",
 
   "reminder_title": "Recordatorios",
   "reminder_payNow": "Pagar ahora",

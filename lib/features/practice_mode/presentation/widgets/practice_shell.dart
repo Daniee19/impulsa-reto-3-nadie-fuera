@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/providers/account_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/providers/bill_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/providers/contact_provider.dart';
@@ -13,6 +14,7 @@ import 'package:impulsa_reto_3_nadie_fuera/features/practice_mode/data/services/
 import 'package:impulsa_reto_3_nadie_fuera/features/practice_mode/data/services/practice_risk_engine.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/practice_mode/presentation/providers/practice_theme.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/practice_mode/presentation/widgets/practice_banner.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/practice_mode/presentation/widgets/practice_exit_dialog.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/practice_mode/presentation/widgets/practice_guide_overlay.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/voice_assistant/presentation/providers/biometric_provider.dart';
 
@@ -60,15 +62,27 @@ class _PracticeShellState extends State<PracticeShell> {
       ],
       child: Theme(
         data: practiceTheme(Theme.of(context)),
-        child: Column(
-          children: [
-            const PracticeBanner(),
-            Expanded(
-              child: Stack(
-                children: [widget.child, const PracticeGuideOverlay()],
+        child: PopScope(
+          canPop: false,
+          onPopInvokedWithResult: (didPop, _) {
+            if (didPop) return;
+            final location = GoRouterState.of(context).uri.path;
+            if (location == '/easy-mode' || location == '/easy-mode/') {
+              showPracticeExitDialog(context);
+            } else {
+              Navigator.of(context).pop();
+            }
+          },
+          child: Column(
+            children: [
+              const PracticeBanner(),
+              Expanded(
+                child: Stack(
+                  children: [widget.child, const PracticeGuideOverlay()],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

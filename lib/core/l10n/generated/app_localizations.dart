@@ -178,6 +178,12 @@ abstract class AppLocalizations {
   /// **'Monto a pagar'**
   String get easyMode_payBill_amount;
 
+  /// No description provided for @easyMode_payBill_pendingAmount.
+  ///
+  /// In es, this message translates to:
+  /// **'Pendiente de consulta'**
+  String get easyMode_payBill_pendingAmount;
+
   /// No description provided for @easyMode_sendMoney_title.
   ///
   /// In es, this message translates to:
@@ -495,6 +501,12 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Asistente'**
   String get assistant_title;
+
+  /// No description provided for @assistant_greeting.
+  ///
+  /// In es, this message translates to:
+  /// **'¿En qué te ayudo?'**
+  String get assistant_greeting;
 
   /// No description provided for @assistant_mic_label.
   ///
@@ -1443,6 +1455,66 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Pausar'**
   String get lesson_pause;
+
+  /// No description provided for @easyMode_payBill_quickAccess.
+  ///
+  /// In es, this message translates to:
+  /// **'Tus servicios'**
+  String get easyMode_payBill_quickAccess;
+
+  /// No description provided for @easyMode_payBill_addService.
+  ///
+  /// In es, this message translates to:
+  /// **'Agregar servicio'**
+  String get easyMode_payBill_addService;
+
+  /// No description provided for @easyMode_payBill_addTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Nuevo servicio'**
+  String get easyMode_payBill_addTitle;
+
+  /// No description provided for @easyMode_payBill_serviceNameLabel.
+  ///
+  /// In es, this message translates to:
+  /// **'Nombre del servicio'**
+  String get easyMode_payBill_serviceNameLabel;
+
+  /// No description provided for @easyMode_payBill_serviceNameHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Ejemplo: Internet, Teléfono'**
+  String get easyMode_payBill_serviceNameHint;
+
+  /// No description provided for @easyMode_payBill_providerLabel.
+  ///
+  /// In es, this message translates to:
+  /// **'Empresa'**
+  String get easyMode_payBill_providerLabel;
+
+  /// No description provided for @easyMode_payBill_providerHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Ejemplo: Movistar, Claro'**
+  String get easyMode_payBill_providerHint;
+
+  /// No description provided for @easyMode_payBill_amountLabel.
+  ///
+  /// In es, this message translates to:
+  /// **'Monto'**
+  String get easyMode_payBill_amountLabel;
+
+  /// No description provided for @easyMode_payBill_serviceAdded.
+  ///
+  /// In es, this message translates to:
+  /// **'Servicio agregado'**
+  String get easyMode_payBill_serviceAdded;
+
+  /// No description provided for @easyMode_payBill_fieldRequired.
+  ///
+  /// In es, this message translates to:
+  /// **'Este campo es obligatorio'**
+  String get easyMode_payBill_fieldRequired;
 
   /// No description provided for @reminder_title.
   ///

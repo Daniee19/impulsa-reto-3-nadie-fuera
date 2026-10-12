@@ -20,8 +20,8 @@
 
 **Purpose**: Directory structure, dependencies, ARB strings
 
-- [ ] T001 Create feature directory structure per plan.md: `lib/features/gradual_unlock/{domain/{entities,services},data/repositories,presentation/{providers,screens,widgets}}`, `test/features/gradual_unlock/{domain/services,presentation/screens}`
-- [ ] T002 [P] Add ARB strings to lib/core/l10n/arb/app_es.arb — keys: `unlock_proposal_title` ("Tienes una sugerencia"), `unlock_accept` ("Sí, actívalo"), `unlock_practice` ("Primero quiero practicarlo"), `unlock_reject` ("No, por ahora no"), `unlock_feature_transactions` ("Ver movimientos"), `unlock_feature_recharge` ("Recargar celular"), `unlock_feature_qr` ("Pagar con QR"), `unlock_proposal_transactions` ("Ya manejas bien tus pagos. ¿Quieres ver tus movimientos?"), `unlock_proposal_recharge` ("¿Quieres recargar tu celular desde la app?"), `unlock_proposal_qr` ("¿Quieres pagar con código QR?"), `unlock_moreFeatures` ("Más funciones"), `unlock_resetToBasic` ("Volver a solo 4 acciones"), `unlock_resetConfirm` ("Vas a ocultar las funciones extra. Puedes volver a activarlas cuando quieras."), `unlock_reactivate` ("Activar de nuevo"), `unlock_desc_transactions` ("Consulta tus últimos movimientos"), `unlock_desc_recharge` ("Recarga tu celular con un monto fijo"), `unlock_desc_qr` ("Escanea un código y paga"). Run `flutter gen-l10n`.
+- [x] T001 Create feature directory structure per plan.md: `lib/features/gradual_unlock/{domain/{entities,services},data/repositories,presentation/{providers,screens,widgets}}`, `test/features/gradual_unlock/{domain/services,presentation/screens}`
+- [x] T002 [P] Add ARB strings to lib/core/l10n/arb/app_es.arb — keys: `unlock_proposal_title` ("Tienes una sugerencia"), `unlock_accept` ("Sí, actívalo"), `unlock_practice` ("Primero quiero practicarlo"), `unlock_reject` ("No, por ahora no"), `unlock_feature_transactions` ("Ver movimientos"), `unlock_feature_recharge` ("Recargar celular"), `unlock_feature_qr` ("Pagar con QR"), `unlock_proposal_transactions` ("Ya manejas bien tus pagos. ¿Quieres ver tus movimientos?"), `unlock_proposal_recharge` ("¿Quieres recargar tu celular desde la app?"), `unlock_proposal_qr` ("¿Quieres pagar con código QR?"), `unlock_moreFeatures` ("Más funciones"), `unlock_resetToBasic` ("Volver a solo 4 acciones"), `unlock_resetConfirm` ("Vas a ocultar las funciones extra. Puedes volver a activarlas cuando quieras."), `unlock_reactivate` ("Activar de nuevo"), `unlock_desc_transactions` ("Consulta tus últimos movimientos"), `unlock_desc_recharge` ("Recarga tu celular con un monto fijo"), `unlock_desc_qr` ("Escanea un código y paga"). Run `flutter gen-l10n`.
 
 ---
 
@@ -31,28 +31,28 @@
 
 ### Domain Entities (plain Dart, @immutable, manual copyWith/==/hashCode)
 
-- [ ] T003 [P] Create ExtraFeature enum and FeatureState enum in lib/features/gradual_unlock/domain/entities/extra_feature.dart — ExtraFeature values: `transactionHistory`, `mobileRecharge`, `qrPayment` (order = priority). FeatureState values: `locked`, `unlockedHidden`, `active`. Create ExtraFeatureConfig class with fields: `feature` (ExtraFeature), `nameKey` (String), `descriptionKey` (String), `proposalMessageKey` (String), `iconData` (IconData), `route` (String). Static list of configs for the 3 features.
-- [ ] T004 [P] Create ConfidenceMetrics entity in lib/features/gradual_unlock/domain/entities/confidence_metrics.dart — @immutable. Fields: `successfulOpsWithoutHelp` (int, ≥0), `practiceSessionsCompleted` (int, ≥0). Manual copyWith, ==, hashCode.
-- [ ] T005 [P] Create UnlockThresholds entity in lib/features/gradual_unlock/domain/entities/extra_feature.dart (same file as ExtraFeature) — @immutable, const constructor. Fields: `opsWithoutHelp` (int, default 5), `practiceSessions` (int, default 3), `maxRejections` (int, default 3).
-- [ ] T006 [P] Create UnlockProposal entity in lib/features/gradual_unlock/domain/entities/unlock_proposal.dart — @immutable. Field: `feature` (ExtraFeature, non-null). Manual ==, hashCode.
+- [x] T003 [P] Create ExtraFeature enum and FeatureState enum in lib/features/gradual_unlock/domain/entities/extra_feature.dart — ExtraFeature values: `transactionHistory`, `mobileRecharge`, `qrPayment` (order = priority). FeatureState values: `locked`, `unlockedHidden`, `active`. Create ExtraFeatureConfig class with fields: `feature` (ExtraFeature), `nameKey` (String), `descriptionKey` (String), `proposalMessageKey` (String), `iconData` (IconData), `route` (String). Static list of configs for the 3 features.
+- [x] T004 [P] Create ConfidenceMetrics entity in lib/features/gradual_unlock/domain/entities/confidence_metrics.dart — @immutable. Fields: `successfulOpsWithoutHelp` (int, ≥0), `practiceSessionsCompleted` (int, ≥0). Manual copyWith, ==, hashCode.
+- [x] T005 [P] Create UnlockThresholds entity in lib/features/gradual_unlock/domain/entities/extra_feature.dart (same file as ExtraFeature) — @immutable, const constructor. Fields: `opsWithoutHelp` (int, default 5), `practiceSessions` (int, default 3), `maxRejections` (int, default 3).
+- [x] T006 [P] Create UnlockProposal entity in lib/features/gradual_unlock/domain/entities/unlock_proposal.dart — @immutable. Field: `feature` (ExtraFeature, non-null). Manual ==, hashCode.
 
 ### Domain Service (Dart puro, no Flutter)
 
-- [ ] T007 Create UnlockEvaluator in lib/features/gradual_unlock/domain/services/unlock_evaluator.dart — Method: `UnlockProposal? evaluate({required ConfidenceMetrics metrics, required Map<ExtraFeature, FeatureState> states, required Map<ExtraFeature, int> rejections, UnlockThresholds thresholds = const UnlockThresholds()})`. Logic: check if metrics meet either threshold (OR). Iterate features in priority order. Skip if state != locked. Skip if rejections >= maxRejections. Return first eligible as UnlockProposal, or null.
+- [x] T007 Create UnlockEvaluator in lib/features/gradual_unlock/domain/services/unlock_evaluator.dart — Method: `UnlockProposal? evaluate({required ConfidenceMetrics metrics, required Map<ExtraFeature, FeatureState> states, required Map<ExtraFeature, int> rejections, UnlockThresholds thresholds = const UnlockThresholds()})`. Logic: check if metrics meet either threshold (OR). Iterate features in priority order. Skip if state != locked. Skip if rejections >= maxRejections. Return first eligible as UnlockProposal, or null.
 
 ### Data Layer
 
-- [ ] T008 Create FeatureFlagRepository in lib/features/gradual_unlock/data/repositories/feature_flag_repository.dart — uses SharedPreferences. Methods: `Future<Map<ExtraFeature, FeatureState>> getStates()`, `Future<void> setState(ExtraFeature, FeatureState)`, `Future<ConfidenceMetrics> getMetrics()`, `Future<void> incrementOpsWithoutHelp()`, `Future<void> incrementPracticeSessions()`, `Future<Map<ExtraFeature, int>> getRejections()`, `Future<void> incrementRejection(ExtraFeature)`, `Future<void> resetToBasicView()` (sets all active → unlockedHidden). Keys prefixed with `gradual_unlock_`.
+- [x] T008 Create FeatureFlagRepository in lib/features/gradual_unlock/data/repositories/feature_flag_repository.dart — uses SharedPreferences. Methods: `Future<Map<ExtraFeature, FeatureState>> getStates()`, `Future<void> setState(ExtraFeature, FeatureState)`, `Future<ConfidenceMetrics> getMetrics()`, `Future<void> incrementOpsWithoutHelp()`, `Future<void> incrementPracticeSessions()`, `Future<Map<ExtraFeature, int>> getRejections()`, `Future<void> incrementRejection(ExtraFeature)`, `Future<void> resetToBasicView()` (sets all active → unlockedHidden). Keys prefixed with `gradual_unlock_`.
 
 ### Providers & Routing
 
-- [ ] T009 [P] Create feature_flags_provider in lib/features/gradual_unlock/presentation/providers/feature_flags_provider.dart — Providers: `featureFlagRepositoryProvider` (Provider<FeatureFlagRepository>), `featureStatesProvider` (FutureProvider<Map<ExtraFeature, FeatureState>>), `activeExtraFeaturesProvider` (Provider<List<ExtraFeature>> filtering active ones), `confidenceMetricsProvider` (FutureProvider<ConfidenceMetrics>).
-- [ ] T010 [P] Create unlock_proposal_provider in lib/features/gradual_unlock/presentation/providers/unlock_proposal_provider.dart — StateNotifierProvider. Reads metrics, states, rejections. Calls UnlockEvaluator. Exposes current proposal. Has `proposalShownThisSession` flag (in-memory, FR-006). Methods: `accept(ExtraFeature)`, `reject(ExtraFeature)`, `dismiss()`.
-- [ ] T011 Add routes to lib/core/router/app_router.dart — under `/easy-mode`: `transactions` → TransactionHistoryScreen, `recharge` → MobileRechargeScreen, `qr-payment` → QrPaymentScreen, `settings/features` → feature management screen.
+- [x] T009 [P] Create feature_flags_provider in lib/features/gradual_unlock/presentation/providers/feature_flags_provider.dart — Providers: `featureFlagRepositoryProvider` (Provider<FeatureFlagRepository>), `featureStatesProvider` (FutureProvider<Map<ExtraFeature, FeatureState>>), `activeExtraFeaturesProvider` (Provider<List<ExtraFeature>> filtering active ones), `confidenceMetricsProvider` (FutureProvider<ConfidenceMetrics>).
+- [x] T010 [P] Create unlock_proposal_provider in lib/features/gradual_unlock/presentation/providers/unlock_proposal_provider.dart — StateNotifierProvider. Reads metrics, states, rejections. Calls UnlockEvaluator. Exposes current proposal. Has `proposalShownThisSession` flag (in-memory, FR-006). Methods: `accept(ExtraFeature)`, `reject(ExtraFeature)`, `dismiss()`.
+- [x] T011 Add routes to lib/core/router/app_router.dart — under `/easy-mode`: `transactions` → TransactionHistoryScreen, `recharge` → MobileRechargeScreen, `qr-payment` → QrPaymentScreen, `settings/features` → feature management screen.
 
 ### Foundational Tests
 
-- [ ] T012 [P] Unit tests for UnlockEvaluator in test/features/gradual_unlock/domain/services/unlock_evaluator_test.dart — tests: (1) no metrics met → null, (2) 5 ops without help → proposes first locked feature, (3) 3 practice sessions → proposes first locked feature, (4) feature already active → skips to next, (5) feature has 3 rejections → skips, (6) all features active → null, (7) priority order respected (transactionHistory before mobileRecharge), (8) custom thresholds respected.
+- [x] T012 [P] Unit tests for UnlockEvaluator in test/features/gradual_unlock/domain/services/unlock_evaluator_test.dart — tests: (1) no metrics met → null, (2) 5 ops without help → proposes first locked feature, (3) 3 practice sessions → proposes first locked feature, (4) feature already active → skips to next, (5) feature has 3 rejections → skips, (6) all features active → null, (7) priority order respected (transactionHistory before mobileRecharge), (8) custom thresholds respected.
 
 **Checkpoint**: Foundation ready. Evaluator tested, repo configured, routes added.
 
@@ -62,11 +62,11 @@
 
 **Goal**: Proposal card shown on EasyModeHomeScreen when confidence conditions are met. 3 options: activate, practice, reject.
 
-- [ ] T013 [US1] Create UnlockProposalCard widget in lib/features/gradual_unlock/presentation/widgets/unlock_proposal_card.dart — receives UnlockProposal + ExtraFeatureConfig. Shows proposal message (ARB), 3 AccessibleButtons: "Sí, actívalo" (icon: check) → calls accept, "Primero quiero practicarlo" (icon: school) → navigates to 008 practice mode, "No, por ahora no" (icon: close) → calls reject. SemanticsService.announce proposal on mount. All buttons ≥48dp, 4.5:1 contrast.
-- [ ] T014 [US1] Integrate UnlockProposalCard into EasyModeHomeScreen — modify lib/features/easy_mode/presentation/screens/easy_mode_home_screen.dart: if `ref.watch(unlockProposalProvider)` is non-null AND not yet shown this session → show UnlockProposalCard above the 4 main actions.
-- [ ] T015 [US1] Integrate confidence tracking into pay/send flows — modify lib/features/easy_mode/presentation/screens/operation_success_screen.dart: on successful operation, call `ref.read(featureFlagRepositoryProvider).incrementOpsWithoutHelp()`. Check if help was requested during this flow (via operationInProgressProvider or a simple flag).
-- [ ] T016 [US1] "Sí, actívalo" handler — in unlockProposalProvider.accept(): set feature state to `active`, dismiss proposal, invalidate featureStatesProvider.
-- [ ] T017 [US1] "No, por ahora no" handler — in unlockProposalProvider.reject(): increment rejection count, dismiss proposal. Proposal does not reappear this session (proposalShownThisSession flag).
+- [x] T013 [US1] Create UnlockProposalCard widget in lib/features/gradual_unlock/presentation/widgets/unlock_proposal_card.dart — receives UnlockProposal + ExtraFeatureConfig. Shows proposal message (ARB), 3 AccessibleButtons: "Sí, actívalo" (icon: check) → calls accept, "Primero quiero practicarlo" (icon: school) → navigates to 008 practice mode, "No, por ahora no" (icon: close) → calls reject. SemanticsService.announce proposal on mount. All buttons ≥48dp, 4.5:1 contrast.
+- [x] T014 [US1] Integrate UnlockProposalCard into EasyModeHomeScreen — modify lib/features/easy_mode/presentation/screens/easy_mode_home_screen.dart: if `ref.watch(unlockProposalProvider)` is non-null AND not yet shown this session → show UnlockProposalCard above the 4 main actions.
+- [x] T015 [US1] Integrate confidence tracking into pay/send flows — modify lib/features/easy_mode/presentation/screens/operation_success_screen.dart: on successful operation, call `ref.read(featureFlagRepositoryProvider).incrementOpsWithoutHelp()`. Check if help was requested during this flow (via operationInProgressProvider or a simple flag).
+- [x] T016 [US1] "Sí, actívalo" handler — in unlockProposalProvider.accept(): set feature state to `active`, dismiss proposal, invalidate featureStatesProvider.
+- [x] T017 [US1] "No, por ahora no" handler — in unlockProposalProvider.reject(): increment rejection count, dismiss proposal. Proposal does not reappear this session (proposalShownThisSession flag).
 
 ### Tests
 
@@ -80,8 +80,8 @@
 
 **Goal**: Extra features shown in "Más funciones" section, never replacing the 4 originals.
 
-- [ ] T019 [US3] Create ExtraFeaturesSection widget in lib/features/gradual_unlock/presentation/widgets/extra_features_section.dart — receives List<ExtraFeature> active extras. Shows section header "Más funciones" (ARB). Renders ActionCards for each extra feature with same style as original 4 (big buttons, accessible). Each navigates to its route. Only visible when there are active extras. ≥48dp, 4.5:1 contrast, Semantics labels.
-- [ ] T020 [US3] Integrate ExtraFeaturesSection into EasyModeHomeScreen — below the 4 original actions, show ExtraFeaturesSection if `ref.watch(activeExtraFeaturesProvider)` is non-empty. The 4 originals always stay as primary actions.
+- [x] T019 [US3] Create ExtraFeaturesSection widget in lib/features/gradual_unlock/presentation/widgets/extra_features_section.dart — receives List<ExtraFeature> active extras. Shows section header "Más funciones" (ARB). Renders ActionCards for each extra feature with same style as original 4 (big buttons, accessible). Each navigates to its route. Only visible when there are active extras. ≥48dp, 4.5:1 contrast, Semantics labels.
+- [x] T020 [US3] Integrate ExtraFeaturesSection into EasyModeHomeScreen — below the 4 original actions, show ExtraFeaturesSection if `ref.watch(activeExtraFeaturesProvider)` is non-empty. The 4 originals always stay as primary actions.
 
 ### Tests
 
@@ -95,8 +95,8 @@
 
 **Goal**: User can hide all extra features and reactivate them individually from settings.
 
-- [ ] T022 [US2] Create feature management in settings — add option "Volver a solo 4 acciones" accessible from EasyModeHomeScreen settings. On tap: show confirmation dialog with ARB message. On confirm: call `featureFlagRepository.resetToBasicView()`. All active extras become unlockedHidden.
-- [ ] T023 [US2] Create feature reactivation list in settings — show list of unlocked (hidden) features with toggle to reactivate individually. No conditions needed (FR-010). Each toggle calls `setState(feature, active)` or `setState(feature, unlockedHidden)`.
+- [x] T022 [US2] Create feature management in settings — add option "Volver a solo 4 acciones" accessible from EasyModeHomeScreen settings. On tap: show confirmation dialog with ARB message. On confirm: call `featureFlagRepository.resetToBasicView()`. All active extras become unlockedHidden.
+- [x] T023 [US2] Create feature reactivation list in settings — show list of unlocked (hidden) features with toggle to reactivate individually. No conditions needed (FR-010). Each toggle calls `setState(feature, active)` or `setState(feature, unlockedHidden)`.
 
 ### Tests
 
@@ -110,9 +110,9 @@
 
 **Purpose**: Minimal simulated screens for the 3 extra features
 
-- [ ] T025 [P] Create TransactionHistoryScreen in lib/features/gradual_unlock/presentation/screens/transaction_history_screen.dart — shows list of last 10 mock transactions (from OperationRepository of 001). Each shows: type icon, description, amount, date. Read-only. Semantics labels. ≥48dp items.
-- [ ] T026 [P] Create MobileRechargeScreen in lib/features/gradual_unlock/presentation/screens/mobile_recharge_screen.dart — simple form: phone number (9 digits), fixed amount options (S/ 5, S/ 10, S/ 20). "Recargar" button → simulated success (ConfirmationScreen from core). Validation: 9 digits starting with 9.
-- [ ] T027 [P] Create QrPaymentScreen in lib/features/gradual_unlock/presentation/screens/qr_payment_screen.dart — simulated QR scan: show a placeholder image/icon with "Escanear código" button → after 2s delay, show simulated payment data (recipient, amount) → confirm button → ConfirmationScreen.
+- [x] T025 [P] Create TransactionHistoryScreen in lib/features/gradual_unlock/presentation/screens/transaction_history_screen.dart — shows list of last 10 mock transactions (from OperationRepository of 001). Each shows: type icon, description, amount, date. Read-only. Semantics labels. ≥48dp items.
+- [x] T026 [P] Create MobileRechargeScreen in lib/features/gradual_unlock/presentation/screens/mobile_recharge_screen.dart — simple form: phone number (9 digits), fixed amount options (S/ 5, S/ 10, S/ 20). "Recargar" button → simulated success (ConfirmationScreen from core). Validation: 9 digits starting with 9.
+- [x] T027 [P] Create QrPaymentScreen in lib/features/gradual_unlock/presentation/screens/qr_payment_screen.dart — simulated QR scan: show a placeholder image/icon with "Escanear código" button → after 2s delay, show simulated payment data (recipient, amount) → confirm button → ConfirmationScreen.
 
 ### Tests
 

@@ -90,7 +90,7 @@
 - [X] T018 [P] Create test/a11y/easy_mode_a11y_test.dart — widget tests for: home screen, balance screen, pay bill screen, pay bill confirm, send money screen, send money confirm, operation success. Each: meetsGuideline for 3 guidelines
 - [X] T019 [P] Create test/a11y/fraud_shield_a11y_test.dart — widget test for FraudAlertScreen: 3 guidelines
 - [X] T020 [P] Create test/a11y/contextual_help_a11y_test.dart — widget tests for: help contact picker, help channel picker, help connecting, help fallback. 3 guidelines each
-- [ ] T021 [P] Create test/a11y/voice_assistant_a11y_test.dart — widget tests for: voice assistant screen, microphone consent screen, operation summary screen. 3 guidelines each (depends on 004 screens existing)
+- [X] T021 [P] Create test/a11y/voice_assistant_a11y_test.dart — widget tests for: voice assistant screen, microphone consent screen, operation summary screen. 3 guidelines each (depends on 004 screens existing)
 
 ---
 

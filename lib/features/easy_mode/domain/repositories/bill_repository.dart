@@ -10,4 +10,12 @@ abstract class BillRepository {
 
   /// Marks a bill as paid. Throws if already paid.
   Future<Bill> payBill(String billId);
+
+  /// Adds a custom bill for a user-defined service.
+  Future<Bill> addBill({
+    required String serviceName,
+    required String providerName,
+    required double amount,
+    required DateTime dueDate,
+  });
 }
