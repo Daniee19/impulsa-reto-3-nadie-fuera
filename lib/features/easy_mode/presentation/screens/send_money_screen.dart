@@ -269,13 +269,11 @@ class _SendMoneyScreenState extends ConsumerState<SendMoneyScreen> {
                     ),
                   ),
                   const SizedBox(height: 12),
-                  ElevatedButton.icon(
+                  OutlinedButton.icon(
                     onPressed: () => setState(() => _selectedContact = null),
                     icon: const Icon(Icons.arrow_back),
                     label: Text(l10n.easyMode_back_button),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: theme.colorScheme.surface,
-                      foregroundColor: theme.colorScheme.primary,
+                    style: OutlinedButton.styleFrom(
                       minimumSize: const Size(
                         A11yHelpers.minTapTarget,
                         A11yHelpers.minTapTarget,

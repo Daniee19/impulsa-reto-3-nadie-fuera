@@ -23,7 +23,7 @@ abstract final class AppTheme {
         secondary: _secondary,
         onSecondary: Color(0xFFFFFFFF),
         tertiary: _warmAccent,
-        onTertiary: Color(0xFFFFFFFF),
+        onTertiary: _onSurface,
         error: _error,
         onError: Color(0xFFFFFFFF),
         surface: _surface,
@@ -98,6 +98,38 @@ abstract final class AppTheme {
         foregroundColor: Color(0xFFFFFFFF),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
+        ),
+      ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          foregroundColor: _primary,
+          side: const BorderSide(color: _primary, width: 2),
+          minimumSize: const Size(48, 48),
+          textStyle: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+          ),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 24,
+            vertical: 16,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+      ),
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          foregroundColor: _primary,
+          minimumSize: const Size(48, 48),
+          textStyle: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+          ),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 24,
+            vertical: 16,
+          ),
         ),
       ),
       chipTheme: ChipThemeData(

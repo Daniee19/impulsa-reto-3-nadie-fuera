@@ -84,13 +84,11 @@ class _HelpScreenState extends State<HelpScreen> {
                 onPressed: () => setState(() => _showConfirmation = true),
               ),
               const SizedBox(height: 32),
-              ElevatedButton.icon(
+              OutlinedButton.icon(
                 onPressed: () => Navigator.of(context).pop(),
                 icon: const Icon(Icons.arrow_back),
                 label: Text(l10n.easyMode_back_button),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: theme.colorScheme.surface,
-                  foregroundColor: theme.colorScheme.primary,
+                style: OutlinedButton.styleFrom(
                   minimumSize: const Size(
                     A11yHelpers.minTapTarget,
                     A11yHelpers.minTapTarget,

@@ -8,6 +8,9 @@ final contactRepositoryProvider = Provider<ContactRepository>(
 );
 
 /// Provider that fetches saved contacts.
-final contactsProvider = FutureProvider<List<SavedContact>>((ref) {
-  return ref.watch(contactRepositoryProvider).getContacts();
-});
+final contactsProvider = FutureProvider<List<SavedContact>>(
+  (ref) {
+    return ref.watch(contactRepositoryProvider).getContacts();
+  },
+  dependencies: [contactRepositoryProvider],
+);

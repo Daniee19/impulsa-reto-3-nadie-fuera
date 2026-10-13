@@ -55,8 +55,11 @@ class OperationPreparer {
       return PrepareNeedsService(pending);
     }
 
+    final query = serviceName.toLowerCase();
     final match = pending.where(
-      (b) => b.serviceName.toLowerCase().contains(serviceName.toLowerCase()),
+      (b) =>
+          b.serviceName.toLowerCase().contains(query) ||
+          b.providerName.toLowerCase().contains(query),
     );
 
     if (match.isEmpty) {
@@ -70,8 +73,8 @@ class OperationPreparer {
         amount: bill.amount,
         recipientName: bill.serviceName,
         recipientId: bill.id,
-        spokenSummary:
-            'Recibo de ${bill.serviceName} por ${bill.amount.toStringAsFixed(2)} soles',
+        spokenSummary: 'Recibo de ${bill.serviceName} '
+            'por ${bill.amount.toStringAsFixed(2)} soles',
       ),
     );
   }

@@ -9,6 +9,7 @@ import 'package:impulsa_reto_3_nadie_fuera/features/contextual_help/presentation
 import 'package:impulsa_reto_3_nadie_fuera/features/contextual_help/presentation/screens/help_contact_picker_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/contextual_help/presentation/screens/help_fallback_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/domain/entities/operation.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/screens/account_statement_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/screens/balance_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/screens/easy_mode_home_screen.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/screens/operation_success_screen.dart';
@@ -83,6 +84,11 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               GoRoute(
                 path: 'balance',
                 builder: (context, state) => const BalanceScreen(),
+              ),
+              GoRoute(
+                path: 'statement',
+                builder: (context, state) =>
+                    const AccountStatementScreen(),
               ),
               GoRoute(
                 path: 'pay-bill',

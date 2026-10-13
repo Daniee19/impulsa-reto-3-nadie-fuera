@@ -32,6 +32,30 @@ enum VoiceSessionStatus {
   error,
 }
 
+/// A single message in the chat history.
+@immutable
+class ChatMessage {
+  /// Creates a chat message.
+  const ChatMessage({
+    required this.text,
+    required this.isUser,
+    required this.timestamp,
+    this.source = InputSource.text,
+  });
+
+  /// The message text.
+  final String text;
+
+  /// Whether this message is from the user (true) or assistant (false).
+  final bool isUser;
+
+  /// When this message was created.
+  final DateTime timestamp;
+
+  /// How the user sent this message (voice or text).
+  final InputSource source;
+}
+
 /// Complete state of one assistant session (ephemeral, not persisted).
 @immutable
 class VoiceSession {
@@ -45,6 +69,7 @@ class VoiceSession {
     this.parsedIntent,
     this.operationSummary,
     this.assistantMessage,
+    this.messages = const [],
   });
 
   /// UUID of the session.
@@ -71,6 +96,9 @@ class VoiceSession {
   /// Session start time.
   final DateTime createdAt;
 
+  /// Chat history.
+  final List<ChatMessage> messages;
+
   /// Returns a copy with updated fields.
   VoiceSession copyWith({
     VoiceSessionStatus? status,
@@ -78,6 +106,7 @@ class VoiceSession {
     ParsedIntent? parsedIntent,
     OperationSummary? operationSummary,
     String? assistantMessage,
+    List<ChatMessage>? messages,
   }) => VoiceSession(
     id: id,
     status: status ?? this.status,
@@ -87,13 +116,17 @@ class VoiceSession {
     parsedIntent: parsedIntent ?? this.parsedIntent,
     operationSummary: operationSummary ?? this.operationSummary,
     assistantMessage: assistantMessage ?? this.assistantMessage,
+    messages: messages ?? this.messages,
   );
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is VoiceSession && id == other.id && status == other.status;
+      other is VoiceSession &&
+          id == other.id &&
+          status == other.status &&
+          messages.length == other.messages.length;
 
   @override
-  int get hashCode => Object.hash(id, status);
+  int get hashCode => Object.hash(id, status, messages.length);
 }

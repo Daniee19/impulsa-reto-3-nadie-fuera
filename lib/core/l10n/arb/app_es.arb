@@ -461,5 +461,34 @@
   },
   "reminder_consentTitle": "Consentimiento",
   "reminder_consentAccept": "Sí, de acuerdo",
-  "reminder_consentReject": "No"
+  "reminder_consentReject": "No",
+  "easyMode_home_accountStatement": "Estado de cuenta",
+  "statement_filterAll": "Todos",
+  "statement_filterPayments": "Pagos",
+  "statement_filterTransfers": "Transferencias",
+  "statement_from": "Desde",
+  "statement_to": "Hasta",
+  "statement_generate": "Generar estado de cuenta",
+  "statement_download": "Descargar PDF",
+  "statement_noOps": "No hay movimientos en este período",
+  "statement_totalOps": "{count} movimientos",
+  "@statement_totalOps": {
+    "placeholders": {
+      "count": { "type": "int" }
+    }
+  },
+  "statement_totalAmount": "Total: S/ {amount}",
+  "@statement_totalAmount": {
+    "placeholders": {
+      "amount": { "type": "String" }
+    }
+  },
+  "statement_pdfReady": "Estado de cuenta generado correctamente",
+  "statement_period": "Período: {from} al {to}",
+  "@statement_period": {
+    "placeholders": {
+      "from": { "type": "String" },
+      "to": { "type": "String" }
+    }
+  }
 }

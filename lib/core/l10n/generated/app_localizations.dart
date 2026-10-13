@@ -1599,6 +1599,84 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'No'**
   String get reminder_consentReject;
+
+  /// No description provided for @easyMode_home_accountStatement.
+  ///
+  /// In es, this message translates to:
+  /// **'Estado de cuenta'**
+  String get easyMode_home_accountStatement;
+
+  /// No description provided for @statement_filterAll.
+  ///
+  /// In es, this message translates to:
+  /// **'Todos'**
+  String get statement_filterAll;
+
+  /// No description provided for @statement_filterPayments.
+  ///
+  /// In es, this message translates to:
+  /// **'Pagos'**
+  String get statement_filterPayments;
+
+  /// No description provided for @statement_filterTransfers.
+  ///
+  /// In es, this message translates to:
+  /// **'Transferencias'**
+  String get statement_filterTransfers;
+
+  /// No description provided for @statement_from.
+  ///
+  /// In es, this message translates to:
+  /// **'Desde'**
+  String get statement_from;
+
+  /// No description provided for @statement_to.
+  ///
+  /// In es, this message translates to:
+  /// **'Hasta'**
+  String get statement_to;
+
+  /// No description provided for @statement_generate.
+  ///
+  /// In es, this message translates to:
+  /// **'Generar estado de cuenta'**
+  String get statement_generate;
+
+  /// No description provided for @statement_download.
+  ///
+  /// In es, this message translates to:
+  /// **'Descargar PDF'**
+  String get statement_download;
+
+  /// No description provided for @statement_noOps.
+  ///
+  /// In es, this message translates to:
+  /// **'No hay movimientos en este período'**
+  String get statement_noOps;
+
+  /// No description provided for @statement_totalOps.
+  ///
+  /// In es, this message translates to:
+  /// **'{count} movimientos'**
+  String statement_totalOps(int count);
+
+  /// No description provided for @statement_totalAmount.
+  ///
+  /// In es, this message translates to:
+  /// **'Total: S/ {amount}'**
+  String statement_totalAmount(String amount);
+
+  /// No description provided for @statement_pdfReady.
+  ///
+  /// In es, this message translates to:
+  /// **'Estado de cuenta generado correctamente'**
+  String get statement_pdfReady;
+
+  /// No description provided for @statement_period.
+  ///
+  /// In es, this message translates to:
+  /// **'Período: {from} al {to}'**
+  String statement_period(String from, String to);
 }
 
 class _AppLocalizationsDelegate

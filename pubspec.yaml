@@ -19,6 +19,8 @@ dependencies:
   intl: ^0.20.3
   local_auth: ^3.0.2
   meta: ^1.18.0
+  pdf: ^3.13.1
+  printing: ^5.15.1
   shared_preferences: ^2.3.0
   speech_to_text: ^7.0.0
 

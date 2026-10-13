@@ -8,6 +8,11 @@ final billRepositoryProvider = Provider<BillRepository>(
 );
 
 /// Provider that fetches pending bills.
-final pendingBillsProvider = FutureProvider<List<Bill>>((ref) {
-  return ref.watch(billRepositoryProvider).getBills(status: BillStatus.pending);
-});
+final pendingBillsProvider = FutureProvider<List<Bill>>(
+  (ref) {
+    return ref
+        .watch(billRepositoryProvider)
+        .getBills(status: BillStatus.pending);
+  },
+  dependencies: [billRepositoryProvider],
+);

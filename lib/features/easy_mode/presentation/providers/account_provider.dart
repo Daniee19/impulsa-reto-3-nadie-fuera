@@ -8,6 +8,9 @@ final accountRepositoryProvider = Provider<AccountRepository>(
 );
 
 /// Provider that fetches the current user account.
-final accountProvider = FutureProvider<Account>((ref) {
-  return ref.watch(accountRepositoryProvider).getAccount();
-});
+final accountProvider = FutureProvider<Account>(
+  (ref) {
+    return ref.watch(accountRepositoryProvider).getAccount();
+  },
+  dependencies: [accountRepositoryProvider],
+);

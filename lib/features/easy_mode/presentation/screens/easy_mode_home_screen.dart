@@ -76,6 +76,11 @@ class _EasyModeHomeScreenState extends ConsumerState<EasyModeHomeScreen> {
                 icon: Icons.help,
                 onTap: () => context.push('/easy-mode/help/contact-picker'),
               ),
+              ActionCard(
+                label: l10n.easyMode_home_accountStatement,
+                icon: Icons.description,
+                onTap: () => context.push('/easy-mode/statement'),
+              ),
               if (!isPractice) ...[
                 ActionCard(
                   label: l10n.assistant_title,

@@ -16,17 +16,22 @@ import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/presentation/pr
 import 'package:impulsa_reto_3_nadie_fuera/features/fraud_shield/presentation/providers/risk_engine_provider.dart';
 
 /// Provider that extracts unique service names from payment history.
-final quickAccessServicesProvider = FutureProvider<List<String>>((ref) async {
-  final ops = await ref.watch(operationRepositoryProvider).getOperations();
-  final serviceNames = <String>{};
-  for (final op in ops) {
-    if (op.type == OperationType.payment && op.status == OperationStatus.success) {
-      final name = op.recipientName.split(' - ').first.trim();
-      serviceNames.add(name);
+final quickAccessServicesProvider = FutureProvider<List<String>>(
+  (ref) async {
+    final ops =
+        await ref.watch(operationRepositoryProvider).getOperations();
+    final serviceNames = <String>{};
+    for (final op in ops) {
+      if (op.type == OperationType.payment &&
+          op.status == OperationStatus.success) {
+        final name = op.recipientName.split(' - ').first.trim();
+        serviceNames.add(name);
+      }
     }
-  }
-  return serviceNames.toList();
-});
+    return serviceNames.toList();
+  },
+  dependencies: [operationRepositoryProvider],
+);
 
 /// Lists pending bills for the user to select and pay.
 class PayBillScreen extends ConsumerWidget {
@@ -131,7 +136,7 @@ class PayBillScreen extends ConsumerWidget {
               await repo.addBill(
                 serviceName: nameController.text.trim(),
                 providerName: providerController.text.trim(),
-                amount: 0,
+                amount: 50,
                 dueDate: DateTime.now().add(const Duration(days: 30)),
               );
               ref.invalidate(pendingBillsProvider);

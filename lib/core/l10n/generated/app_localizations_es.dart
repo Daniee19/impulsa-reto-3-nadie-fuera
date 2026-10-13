@@ -879,4 +879,49 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get reminder_consentReject => 'No';
+
+  @override
+  String get easyMode_home_accountStatement => 'Estado de cuenta';
+
+  @override
+  String get statement_filterAll => 'Todos';
+
+  @override
+  String get statement_filterPayments => 'Pagos';
+
+  @override
+  String get statement_filterTransfers => 'Transferencias';
+
+  @override
+  String get statement_from => 'Desde';
+
+  @override
+  String get statement_to => 'Hasta';
+
+  @override
+  String get statement_generate => 'Generar estado de cuenta';
+
+  @override
+  String get statement_download => 'Descargar PDF';
+
+  @override
+  String get statement_noOps => 'No hay movimientos en este período';
+
+  @override
+  String statement_totalOps(int count) {
+    return '$count movimientos';
+  }
+
+  @override
+  String statement_totalAmount(String amount) {
+    return 'Total: S/ $amount';
+  }
+
+  @override
+  String get statement_pdfReady => 'Estado de cuenta generado correctamente';
+
+  @override
+  String statement_period(String from, String to) {
+    return 'Período: $from al $to';
+  }
 }
