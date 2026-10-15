@@ -19,10 +19,15 @@ class IntentParser {
     'pago',
     'pagale',
     'recibo',
+    'recibos',
     'servicio',
     'factura',
     'deuda',
     'cobro',
+    'pendiente',
+    'pendientes',
+    'que debo',
+    'que tengo que pagar',
   ];
 
   static const _serviceKeywords = [

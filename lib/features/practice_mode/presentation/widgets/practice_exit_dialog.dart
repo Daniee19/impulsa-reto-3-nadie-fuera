@@ -47,9 +47,12 @@ class _PracticeExitDialog extends ConsumerWidget {
             ),
           ),
           onPressed: () {
-            ref.read(practiceSessionProvider.notifier).end();
+            final notifier = ref.read(practiceSessionProvider.notifier);
             Navigator.of(context).pop();
             context.go('/easy-mode');
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              notifier.end();
+            });
           },
           child: Text(
             l10n.practice_exit_confirm,

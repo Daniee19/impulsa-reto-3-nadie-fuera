@@ -252,8 +252,14 @@ class PayBillScreen extends ConsumerWidget {
                                   ? Icons.receipt_long
                                   : Icons.history,
                               size: 20,
+                              color: Colors.white,
                             ),
                             label: Text(name),
+                            labelStyle: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            backgroundColor: theme.colorScheme.primary,
                             onPressed: matchingBill != null
                                 ? () async => _navigateWithRiskCheck(
                                       context,
@@ -286,6 +292,7 @@ class PayBillScreen extends ConsumerWidget {
                             : '${bill.serviceName}, '
                               '${l10n.easyMode_payBill_pendingAmount}',
                         child: Card(
+                          color: theme.colorScheme.primary,
                           child: InkWell(
                             onTap: () async =>
                                 _navigateWithRiskCheck(context, ref, bill),
@@ -301,12 +308,14 @@ class PayBillScreen extends ConsumerWidget {
                                       children: [
                                         Text(
                                           bill.serviceName,
-                                          style: theme.textTheme.titleLarge,
+                                          style: theme.textTheme.titleLarge
+                                              ?.copyWith(color: Colors.white),
                                         ),
                                         const SizedBox(height: 4),
                                         Text(
                                           bill.providerName,
-                                          style: theme.textTheme.bodyLarge,
+                                          style: theme.textTheme.bodyLarge
+                                              ?.copyWith(color: Colors.white70),
                                         ),
                                       ],
                                     ),
@@ -318,10 +327,10 @@ class PayBillScreen extends ConsumerWidget {
                                           : l10n.easyMode_payBill_pendingAmount,
                                       style: bill.amount > 0
                                           ? theme.textTheme.displayMedium
+                                              ?.copyWith(color: Colors.white)
                                           : theme.textTheme.bodyLarge?.copyWith(
                                               fontStyle: FontStyle.italic,
-                                              color: theme.colorScheme.onSurface
-                                                  .withValues(alpha: 0.6),
+                                              color: Colors.white70,
                                             ),
                                     ),
                                   ),

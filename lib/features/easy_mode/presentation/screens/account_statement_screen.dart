@@ -176,7 +176,9 @@ class _AccountStatementScreenState
                 ),
                 const SizedBox(height: 12),
                 // Type filter chips
-                Row(
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
                   children: [
                     _FilterChip(
                       label: l10n.statement_filterAll,
@@ -185,7 +187,6 @@ class _AccountStatementScreenState
                         () => _filter = _FilterType.all,
                       ),
                     ),
-                    const SizedBox(width: 8),
                     _FilterChip(
                       label: l10n.statement_filterPayments,
                       selected:
@@ -194,7 +195,6 @@ class _AccountStatementScreenState
                         () => _filter = _FilterType.payments,
                       ),
                     ),
-                    const SizedBox(width: 8),
                     _FilterChip(
                       label: l10n.statement_filterTransfers,
                       selected:

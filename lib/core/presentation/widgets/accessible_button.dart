@@ -40,6 +40,8 @@ class AccessibleButton extends StatelessWidget {
             icon: Icon(icon, size: 24),
             label: Text(text),
             style: ElevatedButton.styleFrom(
+              backgroundColor: Theme.of(context).colorScheme.primary,
+              foregroundColor: Colors.white,
               minimumSize: const Size(
                 A11yHelpers.minTapTarget,
                 A11yHelpers.minTapTarget,

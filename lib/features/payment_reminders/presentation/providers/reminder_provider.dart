@@ -25,4 +25,4 @@ final activeRemindersProvider = FutureProvider<List<Reminder>>((ref) async {
     now: DateTime.now(),
     dismissedBillIds: dismissed,
   );
-});
+}, dependencies: [billRepositoryProvider]);

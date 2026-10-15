@@ -9,6 +9,7 @@ import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/domain/entities/op
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/providers/account_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/providers/bill_provider.dart';
 import 'package:impulsa_reto_3_nadie_fuera/features/easy_mode/presentation/providers/operation_provider.dart';
+import 'package:impulsa_reto_3_nadie_fuera/features/payment_reminders/presentation/providers/reminder_provider.dart';
 
 /// Confirmation screen for paying a selected bill.
 class PayBillConfirmScreen extends ConsumerStatefulWidget {
@@ -51,7 +52,8 @@ class _PayBillConfirmScreenState extends ConsumerState<PayBillConfirmScreen> {
 
       ref
         ..invalidate(accountProvider)
-        ..invalidate(pendingBillsProvider);
+        ..invalidate(pendingBillsProvider)
+        ..invalidate(activeRemindersProvider);
 
       if (mounted) {
         context.go('/easy-mode/success', extra: operation);

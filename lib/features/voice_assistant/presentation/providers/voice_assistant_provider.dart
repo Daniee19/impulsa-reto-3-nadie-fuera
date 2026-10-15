@@ -231,9 +231,10 @@ class VoiceAssistantNotifier extends StateNotifier<VoiceSession?> {
   }
 
   /// Confirms the current operation with biometric authentication.
-  Future<void> confirmWithBiometric(String reason) async {
+  /// Returns true if authentication succeeded and operation was created.
+  Future<bool> confirmWithBiometric(String reason) async {
     final summary = state?.operationSummary;
-    if (summary == null) return;
+    if (summary == null) return false;
 
     state = state?.copyWith(status: VoiceSessionStatus.executing);
 
@@ -242,7 +243,7 @@ class VoiceAssistantNotifier extends StateNotifier<VoiceSession?> {
 
     if (!success) {
       state = state?.copyWith(status: VoiceSessionStatus.awaitingConfirmation);
-      return;
+      return false;
     }
 
     final opRepo = _ref.read(operationRepositoryProvider);
@@ -254,6 +255,7 @@ class VoiceAssistantNotifier extends StateNotifier<VoiceSession?> {
     );
 
     state = state?.copyWith(status: VoiceSessionStatus.completed);
+    return true;
   }
 
   Future<void> _handleBalance(
@@ -281,8 +283,16 @@ class VoiceAssistantNotifier extends StateNotifier<VoiceSession?> {
       case PrepareSuccess(:final summary):
         print('[VA] PrepareSuccess, calling _prepareConfirmation');
         await _prepareConfirmation(summary);
-      case PrepareNeedsService():
-        const msg = '¿Qué recibo quieres pagar?';
+      case PrepareNeedsService(:final pendingBills):
+        final buffer = StringBuffer('Tienes ${pendingBills.length} '
+            'recibo${pendingBills.length == 1 ? '' : 's'} pendiente'
+            '${pendingBills.length == 1 ? '' : 's'}:\n');
+        for (final bill in pendingBills) {
+          buffer.write('• ${bill.serviceName} — '
+              'S/ ${bill.amount.toStringAsFixed(2)}\n');
+        }
+        buffer.write('¿Cuál quieres pagar?');
+        final msg = buffer.toString();
         _addAssistantMessage(msg);
         state = state?.copyWith(status: VoiceSessionStatus.needsMore);
         await _speak(msg);

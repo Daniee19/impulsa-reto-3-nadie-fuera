@@ -42,8 +42,13 @@ class LessonListTile extends StatelessWidget {
                   ),
                 ),
                 Chip(
-                  label: Text(status),
-                  backgroundColor: isCompleted ? Colors.green.shade100 : null,
+                  label: Text(
+                    status,
+                    style: const TextStyle(color: Colors.white),
+                  ),
+                  backgroundColor: isCompleted
+                      ? const Color(0xFF2E7D32)
+                      : Theme.of(context).colorScheme.primary,
                 ),
               ],
             ),

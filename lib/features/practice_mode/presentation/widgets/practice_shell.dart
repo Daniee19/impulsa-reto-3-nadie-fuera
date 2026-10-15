@@ -51,6 +51,8 @@ class _PracticeShellState extends State<PracticeShell> {
 
   @override
   Widget build(BuildContext context) {
+    final location = GoRouterState.of(context).uri.path;
+    final isAtRoot = location == '/easy-mode' || location == '/easy-mode/';
     return ProviderScope(
       overrides: [
         accountRepositoryProvider.overrideWithValue(_accountRepo),
@@ -63,15 +65,10 @@ class _PracticeShellState extends State<PracticeShell> {
       child: Theme(
         data: practiceTheme(Theme.of(context)),
         child: PopScope(
-          canPop: false,
+          canPop: !isAtRoot,
           onPopInvokedWithResult: (didPop, _) {
             if (didPop) return;
-            final location = GoRouterState.of(context).uri.path;
-            if (location == '/easy-mode' || location == '/easy-mode/') {
-              showPracticeExitDialog(context);
-            } else {
-              Navigator.of(context).pop();
-            }
+            showPracticeExitDialog(context);
           },
           child: Column(
             children: [
